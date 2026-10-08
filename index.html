@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handwritten Notes - HTML5 & CSS3</title>
+    <!-- Handwritten Fonts from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Kalam:wght@300;400;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- html2pdf Library for 1-click PDF Generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #525659;
+            font-family: 'Kalam', cursive;
+            color: #1a2b4c; /* Classic Blue Ballpoint Pen Color */
+            padding: 20px;
+        }
+
+        /* Floating Controls */
+        .no-print-bar {
+            position: fixed;
+            top: 15px;
+            right: 25px;
+            z-index: 9999;
+            display: flex;
+            gap: 12px;
+        }
+
+        .btn-download {
+            background-color: #e63946;
+            color: #ffffff;
+            font-family: 'Caveat', cursive;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 10px 24px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: all 0.2s ease;
+        }
+
+        .btn-download:hover {
+            background-color: #c1121f;
+            transform: scale(1.05);
+        }
+
+        /* Paper Sheet Layout */
+        .notebook-container {
+            width: 850px;
+            margin: 0 auto;
+        }
+
+        .paper-sheet {
+            background-color: #fdfbf7;
+            /* Lined Paper Pattern */
+            background-image: linear-gradient(#e5e0d8 1px, transparent 1px);
+            background-size: 100% 30px;
+            position: relative;
+            padding: 45px 55px 45px 90px;
+            margin-bottom: 30px;
+            border-radius: 2px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            /* Red Margin Line */
+            border-left: 2px solid #ff8080;
+            line-height: 30px;
+        }
+
+        /* Notebook Punch Holes */
+        .paper-sheet::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 50px;
+            bottom: 50px;
+            width: 18px;
+            background: radial-gradient(circle, #333 35%, #525659 40%, transparent 45%);
+            background-size: 18px 90px;
+            opacity: 0.7;
+        }
+
+        /* Main Headers */
+        .notebook-header {
+            text-align: center;
+            border-bottom: 3px double #1a2b4c;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        .notebook-title {
+            font-family: 'Caveat', cursive;
+            font-size: 42px;
+            color: #0d1b2a;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .module-tag {
+            font-size: 32px;
+            color: #b7094c; /* Red Pen Accent */
+            border-bottom: 2px dashed #b7094c;
+            display: inline-block;
+            margin: 20px 0 15px 0;
+        }
+
+        /* Topic Card Styling */
+        .topic-box {
+            margin-bottom: 35px;
+            page-break-inside: avoid;
+        }
+
+        .topic-title {
+            font-family: 'Caveat', cursive;
+            font-size: 28px;
+            color: #005f73;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .topic-field {
+            font-size: 18px;
+            margin-bottom: 6px;
+        }
+
+        .field-label {
+            font-weight: 700;
+            color: #b7094c; /* Red Ink for key labels */
+            margin-right: 5px;
+        }
+
+        .highlight {
+            background-color: rgba(255, 234, 0, 0.4); /* Yellow Highlighter Effect */
+            padding: 0 4px;
+            border-radius: 3px;
+        }
+
+        /* Hand-drawn Code Box Styling */
+        .code-box {
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            line-height: 20px;
+            background-color: #f4f1ea;
+            color: #2b2d42;
+            padding: 12px 16px;
+            margin: 10px 0;
+            border: 2px solid #4a5568;
+            /* Hand-drawn organic border shapes */
+            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+            white-space: pre-wrap;
+            word-break: break-all;
+            position: relative;
+        }
+
+        .task-box {
+            background-color: rgba(144, 224, 239, 0.25); /* Light Blue Highlight */
+            border-left: 4px solid #00b4d8;
+            padding: 6px 12px;
+            margin-top: 8px;
+            font-size: 17px;
+        }
+
+        /* Print Media Overrides */
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+            }
+            .no-print-bar {
+                display: none;
+            }
+            .notebook-container {
+                width: 100%;
+            }
+            .paper-sheet {
+                box-shadow: none;
+                margin-bottom: 0;
+                page-break-after: always;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="no-print-bar">
+        <button class="btn-download" onclick="generatePDF()">📥 Download Handwritten PDF</button>
+    </div>
+
+    <div class="notebook-container" id="notes-content">
+        
+        <!-- SHEET 1: MODULE 1 (PART 1) -->
+        <div class="paper-sheet">
+            <div class="notebook-header">
+                <h1 class="notebook-title">📝 Web Development Master Notes</h1>
+                <p style="font-size: 20px; color: #555;">Handcrafted Study Reference Guide</p>
+            </div>
+
+            <div class="module-tag">MODULE 1: HTML5</div>
+
+            <!-- Topic 1 -->
+            <div class="topic-box">
+                <div class="topic-title">1. Introduction to the World Wide Web</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A global network of digital documents and resources accessible via web browsers over the internet.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> An information space where resources are identified by URLs, interlinked via hypertext, and retrieved using HTTP/HTTPS.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> To share, discover, store, and access cross-platform documents seamlessly worldwide.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Internet is the highway system; the Web represents the physical destinations built along those roads.</div>
+                <div class="code-box">&lt;!-- Accessing web resources using hyperlinks --&gt;
+&lt;a href="https://www.example.com"&gt;Visit Resource&lt;/a&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Open DevTools (F12) in your browser and inspect the raw HTML document structure of any site.</div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="topic-box">
+                <div class="topic-title">2. Client-Server Architecture</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A system where your browser <span class="highlight">(Client)</span> requests pages, and a remote machine <span class="highlight">(Server)</span> delivers them.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A distributed network model splitting tasks between service providers (servers) and service requesters (clients).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> To centralize data storage, manage application logic, and serve dynamic content to millions safely.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Restaurant ordering—You (Client) order off menu, Kitchen (Server) cooks and serves the meal back.</div>
+                <div class="code-box">&lt;form action="/api/submit" method="POST"&gt;
+  &lt;input type="text" name="user" placeholder="Enter Name"&gt;
+  &lt;button type="submit"&gt;Send Request&lt;/button&gt;
+&lt;/form&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Sketch a visual request-response flowchart illustrating browser navigation to google.com.</div>
+            </div>
+
+            <!-- Topic 3 -->
+            <div class="topic-box">
+                <div class="topic-title">3. HTML Structure: Head, Body, and Syntax</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The essential skeletal architecture dividing hidden page setup from visual content.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Standard element structure composed of tags containing non-rendered metadata (&lt;head&gt;) and renderable UI elements (&lt;body&gt;).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Provides standardized document parsing instructions to browsers for accurate page rendering.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Human body—Head manages hidden logic/thoughts; Body presents visible physical traits.</div>
+                <div class="code-box">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Page Skeleton&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Visible Content&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write out the baseline HTML structure from memory into a blank text file named index.html.</div>
+            </div>
+        </div>
+
+        <!-- SHEET 2: MODULE 1 (PART 2) -->
+        <div class="paper-sheet">
+            <!-- Topic 4 -->
+            <div class="topic-box">
+                <div class="topic-title">4. Comments & Page Metadata</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Hidden settings inside the head tag for browsers/search engines, plus notes written for developers.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Metadata (&lt;title&gt;, &lt;meta&gt;, &lt;link&gt;, &lt;style&gt;, &lt;script&gt;) defines configuration; comments (&lt;!-- --&gt;) note source code privately.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Enhances SEO, configures viewport scaling, loads assets, and documents code structure internally.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Copyright & title details printed inside a book cover—essential information for reference, not part of the main story.</div>
+                <div class="code-box">&lt;head&gt;
+    &lt;!-- Code note for team --&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;My Styled Document&lt;/title&gt;
+    &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build an HTML head tag containing UTF-8 encoding, responsive viewport meta, title, and developer notes.</div>
+            </div>
+
+            <!-- Topic 5 -->
+            <div class="topic-box">
+                <div class="topic-title">5. Tags & Attributes in HTML</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Tags create elements on screen; attributes add special settings or identities inside those tags.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Markup tags define UI boundaries; attributes provide key-value properties modifying tag behaviors.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Establishes text hierarchies and ties form fields explicitly to readable descriptive labels.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Tag = "Car", Attributes = "color='blue' doors='4'". Attributes modify entity parameters.</div>
+                <div class="code-box">&lt;h1&gt;Header Title&lt;/h1&gt;
+&lt;p&gt;Regular text paragraph.&lt;/p&gt;
+&lt;label for="email"&gt;Email Address:&lt;/label&gt;
+&lt;input type="email" id="email"&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create headings h1 to h3, followed by a text paragraph and an input linked to a label via 'for'.</div>
+            </div>
+
+            <!-- Topic 6 -->
+            <div class="topic-box">
+                <div class="topic-title">6. Building Your First Page - "Hello World"</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The simplest starter program used to confirm file setup produces valid output on screen.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A minimal valid HTML document structured to display simple confirmation text inside a browser.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Verifies local code environment, text editor functionality, and browser file parsing without errors.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Plugging in a newly assembled lamp for the first time to verify the light turns on cleanly.</div>
+                <div class="code-box">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello World!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create hello.html on desktop, input baseline code above, and open it inside your web browser.</div>
+            </div>
+
+            <!-- Topic 7 -->
+            <div class="topic-box">
+                <div class="topic-title">7. Text Formatting Tags</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Special markup tags placed around words to add visual emphasis, highlights, or technical styles.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Inline formatting elements (&lt;b&gt;, &lt;strong&gt;, &lt;i&gt;, &lt;em&gt;, &lt;mark&gt;, &lt;sub&gt;, &lt;sup&gt;) modifying textual emphasis.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Improves content scanability, stresses important terms, and renders scientific/math symbols.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Highlighting key definitions with a yellow fluorescent marker inside a printed textbook.</div>
+                <div class="code-box">&lt;p&gt;Water formula: H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;
+&lt;p&gt;Einstein: E = mc&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; &lt;mark&gt;Read carefully&lt;/mark&gt;&lt;/p&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write sentences utilizing chemical subscripts, math exponents, and yellow text highlights.</div>
+            </div>
+        </div>
+
+        <!-- SHEET 3: MODULE 1 (PART 3) -->
+        <div class="paper-sheet">
+            <!-- Topic 8 -->
+            <div class="topic-box">
+                <div class="topic-title">8. Block Elements & Structure (Div, Nav)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Full-width layout boxes used to group visual elements or form navigation menus.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Block-level elements occupying 100% available container width; &lt;div&gt; acts as a generic container; &lt;nav&gt; defines structural site navigation paths.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Organizes content layouts logically into manageable, styleable layout containers.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Cargo boxes on a ship—each box groups related goods into tidy individual storage modules.</div>
+                <div class="code-box">&lt;nav&gt;
+    &lt;a href="#home"&gt;Home&lt;/a&gt; | &lt;a href="#about"&gt;About&lt;/a&gt;
+&lt;/nav&gt;
+&lt;div class="card"&gt;
+    &lt;h2&gt;Container Title&lt;/h2&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a layout with a navigation bar containing 3 links, followed by 2 distinct structural div boxes.</div>
+            </div>
+
+            <!-- Topic 9 -->
+            <div class="topic-box">
+                <div class="topic-title">9. Image & Anchor Tags</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Images display graphical media, while anchors create clickable hyperlinks leading across the web.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> &lt;img&gt; embeds graphics via 'src' & 'alt'; &lt;a&gt; creates clickable links via the 'href' property.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Adds visual context to documents and enables web graph navigation through hypertext links.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Anchor = Door leading into another room; Image = Picture frame hanging on a wall.</div>
+                <div class="code-box">&lt;!-- Clickable Image Link --&gt;
+&lt;a href="https://google.com" target="_blank"&gt;
+    &lt;img src="logo.png" alt="Search Engine Logo" width="150"&gt;
+&lt;/a&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Place an image inside an anchor tag so clicking the visual image opens an external website.</div>
+            </div>
+
+            <!-- Topic 10 -->
+            <div class="topic-box">
+                <div class="topic-title">10. Lists & Table Structures</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Lists order text sequentially; tables organize data cleanly across rows and columns.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Lists render bulleted (&lt;ul&gt;) or numbered (&lt;ol&gt;) items (&lt;li&gt;); tables (&lt;table&gt;,&lt;tr&gt;,&lt;td&gt;) matrix data.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Displays structured option choices, step-by-step documentation, or tabular data.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> List = Grocery shopping checklist; Table = Weekly class schedule grid.</div>
+                <div class="code-box">&lt;ul&gt;&lt;li&gt;HTML5&lt;/li&gt;&lt;li&gt;CSS3&lt;/li&gt;&lt;/ul&gt;
+&lt;table border="1"&gt;
+  &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Role&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Alex&lt;/td&gt;&lt;td&gt;Dev&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build an ordered list of 3 favorite books, followed by a 2x2 data grid showing student grades.</div>
+            </div>
+        </div>
+
+        <!-- SHEET 4: MODULE 1 (PART 4) & MODULE 2 (PART 1) -->
+        <div class="paper-sheet">
+            <!-- Topic 11 -->
+            <div class="topic-box">
+                <div class="topic-title">11. HTML5 Forms (Methods, Action & Label)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Interactive input panels designed to capture user entries and send them back to servers.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> The &lt;form&gt; tag wraps fields, directing data processing using 'action' (URL) and 'method' (GET/POST).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Enables user registration, login authentication, interactive feedback, and data processing.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Filling out a physical paper application form at a bank counter and submitting it to the teller.</div>
+                <div class="code-box">&lt;form action="/login" method="POST"&gt;
+    &lt;label for="user"&gt;User:&lt;/label&gt;
+    &lt;input type="text" id="user" name="username" required&gt;
+    &lt;button type="submit"&gt;Login&lt;/button&gt;
+&lt;/form&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a complete login form with username, password, submit button, and associated labels.</div>
+            </div>
+
+            <!-- Topic 12 -->
+            <div class="topic-box">
+                <div class="topic-title">12. Selectors: Tag, ID, Class</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Identity markers attached to HTML elements so you can target them for styles or scripts.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Identifiers assigned within tags; Tag targets names, Class (class="") groups elements, ID (id="") identifies uniquely.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Allows accurate target selection for applying custom CSS styles or dynamic JavaScript actions.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Tag = "All Students", Class = "Science Students", ID = "Passport Number #123" (Unique).</div>
+                <div class="code-box">&lt;h2&gt;Tag Selector&lt;/h2&gt;
+&lt;div class="box"&gt;Class Box 1&lt;/div&gt;
+&lt;div class="box"&gt;Class Box 2&lt;/div&gt;
+&lt;div id="unique-box"&gt;Unique ID Box&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create 3 div boxes; give two of them matching class attributes and one a unique ID.</div>
+            </div>
+
+            <!-- Topic 13 -->
+            <div class="topic-box">
+                <div class="topic-title">13. Semantic Elements (Iframes, Entities, Symbols)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Meaningful HTML structural tags, plus tools to display external sites or special text symbols.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Semantic tags (&lt;article&gt;,&lt;footer&gt;) give structural meaning; &lt;iframe&gt; embeds pages; Entities (&amp;copy;) output reserved symbols.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Maximizes web accessibility, improves SEO rankings, and prints special characters safely.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Street signs giving explicit navigation directives compared to unpainted wooden posts.</div>
+                <div class="code-box">&lt;footer&gt;
+    &lt;p&gt;Copyright &amp;copy; 2026 | 5 &amp;lt; 10&lt;/p&gt;
+&lt;/footer&gt;
+&lt;iframe src="https://example.com" width="200" height="100"&gt;&lt;/iframe&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Construct a footer tag displaying copyright symbol entity (&amp;copy;) along with an embedded iframe map.</div>
+            </div>
+
+            <!-- Topic 14 -->
+            <div class="topic-box">
+                <div class="topic-title">14. Media Elements: Audio & Video</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Native HTML5 tags that stream dynamic video files and audio clips without third-party plugins.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Structural media tags (&lt;audio&gt; and &lt;video&gt;) providing integrated media player controls natively.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Enables direct embedding and streaming of video clips and audio tracks on web pages.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A video screen frame mounted directly onto your wall interface with integrated playback controls.</div>
+                <div class="code-box">&lt;video width="320" height="240" controls&gt;
+    &lt;source src="movie.mp4" type="video/mp4"&gt;
+&lt;/video&gt;
+&lt;audio controls src="song.mp3"&gt;&lt;/audio&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Insert a video player into a document featuring user playback controls and dimension configurations.</div>
+            </div>
+        </div>
+
+        <!-- SHEET 5: MODULE 2 (PART 1) -->
+        <div class="paper-sheet">
+            <div class="module-tag">MODULE 2: CSS3</div>
+
+            <!-- Topic 15 -->
+            <div class="topic-box">
+                <div class="topic-title">15. Introduction to Cascading Style Sheets (CSS)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The visual design rule system used to transform plain text HTML tags into beautiful web pages.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A rule-based layout language specifying document presentation, styling, colors, fonts, and arrangements.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Separates underlying document markup content (HTML) from overall visual styling rules (CSS).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> HTML forms unpainted house walls; CSS supplies paint colors, wallpapers, tiles, and interior design.</div>
+                <div class="code-box">body {
+    background-color: #f4f4f9;
+    color: #1a2b4c;
+    font-family: Arial, sans-serif;
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a CSS rule changing document background to light grey and paragraph text color to dark blue.</div>
+            </div>
+
+            <!-- Topic 16 -->
+            <div class="topic-box">
+                <div class="topic-title">16. Types of CSS</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The three integration locations available for attaching custom CSS style rules to HTML elements.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Style attachment methods: <span class="highlight">Inline</span> (inside style=""), <span class="highlight">Internal</span> (inside &lt;style&gt; in head), and <span class="highlight">External</span> (linked .css file).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Offers options between direct quick fixes (Inline) and maintainable project-wide design systems (External).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Inline = Drawing directly on object; Internal = Chapter note; External = Central styling manual.</div>
+                <div class="code-box">&lt;!-- Inline --&gt; &lt;h1 style="color:red;"&gt;Text&lt;/h1&gt;
+&lt;!-- Internal --&gt; &lt;style&gt; p { color: blue; } &lt;/style&gt;
+&lt;!-- External --&gt; &lt;link rel="stylesheet" href="style.css"&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create 3 paragraphs—style first via Inline CSS, second via Internal CSS, and third via External CSS.</div>
+            </div>
+
+            <!-- Topic 17 -->
+            <div class="topic-box">
+                <div class="topic-title">17. CSS Selectors (ID, Class, Combinators, Pseudo)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Target criteria used to select precise HTML elements based on names, states, or relationships.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Selection rules matching ID (#id), Class (.class), Combinator (div &gt; p), Pseudo-class (:hover), Pseudo-element (::before), or Attribute ([type="text"]).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Enables accurate element styling without cluttering HTML source code with excessive extra tags.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> "Target every second book on top shelf, but only when someone hovers their hand over it."</div>
+                <div class="code-box">#main-title { color: blue; }          /* ID Selector */
+.btn { background: gray; }            /* Class Selector */
+div &gt; p { margin: 5px; }              /* Combinator */
+a:hover { color: red; }               /* Pseudo-class */
+input[type="text"] { border:1px solid; } /* Attribute */</div>
+                <div class="task-box"><span class="field-label">Task:</span> Style a hyperlinked tag to alter colors when hovered over (:hover) using a pseudo-class selector.</div>
+            </div>
+        </div>
+
+        <!-- SHEET 6: MODULE 2 (PART 2) -->
+        <div class="paper-sheet">
+            <!-- Topic 18 -->
+            <div class="topic-box">
+                <div class="topic-title">18. Text Properties & Custom Font Families</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> CSS rules used to adjust text typographic options like font size, font family, thickness, and alignment.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Properties controlling typography rules (font-family, font-size, color, font-weight, text-align, line-height).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Improves document readability hierarchy, visual emphasis, and maintains consistent brand typography.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Word processor formatting—selecting text size, making words bold, and setting center alignment.</div>
+                <div class="code-box">h1 {
+    font-family: 'Helvetica', sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: #2c3e50;
+    text-align: center;
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Style an h2 heading to be center-aligned, bold, 24px font-size, using the 'Courier New' font family.</div>
+            </div>
+
+            <!-- Topic 19 -->
+            <div class="topic-box">
+                <div class="topic-title">19. Units in CSS: Colors & Sizes</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Measurement values used to specify colors, element dimensions, margins, and font sizes.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Color standards (HEX, RGB, HSL) and Sizing units (px absolute unit; %, em, rem, vw, vh relative flexible units).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Ensures layout component sizes scale predictably across different mobile and desktop displays.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Measuring object length with a fixed ruler (px) vs. measuring relative to room width (vw / %).</div>
+                <div class="code-box">.container {
+    background-color: rgba(255, 0, 0, 0.5); /* Semi-transparent Red */
+    width: 80vw;   /* 80% viewport width */
+    height: 200px; /* Absolute fixed height */
+    font-size: 1.2rem;
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a div box configured with 80% width, rem padding units, and an RGB color background.</div>
+            </div>
+
+            <!-- Topic 20 -->
+            <div class="topic-box">
+                <div class="topic-title">20. Box Model: Borders, Margins, Padding</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The foundational rule where every HTML element is treated as a rectangular box made of layers.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> The spatial layer model composed of Content, <span class="highlight">Padding</span> (inner space), <span class="highlight">Border</span> (edge), and <span class="highlight">Margin</span> (outer space).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Dictates spatial positioning distances, spatial boundaries, and sizing arrangements across web layouts.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Framed picture on wall—Photo = Content; Matte frame border = Padding; Outer wood frame = Border; Distance to next frame = Margin.</div>
+                <div class="code-box">.box {
+    width: 200px;
+    padding: 15px;            /* Inner spacing */
+    border: 2px solid #333;   /* Visible border edge */
+    margin: 20px;             /* Outer spacing */
+    border-radius: 8px;       /* Corner curvature */
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a card box containing 15px inner padding, a 2px blue border line, rounded corners, and 20px outer margin.</div>
+            </div>
+        </div>
+
+        <!-- SHEET 7: MODULE 2 (PART 3) -->
+        <div class="paper-sheet">
+            <!-- Topic 21 -->
+            <div class="topic-box">
+                <div class="topic-title">21. Shadows: Text and Box Shadow</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Visual drop-shadow effects that add depth and dimensions behind elements or text words.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> CSS depth properties (box-shadow and text-shadow) projecting 2D spatial shadow offsets with blur radius controls.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Adds visual elevation, creates spatial depth layers, and draws user focus to key elements.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Holding a flashlight above a physical card to cast a soft drop shadow onto the table beneath it.</div>
+                <div class="code-box">.shadow-card {
+    /* offset-x | offset-y | blur | color */
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.3);
+}
+.shadow-text {
+    text-shadow: 2px 2px 4px #ff0000;
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Add a soft drop shadow beneath a container card box, and apply a colored text shadow to its heading text.</div>
+            </div>
+
+            <!-- Topic 22 -->
+            <div class="topic-box">
+                <div class="topic-title">22. Background Properties</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Styling rules used to apply background colors, images, wallpapers, and scaling properties.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Background controls (background-color, background-image, background-repeat, background-size, background-position).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Enhances user visual experience with full-width header graphics, color themes, and background patterns.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Painting a room wall a solid base color vs. hanging pattern wallpaper across its entire surface.</div>
+                <div class="code-box">.hero {
+    background-color: #222;
+    background-image: url('bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover; /* Fits box completely */
+    background-position: center;
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a hero section div using a centered background graphic image configured with background-size: cover.</div>
+            </div>
+
+            <!-- Topic 23 -->
+            <div class="topic-box">
+                <div class="topic-title">23. Layout Management: Float & Position</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Positioning properties used to shift, align, float, or lock elements to explicit page coordinates.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Layout rules including float (left/right), clear, and position (static, relative, absolute, fixed, sticky).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Governs complex layout structures, overlapping interface components, and sticky headers locked on scroll.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Sticky position acts like a sticky note on your monitor screen frame—it stays locked in place while scrolling.</div>
+                <div class="code-box">.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.absolute-badge {
+    position: absolute;
+    top: 10px; right: 10px;
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a site navigation bar that stays locked to the top of the browser viewport when scrolling using position: sticky.</div>
+            </div>
+        </div>
+
+        <!-- SHEET 8: MODULE 2 (PART 4) -->
+        <div class="paper-sheet">
+            <!-- Topic 24 -->
+            <div class="topic-box">
+                <div class="topic-title">24. Display Properties, Cursor & Overflow</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Rules controlling display behavior, mouse hover cursors, line heights, opacity transparency, and content spillover.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Layout settings controlling element context (display), pointer style (cursor), line-height, opacity, and overflow clipping.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Dictates interactive cursor cues, line readability spacing, and prevents layout breaks when text spills over containers.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Hovering over clickable items changes the pointer to a pointing hand; long text boxes display scrollbars when full.</div>
+                <div class="code-box">.custom-card {
+    display: block;
+    cursor: pointer;          /* Hand cursor on hover */
+    line-height: 1.6;
+    opacity: 0.9;             /* Transparency */
+    height: 100px;
+    overflow: auto;           /* Scrollbars on overflow */
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a fixed-height box (100px) containing multiple paragraphs, configured with overflow: scroll and cursor: pointer.</div>
+            </div>
+
+            <!-- Topic 25 -->
+            <div class="topic-box">
+                <div class="topic-title">25. Meta Viewport & Media Queries</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Responsive techniques ensuring web pages automatically adjust layout rules to fit various device screen sizes.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Viewport meta tag configures mobile rendering scales; Media Queries (@media) apply conditional CSS rules by screen width.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Crucial for constructing Responsive Web Designs (RWD) that render cleanly across mobile, tablet, and desktop screens.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Water reshaping itself to fit inside a small glass, a medium mug, or a wide mixing bowl.</div>
+                <div class="code-box">&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;style&gt;
+  /* Mobile conditional override */
+  @media (max-width: 600px) {
+    body { background-color: lightgreen; }
+  }
+&lt;/style&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a media query changing document background color to black whenever screen width drops below 768px.</div>
+            </div>
+
+            <!-- Topic 26 -->
+            <div class="topic-box">
+                <div class="topic-title">26. Advanced CSS: Animation, Gradients & Z-Index</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Advanced visual options enabling animations, multi-color gradients, 2D/3D movements, and visual depth ordering.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Advanced tools: Transforms (translate, rotate), Transitions (smooth state changes), Gradients, and Z-Index (layer stack order).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Creates dynamic interactive feedback, smooth visual state animations, and controls overlapping layout depth stack order.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Z-index works like layering physical paper sheets on top of each other; Transitions smoothly animate state changes.</div>
+                <div class="code-box">.card {
+    background: linear-gradient(45deg, #ff007f, #7f00ff);
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px) scale(1.02);
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a gradient-filled button that smoothly scales up (transform: scale(1.1)) using a 0.3s hover transition.</div>
+            </div>
+
+            <!-- Topic 27 -->
+            <div class="topic-box">
+                <div class="topic-title">27. Responsive Layouts: Flexbox & CSS Grid</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Modern CSS display layout models designed to organize, align, and distribute screen space dynamically.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Flexbox (display: flex) provides flexible 1D row/column alignment; CSS Grid (display: grid) builds complex 2D row-and-column layout grids.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Replaces obsolete float hacks to build modern, responsive, scalable application interfaces easily.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Flexbox = Arranging books neatly on a single shelf; Grid = Organizing items into multi-row catalog grids.</div>
+                <div class="code-box">/* 1D Alignment (Flexbox) */
+.flex-row { display: flex; justify-content: space-between; }
+
+/* 2D Grid Layout (Grid) */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a 3-column product grid using CSS Grid (repeat(3, 1fr)), switching to a 1-column flex layout on mobile screens.</div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script to Handle Automatic Download -->
+    <script>
+        function generatePDF() {
+            const element = document.getElementById('notes-content');
+            const opt = {
+                margin:       [0.2, 0.2, 0.2, 0.2],
+                filename:     'HTML5_and_CSS3_Handwritten_Notes.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, logging: false, useCORS: true },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            // Temporary change layout for cleaner rendering
+            const downloadBtn = document.querySelector('.no-print-bar');
+            downloadBtn.style.display = 'none';
+
+            html2pdf().set(opt).from(element).save().then(() => {
+                downloadBtn.style.display = 'flex';
+            });
+        }
+    </script>
+</body>
+</html>
