@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodeJS - Handwritten Notes</title>
+    <link rel="stylesheet" href="shared-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- TOP NAVIGATION BUTTONS -->
+    <div class="no-print-bar">
+        <button class="btn-nav btn-download" onclick="generatePDF()">📥 Download PDF</button>
+        <a href="index.html" class="btn-nav">🏠 Home</a>
+        <a href="html5.html" class="btn-nav">📘 HTML5</a>
+        <a href="css3.html" class="btn-nav">🎨 CSS3</a>
+        <a href="javascript.html" class="btn-nav">⚡ JavaScript</a>
+        <a href="advanced-js.html" class="btn-nav">🚀 Adv JS</a>
+        <a href="bootstrap.html" class="btn-nav">💠 Bootstrap</a>
+        <a href="reactjs.html" class="btn-nav">⚛️ React</a>
+        <a href="nextjs.html" class="btn-nav">▲ NextJS</a>
+        <a href="angular.html" class="btn-nav">🅰️ Angular</a>
+        <a href="python.html" class="btn-nav">🐍 Python</a>
+        <a href="mysql.html" class="btn-nav">🗄️ MySQL</a>
+        <a href="mongodb.html" class="btn-nav">🍃 MongoDB</a>
+        <a href="django.html" class="btn-nav">🎸 Django</a>
+        <a href="expressjs.html" class="btn-nav">🚂 Express</a>
+        <a href="genai.html" class="btn-nav">🤖 Gen AI</a>
+        <a href="deployment.html" class="btn-nav">☁️ Deploy</a>
+    </div>
+
+    <main class="notebook-container" id="notes-content">
+
+        <!-- =========================
+             PAGE 1: INTRODUCTION & SETUP
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="notebook-header">
+                <h1 class="notebook-title">🟢 Node.js Master Notes</h1>
+                <p style="font-size:20px; color:#555;">Server-Side JavaScript Runtime Environment</p>
+            </div>
+
+            <div class="module-tag">PART 1: INTRODUCTION & ENVIRONMENT</div>
+
+            <!-- Topic 1 -->
+            <div class="topic-box">
+                <div class="topic-title">1. Introduction to Node.js</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Node.js is an open-source JavaScript runtime that allows developers to run JavaScript code outside the web browser, especially on servers.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A cross-platform runtime environment built on top of Google Chrome's V8 JavaScript engine, created by Ryan Dahl in 2009. It uses a single-threaded event loop with non-blocking I/O operations.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Enables developers to build fast, scalable network applications using JavaScript for both the front-end and back-end, allowing full-stack JavaScript development.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Imagine a plant that only grew above ground (JavaScript in browsers) suddenly growing deep roots (Node.js) so the entire plant can live anywhere—on servers, IoT devices, or desktop apps.</div>
+                <div class="code-box">// Save this as app.js and run with: node app.js
+console.log("Node.js is running JavaScript outside the browser!");
+console.log("Node version:", process.version);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a `hello.js` file that prints "Hello from Node!" and execute it in your terminal using `node hello.js`.</div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="topic-box">
+                <div class="topic-title">2. Node.js Environment Setup & Installation</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The complete process of downloading, installing, and configuring Node.js runtime on your computer so it can execute JavaScript server code.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Involves installing the official Node.js runtime (which bundles the V8 engine, standard library, and NPM) from nodejs.org, verifying installation via terminal commands, and setting up a code editor like VS Code.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Prepares your development machine with all the required tools so JavaScript can be compiled and executed on your local machine without needing a browser.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Setting up a fully-equipped home kitchen (environment) with a stove, utensils, and ingredients (Node + NPM + Editor) before you can start cooking (coding).</div>
+                <div class="code-box"># Terminal commands to verify Node.js installation
+
+node -v         # Shows installed Node.js version (e.g. v20.11.0)
+npm -v          # Shows installed NPM version
+node            # Opens interactive Node REPL console
+> 5 + 10
+15
+> .exit         # Exit REPL</div>
+                <div class="task-box"><span class="field-label">Task:</span> Download Node.js LTS version from nodejs.org, install it, open the terminal, and verify both `node -v` and `npm -v` return valid version numbers.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 2: NPM
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 2: NPM — PACKAGE MANAGER</div>
+
+            <!-- Topic 3 -->
+            <div class="topic-box">
+                <div class="topic-title">3. NPM (Node Package Manager)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> NPM is the world's largest software registry and the official package manager automatically bundled with Node.js installations.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A command-line interface (CLI) tool used to install, update, uninstall, and manage external JavaScript packages (libraries) hosted at npmjs.com, documented inside a `package.json` manifest file.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Simplifies dependency management by allowing developers to download pre-built libraries (like Express, React, Lodash) instead of writing every single function from scratch.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Like a giant online supermarket where you can download pre-made tools and ingredients instead of making every single thing manually.</div>
+                <div class="code-box"># Initialize a new Node.js project (creates package.json)
+npm init -y
+
+# Install Express library and save it as a dependency
+npm install express
+
+# Install nodemon as a dev dependency (for development only)
+npm install nodemon --save-dev
+
+# Install a specific version
+npm install express@4.18.0
+
+# Remove a package
+npm uninstall express
+
+# Update all packages to latest allowed versions
+npm update</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a new project folder, run `npm init -y`, then install the `express` library and check that it appears inside the `node_modules` folder and `package.json` file.</div>
+            </div>
+
+            <!-- Topic 4 -->
+            <div class="topic-box">
+                <div class="topic-title">4. package.json & package-lock.json Files</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Special metadata files automatically generated by NPM that describe your project, list its dependencies, and lock exact installed versions for reproducibility.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> `package.json` stores project info (name, version, scripts, dependencies, author); `package-lock.json` locks the exact tree of installed dependency versions to prevent inconsistent installs across machines.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Ensures that every developer working on the same project installs the exact same dependency versions, preventing the famous "but it works on my machine!" bug.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A detailed shopping receipt listing every item, brand, and price so the exact same groceries can be rebought later without substitutions.</div>
+                <div class="code-box">// package.json example
+{
+  "name": "my-app",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  }
+}
+
+// Run custom script: npm run dev</div>
+                <div class="task-box"><span class="field-label">Task:</span> Open your `package.json`, add a custom script called `"greet": "echo Hello World"`, and run it using `npm run greet`.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 3: CALLBACKS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 3: CALLBACKS CONCEPT</div>
+
+            <!-- Topic 5 -->
+            <div class="topic-box">
+                <div class="topic-title">5. Callback Functions in Node.js</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A callback is a function passed as an argument into another function, which is executed later after the first function completes its asynchronous task.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A higher-order function pattern fundamental to Node.js that follows the "error-first" convention—the first parameter of the callback is always reserved for an error object, followed by the actual data result.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Enables Node.js to execute long-running operations (like reading files, querying databases, or making HTTP requests) without blocking the main thread, keeping the server fast and responsive to new requests.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Dropping off laundry at a dry cleaner and giving them your phone number so they can call you back when it's ready, instead of standing in the shop waiting.</div>
+                <div class="code-box">// Error-first callback pattern
+const fs = require('fs');
+
+fs.readFile('note.txt', 'utf8', function(err, data) {
+    if (err) {
+        console.error("Error reading file:", err);
+        return;
+    }
+    console.log("File content:", data);
+});
+
+console.log("This runs BEFORE file read completes!");</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a function `fetchUser(id, callback)` that simulates fetching a user with `setTimeout` and executes the callback with the user data after 2 seconds.</div>
+            </div>
+
+            <!-- Topic 6 -->
+            <div class="topic-box">
+                <div class="topic-title">6. Callback Hell & Solutions</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Callback Hell (also called "Pyramid of Doom") refers to deeply nested callback functions that make code hard to read, debug, and maintain.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A code anti-pattern where multiple asynchronous operations are chained by nesting callbacks inside callbacks, creating a visual pyramid shape with excessive indentation levels.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Understanding Callback Hell helps developers choose modern alternatives like Promises or Async/Await to write cleaner, more maintainable asynchronous code.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Imagine giving a messenger an instruction letter, who gives it to another messenger with a nested letter, who hands it to a third messenger... soon no one knows what the original message was.</div>
+                <div class="code-box">// ❌ Callback Hell Pattern (Pyramid of Doom)
+fs.readFile('a.txt', (err, a) => {
+    fs.readFile('b.txt', (err, b) => {
+        fs.readFile('c.txt', (err, c) => {
+            fs.writeFile('out.txt', a + b + c, (err) => {
+                console.log("Done!"); // Hard to read!
+            });
+        });
+    });
+});
+
+// ✅ Solution: Use Promises or Async/Await</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a nested callback example with 3 setTimeout calls, then rewrite the same logic using Promises for cleaner code.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 4: EVENTS & FILE UPLOADS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 4: EVENTS, EVENT LOOP & FILE UPLOADS</div>
+
+            <!-- Topic 7 -->
+            <div class="topic-box">
+                <div class="topic-title">7. Node.js Events & EventEmitter</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Node.js uses an event-driven architecture where certain actions trigger named events that other parts of the code can listen for and react to.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Node.js provides the built-in `events` module with the `EventEmitter` class, which allows you to create, emit (fire), and listen for custom named events using methods like `.on()` and `.emit()`.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Enables decoupled communication between different parts of an application, allowing code to react to things like file completion, HTTP requests, database connections, or custom app signals.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A doorbell system—when someone presses the button (emit "doorbell"), everyone inside the house (listeners) hears it and can decide to react (open door, hide, etc.).</div>
+                <div class="code-box">const EventEmitter = require('events');
+
+// Create emitter instance
+const myEmitter = new EventEmitter();
+
+// LISTEN for custom event
+myEmitter.on('user_signup', (username) => {
+    console.log(`Welcome, ${username}! Sending email...`);
+});
+
+// FIRE the event with data payload
+myEmitter.emit('user_signup', 'Alex');
+myEmitter.emit('user_signup', 'Maya');</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create an `EventEmitter` that listens for `order_placed` events and prints "Processing Order #" with an order ID passed as payload.</div>
+            </div>
+
+            <!-- Topic 8 -->
+            <div class="topic-box">
+                <div class="topic-title">8. Event Loop in Node.js</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The Event Loop is the heart of Node.js that handles all asynchronous operations by continuously checking the event queue and executing pending callbacks.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A single-threaded, non-blocking mechanism that processes operations in phases (Timers → Pending Callbacks → Idle → Poll → Check → Close) using the libuv library behind the scenes.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Allows Node.js to handle thousands of simultaneous connections efficiently on a single thread without needing multiple threads like traditional servers (Apache, Tomcat).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A single waiter in a busy restaurant—instead of standing at one table waiting for guests to finish eating, the waiter continuously circulates, taking orders, delivering food, and clearing tables based on what's ready.</div>
+                <div class="code-box">console.log("1. Start");
+
+setTimeout(() => console.log("4. Timer callback"), 0);
+
+Promise.resolve().then(() => console.log("3. Promise microtask"));
+
+console.log("2. End");
+
+/* OUTPUT ORDER:
+   1. Start
+   2. End
+   3. Promise microtask (microtasks run before timers)
+   4. Timer callback
+*/</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a script using `console.log`, `setTimeout(fn, 0)`, and 

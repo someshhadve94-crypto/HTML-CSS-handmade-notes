@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next.js - Handwritten Notes</title>
+    <link rel="stylesheet" href="shared-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- TOP NAVIGATION BUTTONS -->
+    <div class="no-print-bar">
+        <button class="btn-nav btn-download" onclick="generatePDF()">📥 Download PDF</button>
+        <a href="index.html" class="btn-nav">🏠 Home</a>
+        <a href="html5.html" class="btn-nav">📘 HTML5</a>
+        <a href="css3.html" class="btn-nav">🎨 CSS3</a>
+        <a href="javascript.html" class="btn-nav">⚡ JavaScript</a>
+        <a href="advanced-js.html" class="btn-nav">🚀 Adv JS</a>
+        <a href="bootstrap.html" class="btn-nav">💠 Bootstrap</a>
+        <a href="reactjs.html" class="btn-nav">⚛️ React</a>
+        <a href="angular.html" class="btn-nav">🅰️ Angular</a>
+        <a href="python.html" class="btn-nav">🐍 Python</a>
+        <a href="nodejs.html" class="btn-nav">🟢 NodeJS</a>
+        <a href="mysql.html" class="btn-nav">🗄️ MySQL</a>
+        <a href="mongodb.html" class="btn-nav">🍃 MongoDB</a>
+        <a href="django.html" class="btn-nav">🎸 Django</a>
+        <a href="expressjs.html" class="btn-nav">🚂 Express</a>
+        <a href="genai.html" class="btn-nav">🤖 Gen AI</a>
+        <a href="deployment.html" class="btn-nav">☁️ Deploy</a>
+    </div>
+
+    <main class="notebook-container" id="notes-content">
+
+        <!-- =========================
+             PAGE 1: INTRODUCTION & FUNDAMENTALS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="notebook-header">
+                <h1 class="notebook-title">▲ Next.js Master Notes</h1>
+                <p style="font-size:20px; color:#555;">Full-Stack React Framework for Production</p>
+            </div>
+
+            <div class="module-tag">PART 1: NEXT.JS FOUNDATIONS</div>
+
+            <!-- Topic 1 -->
+            <div class="topic-box">
+                <div class="topic-title">1. Introduction to Next.js</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Next.js is a powerful full-stack React framework created by Vercel for building production-ready web applications.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> An open-source React framework that provides server-side rendering (SSR), static site generation (SSG), file-system routing, and built-in API support.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Solves standard React Client-Side Rendering (CSR) limitations regarding SEO performance, slow initial page loads, and complex routing setup.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Plain React is an engine requiring custom assembly; Next.js is a complete factory-assembled luxury car ready to drive.</div>
+                <div class="code-box">// Next.js basic page component automatically routed at /about
+export default function AboutPage() {
+    return &lt;h1&gt;Welcome to Next.js Production Web Application&lt;/h1&gt;;
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Visit nextjs.org/docs and summarize the 3 main problems Next.js solves over traditional React apps.</div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="topic-box">
+                <div class="topic-title">2. Next.js Core Features</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Built-in capabilities that provide superior developer experience and web application performance automatically.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Key features include Hybrid Rendering (SSR/SSG/ISR), Automatic Code Splitting, Image/Font Optimization, and Zero-Config Routing.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Maximizes Google Lighthouse SEO scores, speeds up page loads, and reduces manual webpack configuration.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A smart smartphone camera automatically adjusting focus, lighting, and filters without manual tweaking.</div>
+                <div class="code-box">import Image from 'next/image';
+
+// Built-in Next.js automatic image optimization
+export default function Profile() {
+    return &lt;Image src="/user.jpg" alt="User" width={100} height={100} priority /&gt;;
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Compare performance metrics of a standard HTML `&lt;img&gt;` vs Next.js `&lt;Image /&gt;` component.</div>
+            </div>
+
+            <!-- Topic 3 -->
+            <div class="topic-box">
+                <div class="topic-title">3. Component Lifecycle in Next.js</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> How Next.js components execute across server execution environments and client browser hydrations.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Next.js components render on the server to generate HTML, send it to the browser, and then <span class="highlight">hydrate</span> interactive JS on the client.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Delivers instant visual content to users before full JavaScript execution completes in the browser.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Receiving a fully printed physical newspaper immediately, then plugging in interactive audio buttons later.</div>
+                <div class="code-box">// Server-rendered HTML first, followed by client hydration
+export default function LifecycleDemo() {
+    console.log("Renders on Server terminal log during request!");
+    return &lt;div&gt;Fast Server Rendered Content&lt;/div&gt;;
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Place a console.log inside a Next.js page component and identify where the log output appears (Terminal vs Browser Console).</div>
+            </div>
+
+            <!-- Topic 4 -->
+            <div class="topic-box">
+                <div class="topic-title">4. Environment Setup & Project Initialization</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Setting up a fresh Next.js development workspace using the official automated CLI generator tool.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Running <span class="highlight">npx create-next-app@latest</span> initializes TypeScript, Tailwind CSS, ESLint, and App Router settings automatically.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Establishes standardized folder structure, dependency management, and build scripts instantly.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Unboxing a complete kitchen kit pre-loaded with stove, pans, spices, and cutlery ready for cooking.</div>
+                <div class="code-box"># Terminal setup command
+npx create-next-app@latest my-next-app
+# Options: TypeScript (Yes), ESLint (Yes), Tailwind CSS (Yes), App Router (Yes)
+cd my-next-app
+npm run dev</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a new Next.js project using `create-next-app` and launch the dev server at localhost:3000.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 2: SERVER & CLIENT COMPONENTS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 2: SERVER & CLIENT COMPONENTS</div>
+
+            <!-- Topic 5 -->
+            <div class="topic-box">
+                <div class="topic-title">5. React Server Components (RSC)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Components that render exclusively on the server, sending zero JavaScript bundle weight to the browser.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Default component mode in Next.js App Router that fetches data directly on the server without client bundle impact.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Dramatically reduces JavaScript bundle sizes, secures database credentials, and improves overall application performance.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A chef preparing food completely in the kitchen and serving the finished dish without bringing cooking equipment to your table.</div>
+                <div class="code-box">// Default Server Component in App Router (Direct DB/API access)
+export default async function ProductList() {
+    const res = await fetch('https://api.example.com/products');
+    const products = await res.json();
+    return (
+        &lt;ul&gt;
+            {products.map((p) => &lt;li key={p.id}&gt;{p.name}&lt;/li&gt;)}
+        &lt;/ul&gt;
+    );
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a Server Component that fetches data directly inside the async component function without useState or useEffect.</div>
+            </div>
+
+            <!-- Topic 6 -->
+            <div class="topic-box">
+                <div class="topic-title">6. Client Components ('use client')</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Interactive components that run on the client browser to handle state, hooks, and user click events.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Components explicitly marked with the <span class="highlight">'use client'</span> directive directive string placed at the very top of the file.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Required whenever using browser APIs, React hooks (useState, useEffect), or event listeners (onClick, onChange).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Bringing interactive games or touchscreen menus to a customer's table in a restaurant.</div>
+                <div class="code-box">'use client'; // Explicit Client Component directive
+
+import { useState } from 'react';
+
+export default function LikeButton() {
+    const [likes, setLikes] = useState(0);
+    return (
+        &lt;button onClick={() => setLikes(likes + 1)}&gt;
+            Likes: {likes}
+        &lt;/button&gt;
+    );
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build an interactive modal or counter component using the 'use client' directive and useState hook.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 3: DATA FETCHING METHODS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 3: DATA FETCHING STRATEGIES</div>
+
+            <!-- Topic 7 -->
+            <div class="topic-box">
+                <div class="topic-title">7. Server-Side Rendering (SSR)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Generating full page HTML dynamically on the server for every incoming user HTTP request.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Fetches fresh real-time data on every request using <span class="highlight">fetch(url, { cache: 'no-store' })</span> in App Router or <span class="highlight">getServerSideProps</span> in Pages Router.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Essential for dynamic content that changes constantly, such as stock tickers, live feeds, or user dashboards.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Printing a personalized receipt live at the cashier register for every specific customer purchase.</div>
+                <div class="code-box">// SSR in App Router (no caching = fetch on every request)
+export default async function LiveNews() {
+    const res = await fetch('https://api.example.com/news', { cache: 'no-store' });
+    const news = await res.json();
+    return &lt;div&gt;Latest News: {news[0].title}&lt;/div&gt;;
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Fetch real-time data with `{ cache: 'no-store' }` and verify page HTML updates on every refresh.</div>
+            </div>
+
+            <!-- Topic 8 -->
+            <div class="topic-box">
+                <div class="topic-title">8. Static Site Generation (SSG)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Pre-rendering page HTML once at build time, serving static cached pages instantly to all visitors.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Default behavior in Next.js for pages without dynamic uncached data or using <span class="highlight">fetch(url, { cache: 'force-cache' })</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Delivers maximum performance and lowest server overhead for content that changes infrequently (blogs, documentation).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Printing 10,000 copies of a book in advance and distributing them immediately from a warehouse.</div>
+                <div class="code-box">// SSG in App Router (default cached fetch)
+export default async function StaticDocs() {
+    const res = await fetch('https://api.example.com/docs', { cache: 'force-cache' });
+    const docs = await res.json();
+    return &lt;article&gt;{docs.title}&lt;/article&gt;;
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a blog page using static fetching and inspect the build output using `npm run build`.</div>
+            </div>
+
+            <!-- Topic 9 -->
+            <div class="topic-box">
+                <div class="topic-title">9. Incremental Static Regeneration (ISR)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Updating specific static pages in the background without needing to rebuild the entire website.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Configured using the <span class="highlight">next: { revalidate: seconds }</span> option in fetch requests to automatically regenerate cached HTML.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Combines the ultra-fast performance of SSG with the freshness of real-time SSR data updates.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Updating a printed store catalog automatically once every 60 seconds whenever prices change.</div>
+                <div class="code-box">// ISR: Revalidate cached static page every 60 seconds
+export default async function Store() {
+    const res = await fetch('https://api.example.com/products', {
+        next: { revalidate: 60 } // Regenerate page every 60s
+    });
+    const products = await res.json();
+    return &lt;div&gt;Products Updated Hourly&lt;/div&gt;;
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Configure a page with a 10-second revalidation time and observe cached background updates.</div>
+            </div>
+
+            <!-- Topic 10 -->
+            <div class="topic-box">
+                <div class="topic-title">10. Data Fetching with React Query (TanStack Query)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A powerful client-side state management library for fetching, caching, and updating server state in React/Next.js.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses hooks like <span class="highlight">useQuery</span> and <span class="highlight">useMutation</span> to handle loading states, caching, background refetching, and retries.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Eliminates manual useEffect data fetching code and manages complex client-side API caching automatically.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> An automatic assistant periodically polling a server for new email notifications without reloading the page.</div>
+                <div class="code-box">'use client';
+
+import { useQuery } from '@tanstack/react-query';
+
+export default function UserProfile() {
+    const { data, isLoading, error } = useQuery({
+        queryKey: ['user'],
+        queryFn: () => fetch('/api/user').then((res) => res.json())
+    });
+
+    if (isLoading) return &lt;p&gt;Loading...&lt;/p&gt;;
+    if (error) return &lt;p&gt;Error loading profile!&lt;/p&gt;;
+    return &lt;h2&gt;User: {data.name}&lt;/h2&gt;;
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Set up TanStack Query Client Provider and fetch a list of posts using the `useQuery` hook.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 4: ROUTING SYSTEMS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 4: ROUTING & FILE SYSTEM ARCHITECTURE</div>
+
+            <!-- Topic 11 -->
+            <div class="topic-box">
+                <div class="topic-title">11. Pages Router (/pages Directory)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The legacy file-system routing system where every file inside the `/pages` directory automatically maps to a URL route.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> `pages/index.js` maps to `/`, `pages/about.js` maps to `/about`, and `pages/posts/[id].js` maps to dynamic paths `/posts/:id`.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Simple routing structure used in older Next.js applications (v12 and earlier).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Labeling physical paper folders inside a filing cabinet where folder names equal tab labels.</div>
+                <div class="code-box">// File: pages/contact.js -> URL: http://localhost:3000/contact
+export default function Contact() {
+    return &lt;h1&gt;Contact Us Page&lt;/h1&gt;;
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create `pages/services.js` and verify it routes automatically to `/services`.</div>
+            </div>
+
+            <!-- Topic 12 -->
+            <div class="topic-box">
+                <div class="topic-title">12. App Router (/app Directory & Layouts)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The modern Next.js 13+ routing system built on React Server Components, nested layouts, and special file conventions.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses folders to define route segments containing special files: <span class="highlight">page.js</span>, <span class="highlight">layout.js</span>, <span class="highlight">loading.js</span>, <span class="highlight">error.js</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Enables nested shared UI layouts, parallel routes, and streaming UI state management.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A master building template maintaining the header and footer while swapping individual room floor plans.</div>
+                <div class="code-box">// File: app/dashboard/layout.js (Shared Layout)
+export default function DashboardLayout({ children }) {
+    return (
+        &lt;section&gt;
+            &lt;nav&gt;Dashboard Sidebar&lt;/nav&gt;
+            {children} {/* Renders app/dashboard/page.js */}
+        &lt;/section&gt;
+    );
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build an App Router layout file wrapping a persistent sidebar around sub-page views.</div>
+            </div>
+
+            <!-- Topic 13 -->
+            <div class="topic-box">
+                <div class="topic-title">13. Dynamic Routes & Catch-All Segments</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Creating flexible URL routes that accept dynamic parameters or dynamic multi-segment paths.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Bracket syntax <span class="highlight">[id]</span> creates single dynamic segments; <span class="highlight">[...slug]</span> creates catch-all routes matching multiple sub-paths.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Handles dynamic product pages, user profile URLs, or multi-level category documentation pages.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A postal mailbox accepting letters addressed to any specific apartment number.</div>
+                <div class="code-box">// File: app/blog/[slug]/page.js -> URL: /blog/hello-world
+export default function BlogPost({ params }) {
+    return &lt;h1&gt;Reading Post: {params.slug}&lt;/h1&gt;;
+}
+
+// File: app/docs/[...slug]/page.js -> URL: /docs/v1/setup/install
+// params.slug = ['v1', 'setup', 'install']</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a dynamic route folder `[id]` and render the ID parameter received from page props.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 5: STYLING & TAILWIND
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 5: STYLING & TAILWIND CSS INTEGRATION</div>
+
+            <!-- Topic 14 -->
+            <div class="topic-box">
+                <div class="topic-title">14. CSS Modules & Global CSS in Next.js</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Built-in styling support for global CSS files alongside component-scoped CSS Modules.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> CSS Modules use the <span class="highlight">.module.css</span> naming 

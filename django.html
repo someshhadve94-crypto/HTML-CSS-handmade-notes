@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django - Handwritten Notes</title>
+    <link rel="stylesheet" href="shared-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- TOP NAVIGATION BUTTONS -->
+    <div class="no-print-bar">
+        <button class="btn-nav btn-download" onclick="generatePDF()">📥 Download PDF</button>
+        <a href="index.html" class="btn-nav">🏠 Home</a>
+        <a href="html5.html" class="btn-nav">📘 HTML5</a>
+        <a href="css3.html" class="btn-nav">🎨 CSS3</a>
+        <a href="javascript.html" class="btn-nav">⚡ JavaScript</a>
+        <a href="advanced-js.html" class="btn-nav">🚀 Adv JS</a>
+        <a href="bootstrap.html" class="btn-nav">💠 Bootstrap</a>
+        <a href="reactjs.html" class="btn-nav">⚛️ React</a>
+        <a href="nextjs.html" class="btn-nav">▲ NextJS</a>
+        <a href="angular.html" class="btn-nav">🅰️ Angular</a>
+        <a href="python.html" class="btn-nav">🐍 Python</a>
+        <a href="nodejs.html" class="btn-nav">🟢 NodeJS</a>
+        <a href="mysql.html" class="btn-nav">🗄️ MySQL</a>
+        <a href="mongodb.html" class="btn-nav">🍃 MongoDB</a>
+        <a href="expressjs.html" class="btn-nav">🚂 Express</a>
+        <a href="genai.html" class="btn-nav">🤖 Gen AI</a>
+        <a href="deployment.html" class="btn-nav">☁️ Deploy</a>
+    </div>
+
+    <main class="notebook-container" id="notes-content">
+
+        <!-- =========================
+             PAGE 1: OVERVIEW & SETUP
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="notebook-header">
+                <h1 class="notebook-title">🎸 Django Master Notes</h1>
+                <p style="font-size:20px; color:#555;">High-Level Python Web Framework ("The Web Framework for Perfectionists with Deadlines")</p>
+            </div>
+
+            <div class="module-tag">PART 1: OVERVIEW & ENVIRONMENT SETUP</div>
+
+            <!-- Topic 1 -->
+            <div class="topic-box">
+                <div class="topic-title">1. Introduction to Django & Overview</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Django is a powerful, free, open-source Python web framework that encourages rapid development and clean, pragmatic design.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A full-stack, batteries-included server-side web framework following the MVT (Model-View-Template) architectural pattern, created by Adrian Holovaty and Simon Willison in 2005.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Allows developers to build secure, scalable, and maintainable web applications quickly by including pre-built features like an Admin Interface, ORM, Authentication, and CSRF protection out of the box.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Renting a fully furnished apartment where the plumbing, electricity, furniture, and security system are already set up, so you can move in immediately without building the house from scratch.</div>
+                <div class="code-box"># Terminal command to check installed Django version
+python -m django --version</div>
+                <div class="task-box"><span class="field-label">Task:</span> Research and list 4 major websites built using Django (e.g. Instagram, Spotify, YouTube, Pinterest) and note why they chose Django.</div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="topic-box">
+                <div class="topic-title">2. Django Environment Setup</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Preparing your development machine by creating an isolated Virtual Environment (`virtualenv`) and installing the Django package via PIP.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Virtual environments prevent package version conflicts by isolating project dependencies from the global system Python installation.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Guarantees that every Django project runs with its own specific dependencies without breaking other Python projects on your computer.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Giving each room in a house its own dedicated temperature controller so adjusting one room doesn't disrupt the temperature in other rooms.</div>
+                <div class="code-box"># 1. Create a virtual environment named 'env'
+python -m venv env
+
+# 2. Activate Virtual Environment
+# On Windows:
+env\Scripts\activate
+# On Mac/Linux:
+source env/bin/activate
+
+# 3. Install Django inside the active environment
+pip install django</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a fresh virtual environment, activate it in your terminal, and install Django using `pip install django`.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 2: PROJECTS, APPS & VIEWS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 2: PROJECTS, APPS & VIEWS</div>
+
+            <!-- Topic 3 -->
+            <div class="topic-box">
+                <div class="topic-title">3. Creating a Django Project</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A Django Project is the top-level container for an entire website, containing database configurations, settings, URLs, and modular applications.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Initialized using <span class="highlight">django-admin startproject project_name</span>, which creates core control files: `settings.py`, `urls.py`, `wsgi.py`, `asgi.py`, and `manage.py`.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Establishes global site configuration, database connections, middleware layers, and master routing rules.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Building a shopping mall structure (Project) that will house individual separate stores (Apps) inside it.</div>
+                <div class="code-box"># Initialize project named 'mywebsite'
+django-admin startproject mywebsite
+cd mywebsite
+
+# Run local development server
+python manage.py runserver
+# Access server at: http://127.0.0.1:8000/</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a Django project named `portfolio_project`, run `python manage.py runserver`, and view the default Django success page in your browser.</div>
+            </div>
+
+            <!-- Topic 4 -->
+            <div class="topic-box">
+                <div class="topic-title">4. Creating a Django App</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A Django App is a web application submodule designed to perform a specific, self-contained business function (e.g. blog, user auth, store catalog).</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Created using <span class="highlight">python manage.py startapp app_name</span>. Must be registered inside the `INSTALLED_APPS` array in `settings.py`.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Promotes modularity and reusability—a single App (like a blog or comment app) can be copied and reused across multiple Django projects.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A clothing store inside a shopping mall—it operates independently within the larger mall structure.</div>
+                <div class="code-box"># Create application module named 'blog'
+python manage.py startapp blog
+
+# Register app in mywebsite/settings.py:
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    ...
+    'blog', # Registered application
+]</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a Django app named `store`, register it inside `INSTALLED_APPS` in `settings.py`, and verify project execution.</div>
+            </div>
+
+            <!-- Topic 5 -->
+            <div class="topic-box">
+                <div class="topic-title">5. Creating Views in Django</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A View is a Python function or class that receives an HTTP request, processes logic, and returns an HTTP response (HTML, JSON, Redirect, 404).</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Function-Based Views (FBVs) accept `request` as their first parameter and return an `HttpResponse` or `render()` object; connected via `urls.py`.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Handles application request-response workflow and connects database models to presentation templates.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A customer service representative who listens to customer requests, looks up information, and responds back with an answer.</div>
+                <div class="code-box"># File: blog/views.py
+from django.http import HttpResponse
+from django.shortcuts import render
+
+# 1. Simple HTTP Response View
+def home_view(request):
+    return HttpResponse("&lt;h1&gt;Welcome to My Blog!&lt;/h1&gt;")
+
+# 2. Template Rendering View
+def about_view(request):
+    return render(request, 'about.html', {'title': 'About Us'})</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a view function `contact_view` inside `views.py` that returns a custom HTML string or template response.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 3: MVT ARCHITECTURE
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 3: MVT ARCHITECTURE</div>
+
+            <!-- Topic 6 -->
+            <div class="topic-box">
+                <div class="topic-title">6. MVT Architecture Overview</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> MVT (Model-View-Template) is Django's software architectural design pattern used to decouple data, logic, and presentation.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A variation of MVC where Django itself acts as the Controller handling URL mapping and routing automatically.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Separates database structure, business execution logic, and visual layout design into distinct layers for modular development.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Restaurant workflow: Pantry holds raw food (Model), Kitchen cooks meals (View), Dining room serves formatted dishes (Template).</div>
+                <div class="code-box">/* MVT Workflow Architecture:
+   1. USER sends HTTP Request -> URL Dispatcher (urls.py)
+   2. URL routes request to matching VIEW (views.py)
+   3. VIEW queries MODEL (models.py) for database records
+   4. VIEW passes data to TEMPLATE (.html) to build page
+   5. VIEW returns HTTP Response back to User Browser
+*/</div>
+                <div class="task-box"><span class="field-label">Task:</span> Draw a block diagram showing how requests travel through URL Dispatcher, View, Model, and Template in Django.</div>
+            </div>
+
+            <!-- Topic 7 -->
+            <div class="topic-box">
+                <div class="topic-title">7. Model Layer in MVT</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The data layer responsible for defining database structure, field attributes, constraints, and business data logic using Python classes.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A Python class inheriting from `models.Model` where class attributes represent database table columns.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Maps Python objects directly to underlying SQL tables via Django's Object-Relational Mapper (ORM), avoiding raw SQL writing.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A blueprint drawing defining the structure of a customer record (name, phone, address).</div>
+                <div class="code-box"># File: blog/models.py
+from django.db import models
+
+class Post(models.Model):
+    title = models.CharField(max_length=200)
+    content = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a `Product` model class inside `models.py` with `name`, `price`, and `created_at` fields.</div>
+            </div>
+
+            <!-- Topic 8 -->
+            <div class="topic-box">
+                <div class="topic-title">8. View Layer in MVT</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The processing logic layer that receives HTTP requests, fetches data from Models, executes operations, and selects Templates for output.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Functions or classes inside `views.py` containing business logic that coordinate data between Models and Templates.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Executes backend operations, handles form validation, authentication, and prepares data for visualization.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A chef gathering ingredients from the pantry (Model) and preparing them into a meal to place on a plate (Template).</div>
+                <div class="code-box"># File: blog/views.py
+from django.shortcuts import render
+from .models import Post
+
+def post_list(request):
+    posts = Post.objects.all() # Fetch data from Model
+    return render(request, 'blog/post_list.html', {'posts': posts})</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a view function `product_detail` that queries a single product model record and sends it to a template.</div>
+            </div>
+
+            <!-- Topic 9 -->
+            <div class="topic-box">
+                <div class="topic-title">9. Template Layer in MVT</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The visual presentation layer composed of HTML files embedded with Django Template Language (DTL) tags to generate dynamic web pages.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> HTML files located inside a `templates/` directory containing dynamic tags (`{% %}`), variables (`{{ }}`), and filters.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Renders dynamic database information inside HTML layout structures for display in client web browsers.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A blank paper document with pre-formatted placeholders where dynamic names and dates are printed.</div>
+                <div class="code-box">&lt;!-- File: templates/blog/post_list.html --&gt;
+&lt;h1&gt;Blog Posts&lt;/h1&gt;
+&lt;ul&gt;
+    {% for post in posts %}
+        &lt;li&gt;&lt;strong&gt;{{ post.title }}&lt;/strong&gt; - {{ post.created_at }}&lt;/li&gt;
+    {% empty %}
+        &lt;li&gt;No posts found.&lt;/li&gt;
+    {% endfor %}
+&lt;/ul&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build an HTML template file using DTL tags to loop through a list of products passed from your view.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 4: TEMPLATE SYSTEM
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 4: TEMPLATE SYSTEM & INHERITANCE</div>
+
+            <!-- Topic 10 -->
+            <div class="topic-box">
+                <div class="topic-title">10. Django Template Language (DTL) Syntax</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Django's built-in template syntax that allows inserting variable values, logic loops, conditional statements, and formatting filters inside HTML.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses Variables <span class="highlight">{{ variable }}</span>, Tags <span class="highlight">{% tag %}</span>, Filters <span class="highlight">{{ value|filter }}</span>, and Comments <span class="highlight">{# comment #}</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Evaluates dynamic Python view data cleanly inside static HTML files without executing raw Python code.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Filling in personal fields on an automated form printing template.</div>
+                <div class="code-box">&lt;!-- DTL Syntax Examples --&gt;
+&lt;h1&gt;Welcome, {{ username|title }}!&lt;/h1&gt;
+
+{% if user.is_authenticated %}
+    &lt;p&gt;Status: Logged In&lt;/p&gt;
+{% else %}
+    &lt;a href="/login"&gt;Please Log In&lt;/a&gt;
+{% endif %}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Use DTL tags to display a user's name in uppercase (`{{ name|upper }}`) and show an admin badge if `is_admin` is True.</div>
+            </div>
+
+            <!-- Topic 11 -->
+            <div class="topic-box">
+                <div class="topic-title">11. Master Templates & Template Inheritance</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A mechanism allowing a master base HTML template to define a common layout structure (header, navbar, footer) inherited by child templates.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Base templates define placeholder regions using <span class="highlight">{% block name %}{% endblock %}</span>; child templates inherit layouts using <span class="highlight">{% extends 'base.html' %}</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Eliminates HTML code duplication across pages, maintaining a consistent navigation header and footer site-wide.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A company letterhead paper—the top logo and bottom contact address stay identical while the message content body changes.</div>
+                <div class="code-box">&lt;!-- 1. Master Template: templates/base.html --&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;My Site&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;nav&gt;Shared Navbar&lt;/nav&gt;
+    &lt;div class="content"&gt;
+        {% block content %}{% endblock %}
+    &lt;/div&gt;
+    &lt;footer&gt;Shared Footer&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+&lt;!-- 2. Child Template: templates/home.html --&gt;
+{% extends 'base.html' %}
+
+{% block content %}
+    &lt;h1&gt;Home Page Body Content&lt;/h1&gt;
+{% endblock %}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a `base.html` master template with navbar and footer, then create `index.html` inheriting from it using `{% extends %}`.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 5: MODELS & ADMIN
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 5: MODELS & ADMIN INTERFACE</div>
+
+            <!-- Topic 12 -->
+            <div class="topic-box">
+                <div class="topic-title">12. Django Models & Model Fields</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Defining database table schema blueprints in Python using Django's built-in field types.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Model class attributes mapping to SQL column types: `CharField`, `TextField`, `IntegerField`, `DecimalField`, `BooleanField`, `DateTimeField`, `ForeignKey`.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Establishes table structure, column constraints (`max_length`, `null`, `blank`, `default`), and model relationships cleanly.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Setting up a digital registration form with specific rules for text length, numbers, and dates.</div>
+                <div class="code-box">from django.db import models
+
+class Category(models.Model):
+    name = models.CharField(max_length=100)
+
+class Product(models.Model):
+    name = models.CharField(max_length=200)
+    description = models.TextField(blank=True)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    is_available = models.BooleanField(default=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build an `Author` model and a `Book` model with a `ForeignKey` linking books to their author.</div>
+            </div>
+
+            <!-- Topic 13 -->
+            <div class="topic-box">
+                <div class="topic-title">13. Django Migrations</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Django's system for translating changes made inside `models.py` into executable SQL database schema statements.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> <span class="highlight">python manage.py makemigrations</span> creates SQL blueprint migration files; <span class="highlight">python manage.py migrate</span> executes them against the database.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Keeps your database tables synchronized with Python model code as your application structure evolves.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Updating an architect's blueprint first (makemigrations) and then carrying out the physical construction work (migrate).</div>
+                <div class="code-box"># 1. Generate migration files based on model changes
+python manage.py makemigrations
+
+# 2. Apply migrations to database (Creates SQL tables)
+python manage.py migrate</div>
+                <div class="task-box"><span class="field-label">Task:</span> Run `makemigrations` and `migrate` commands to apply your model changes to the SQLite database.</div>
+            </div>
+
+            <!-- Topic 14 -->
+            <div class="topic-box">
+                <div class="topic-title">14. Admin Interface & Superuser Creation</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Django's automatic built-in web-based administration panel for managing database records.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Accessible at `/admin` after creating an admin account via <span class="highlight">python manage.py createsuperuser</span> and registering models in `admin.py`.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Provides an immediate user interface for adding, reading, updating, and deleting database records without writing custom admin code.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A store manager's back-office portal for managing inventory items and user account profiles.</div>
+                <div class="code-box"># Terminal command to create admin account
+python manage.py createsuperuser
+
+# File: blog/admin.py (Registering Model in Admin)
+from django.contrib import admin
+from .models import Product
+
+admin.site.register(Product)</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a superuser, register your `Product` model inside `admin.py`, log into `/admin`, and create 2 products visually.</div>
+            </div>
+
+            <!-- Topic 15 -->
+            <div class="topic-box">
+                <div class="topic-title">15. ModelAdmin & Customizing Admin Display</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Customizing how model records are presented, searched, and filtered inside the Django Admin dashboard interface.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Subclassing `admin.ModelAdmin` with properties like `list_display`, `list_filter`, `search_fields`, and `ordering`.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Improves administrative efficiency when managing thousands of database records inside the admin panel.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Formatting an administrative data table to show specific columns, search bars, and category filter dropdowns.</div>
+                <div class="code-box"># File: blog/admin.py
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('name', 'price', 'is_available', 'category')
+    list_filter = ('is_available', 'category')
+    search_fields = ('name', 'description')
+    ordering = ('-price',)</div>
+                <div class="task-box"><span class="field-label">Task:</span> Customize your model's admin interface to display 4 specific table columns and enable search functionality.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 6: ORM OPERATIONS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 6: DATA OPERATIONS (DJANGO ORM)</div>
+
+            <!-- Topic 16 -->
+            <div class="topic-box">
+                <div class="topic-title">16. Inserting Data (Create)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Creating and saving new model record instances into the database using Django ORM.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Done by instantiating a model object and calling <span class="highlight">.save()</span>, or using <span class="highlight">Model.objects.create()</span> directly.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Inserts records from form submissions or API payloads programmatically into database tables.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Filling out a new record form in Python and saving it to the database file.</div>
+                <div class="code-box"># Method 1: Instantiation + save()
+prod = Product(name="Laptop", price=999.99)
+prod.save()
+
+# Method 2: Direct objects.create() (Automatic save)
+prod = Product.objects.create(name="Phone", price=599.99)</div>
+                <div class="task-box"><span class="field-label">Task:</span> Open Django Shell (`python manage.py shell`) and create 3 product records using `Product.objects.create()`.</div>
+            </div>
+
+            <!-- Topic 17 -->
+            <div class="topic-box">
+                <div class="topic-title">17. Querying & Filtering Data (Read)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Retrieving database records using Django ORM QuerySet API methods.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Methods: <span class="highlight">Model.objects.all()</span>, <span class="highlight">.filter()</span>, <span class="highlight">.exclude()</span>, <span class="highlight">.get()</span>, along with field lookups (`__icontains`, `__gte`, `__exact`).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Fetches specific data subsets cleanly without writing manual SQL SELECT queries.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Searching a database for all products priced under $100 containing the word "wireless".</div>
+                <div class="code-box"># Fetch ALL records
+all_prods = Product.objects.all()
+
+# Fetch SINGLE matching record (raises error if 0 or >1 found)
+single_prod = Product.objects.get(id=1)
+
+# Filter with Field Lookups
+cheap_prods = Product.objects.filter(price__lte=100.00)
+search_prods = Product.objects.filter(name__icontains="phone")</div>
+                <div class="task-box"><span class="field-label">Task:</span> Query all products with `price__gte=50` and display their names inside your Django Shell.</div>
+            </div>
+
+            <!-- Topic 18 -->
+            <div class="topic-box">
+                <div class="topic-title">18. Updating Data (Update)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Modifying field values of existing model instances stored in the database.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Fetch instance -> update attribute -> call <span class="highlight">.save()</span>; or update multiple rows at once using <span class="highlight">QuerySet.update()</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Updates records in response to user edits, status changes, or batch processing.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Modifying a user's account status or applying a discount to a group of products.</div>
+                <div class="code-box"># Method 1: Single Record Update
+prod = Product.objects.get(id=1)
+prod.price = 899.99
+prod.save()
+
+# Method 2: Batch Update multiple records
+Product.objects.filter(is_available=False).update(price=0.00)</div>
+                <div class="task-box"><span class="field-label">Task:</span> Fetch a product by ID, change its name and price, and save the updated model instance.</div>
+            </div>
+
+            <!-- Topic 19 -->
+            <div class="topic-box">
+                <div class="topic-title">19. Deleting Data (Delete)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Removing model instances permanently from database tables using ORM methods.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Executed by calling <span class="highlight">.delete()</span> on a single model instance or an entire filtered QuerySet.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Removes expired or user-deleted records from database tables.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Deleting an item from a shopping list database.</div>
+                <div class="code-box"># Delete Single Record
+prod = Product.objects.get(id=1)
+prod.delete()
+
+# Batch Delete multiple records matching filter
+Product.objects.filter(is_available=False).delete()</div>
+                <div class="task-box"><span class="field-label">Task:</span> Delete all products priced at 0.00 using `filter().delete()` inside Django Shell.</div>
+            </div>
+
+            <!-- Topic 20 -->
+            <div class="topic-box">
+                <div class="topic-title">20. Page Redirection in Django</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Redirecting a user's browser automatically to a different URL route after processing an action.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses the shortcut function <span class="highlight">redirect('url_name')</span> or `HttpResponseRedirect(url)`.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Prevents duplicate form submissions upon page refresh (Post/Redirect/Get pattern) after successful logins or form saves.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Redirecting a user to their dashboard page immediately after a successful login.</div>
+                <div class="code-box">from django.shortcuts import redirect
+
+def add_product(request):
+    if request.method == 'POST':
+        # Process form and save model...
+        return redirect('product_list') # Redirect to named URL
+    return render(request, 'add_product.html')</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a view function that saves a item and redirects the user to the home page URL route.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 7: FORMS, UPLOADS & SESSIONS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 7: FORMS, FILE UPLOADS, SESSIONS & CACHING</div>
+
+            <!-- Topic 21 -->
+            <div class="topic-box">
+                <div class="topic-title">21. Django Forms Processing</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Managing HTML form rendering, input validation, error handling, and security using Django Form classes.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Created using `forms.Form` or `forms.ModelForm`. Validated inside views using <span class="highlight">form.is_valid()</span> and <span class="highlight">form.cleaned_data</span>. Automatically includes CSRF token security via `{% csrf_token %}`.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Automates HTML form rendering, secures forms against cross-site request forgery attacks, and validates user inputs.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> An automated form checker validating that an email contains "@" before allowing form submission.</div>
+                <div class="code-box"># File: blog/forms.py
+from django import forms
+from .models import Product
+
+class ProductForm(forms.ModelForm):
+    class Meta:
+        model = Product
+        fields = ['name', 'price', 'description']
+
+# File: blog/views.py
+def create_product(request):
+    form = ProductForm(request.POST or None)
+    if form.is_valid():
+        form.save() # Automatic model insert
+        return redirect('product_list')
+    return render(request, 'product_form.html', {'form': form})</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a `ModelForm` for your model, render it inside an HTML template with `{% csrf_token %}`, and handle POST validation in views.</div>
+            </div>
+
+            <!-- Topic 22 -->
+            <div class="topic-box">
+                <div class="topic-title">22. File & Image Uploading in Django</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Handling user file and image uploads by binding media fields to model instances and storing assets on disk.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses `FileField` or `ImageField` in models; requires setting `MEDIA_URL` and `MEDIA_ROOT` in `settings.py`, handling `request.FILES` in views, and adding `enctype="multipart/form-data"` to HTML forms.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Enables user avatar uploads, document attachments, and product image galleries.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Uploading a profile photo on a user settings page and saving it to the server's media storage folder.</div>
+                <div class="code-box"># settings.py configuration
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# models.py
+class Profile(models.Model):
+    avatar = models.ImageField(upload_to='avatars/')
+
+# Template: MUST include enctype
+# &lt;form method="POST" enctype="multipart/form-data"&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Configure `MEDIA_URL` and `MEDIA_ROOT` in `settings.py`, add an `ImageField` to a model, and build an upload form.</div>
+            </div>
+
+            <!-- Topic 23 -->
+            <div class="topic-box">
+                <div class="topic-title">23. Cookies Management in Django</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Small text key-value pairs stored directly inside the user's browser to persist state across HTTP requests.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Set on response objects via <span class="highlight">response.set_cookie('key', 'val')</span> and read from request objects via <span class="highlight">request.COOKIES.get('key')</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Remembers user preferences like dark mode settings, visitor tracking IDs, or language selections.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A website remembering your preferred site theme selection when you return to the page later.</div>
+                <div class="code-box">def set_theme(request):
+    response = render(request, 'theme.html')
+    response.set_cookie('theme', 'dark', max_age=86400) # 1 day
+    return response
+
+def get_theme(request):
+    user_theme = request.COOKIES.get('theme', 'light') # Default light
+    return HttpResponse(f"Current Theme: {user_theme}")</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a view that sets a cookie `visited=True` and another view that checks if the cookie exists.</div>
+            </div>
+
+            <!-- Topic 24 -->
+            <div class="topic-box">
+                <div class="topic-title">24. Sessions Management in Django</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Server-side state storage linked to a unique session cookie ID stored in the user's browser.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Accessed inside views via dictionary-like interface <span class="highlight">request.session['key'] = value</span>. Data is stored securely in the server database by default.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Stores sensitive user data across page navigations, such as user login IDs, user permissions, and shopping cart contents.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A locker room key given to a gym member—the key (session ID) opens a specific locker containing their belongings (session data).</div>
+                <div class="code-box">def add_to_cart(request, product_id):
+    cart = request.session.get('cart', [])
+    cart.append(product_id)
+    request.session['cart'] = cart # Save to session
+    return redirect('cart_view')
+
+def cart_view(request):
+    cart = request.session.get('cart', [])
+    return render(request, 'cart.html', {'cart_items': cart})</div>
+                <div class="task-box"><span class="field-label">Task:</span> Implement a simple view using `request.session` to track and display the number of times a user has visited a page.</div>
+            </div>
+
+            <!-- Topic 25 -->
+            <div class="topic-box">
+                <div class="topic-title">25. Caching System in Django</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Storing the result of expensive calculations or database queries in high-speed memory to serve future requests faster.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Configured in `settings.py` (Memcached, Redis, Database, In-Memory). Applied via view decorator <span class="highlight">@cache_page(60 * 15)</span> or low-level API `cache.set() / cache.get()`.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Reduces database server load, speeds up page load times, and improves site scalability.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Keeping printed copies of popular reports on your desk so you don't have to re-query the database every time someone requests them.</div>
+                <div class="code-box">from django.views.decorators.cache import cache_page
+
+# Cache view response for 15 minutes (900 seconds)
+@cache_page(60 * 15)
+def heavy_news_feed(request):
+    # Heavy database queries execute only once per 15 minutes!
+    articles = Article.objects.all()
+    return render(request, 'feed.html', {'articles': articles})</div>
+                <div class="task-box"><span class="field-label">Task:</span> Apply the `@cache_page` decorator to a view function and verify that database queries do not execute on page refresh.</div>
+            </div>
+
+            <div style="text-align:center; margin-top:40px; font-size:24px; color:#005f73;">
+                🎉 End of Django Notes 🎉
+            </div>
+            <div style="text-align:center; font-size:18px; color:#777; margin-top:10px;">
+                Next Subject: <a href="expressjs.html" class="menu-link">Express JS Notes</a>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function generatePDF() {
+            const element = document.getElementById("notes-content");
+            const options = {
+                margin: [0.2, 0.2, 0.2, 0.2],
+                filename: "Django_Handwritten_Notes.pdf",
+                image: { type: "jpeg", quality: 0.98 },
+                html2canvas: { scale: 2, logging: false, useCORS: true },
+                jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
+            };
+            const bar = document.querySelector(".no-print-bar");
+            bar.style.display = "none";
+            html2pdf().set(options).from(element).save().then(() => {
+                bar.style.display = "flex";
+            });
+        }
+    </script>
+
+</body>
+</html>

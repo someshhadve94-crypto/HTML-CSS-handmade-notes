@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express JS - Handwritten Notes</title>
+    <link rel="stylesheet" href="shared-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- TOP NAVIGATION BUTTONS -->
+    <div class="no-print-bar">
+        <button class="btn-nav btn-download" onclick="generatePDF()">📥 Download PDF</button>
+        <a href="index.html" class="btn-nav">🏠 Home</a>
+        <a href="html5.html" class="btn-nav">📘 HTML5</a>
+        <a href="css3.html" class="btn-nav">🎨 CSS3</a>
+        <a href="javascript.html" class="btn-nav">⚡ JavaScript</a>
+        <a href="advanced-js.html" class="btn-nav">🚀 Adv JS</a>
+        <a href="bootstrap.html" class="btn-nav">💠 Bootstrap</a>
+        <a href="reactjs.html" class="btn-nav">⚛️ React</a>
+        <a href="nextjs.html" class="btn-nav">▲ NextJS</a>
+        <a href="angular.html" class="btn-nav">🅰️ Angular</a>
+        <a href="python.html" class="btn-nav">🐍 Python</a>
+        <a href="nodejs.html" class="btn-nav">🟢 NodeJS</a>
+        <a href="mysql.html" class="btn-nav">🗄️ MySQL</a>
+        <a href="mongodb.html" class="btn-nav">🍃 MongoDB</a>
+        <a href="django.html" class="btn-nav">🎸 Django</a>
+        <a href="genai.html" class="btn-nav">🤖 Gen AI</a>
+        <a href="deployment.html" class="btn-nav">☁️ Deploy</a>
+    </div>
+
+    <main class="notebook-container" id="notes-content">
+
+        <!-- =========================
+             PAGE 1: OVERVIEW & SETUP
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="notebook-header">
+                <h1 class="notebook-title">🚂 Express.js Master Notes</h1>
+                <p style="font-size:20px; color:#555;">Fast, Unopinionated, Minimalist Web Framework for Node.js</p>
+            </div>
+
+            <div class="module-tag">PART 1: OVERVIEW & ENVIRONMENT SETUP</div>
+
+            <!-- Topic 1 -->
+            <div class="topic-box">
+                <div class="topic-title">1. Introduction to Express.js</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Express.js is the standard backend web application framework for Node.js, designed for building web applications and RESTful APIs quickly and effortlessly.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A minimal, flexible, and unopinionated Node.js framework created by TJ Holowaychuk in 2010 that provides a thin layer of fundamental web application features (routing, middleware, HTTP utilities) without obscuring Node.js features.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Simplifies raw Node.js HTTP server creation by removing low-level boilerplate code for route parsing, header management, status codes, and body handling.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Raw Node.js `http` module is like assembling a bike from loose metal pipes; Express.js is buying a pre-assembled bike ready to ride immediately.</div>
+                <div class="code-box">// Express makes server creation clean and readable
+const express = require('express');
+const app = express();</div>
+                <div class="task-box"><span class="field-label">Task:</span> Compare the lines of code needed to write a basic server using raw `http` module vs Express.js framework.</div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="topic-box">
+                <div class="topic-title">2. Express Environment Setup</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Initializing a Node.js project directory and installing the `express` package from NPM registry.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Executing <span class="highlight">npm init -y</span> to generate `package.json`, followed by <span class="highlight">npm install express</span> to add Express dependencies to the local `node_modules` folder.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Configures project metadata and equips Node.js with Express routing and middleware execution libraries.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Setting up a clean workbench and stocking it with pre-built electric tools before starting construction.</div>
+                <div class="code-box"># Terminal setup steps
+mkdir my-express-server
+cd my-express-server
+npm init -y
+npm install express
+npm install nodemon --save-dev # Development auto-restart tool</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a new directory, initialize NPM, install `express` and `nodemon`, and configure a `"start"` script in `package.json`.</div>
+            </div>
+
+            <!-- Topic 3 -->
+            <div class="topic-box">
+                <div class="topic-title">3. Printing Your First "Hello World!"</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Writing the smallest functional Express server script that binds to a port and returns text to browser requests.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Involves requiring `express`, creating an `app` instance, defining a GET handler at root path `'/'` using `app.get()`, and listening on a target port via `app.listen()`.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Verifies local environment setup, port binding, and request-response lifecycle execution.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Turning on an open/closed light sign in a store window to verify electricity is working.</div>
+                <div class="code-box">const express = require('express');
+const app = express();
+const PORT = 3000;
+
+// Root route endpoint
+app.get('/', (req, res) => {
+    res.send('Hello World from Express!');
+});
+
+// Start listening on port
+app.listen(PORT, () => {
+    console.log(`Server running at http://localhost:${PORT}`);
+});</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create `server.js`, put in the Hello World script, start it with Node, and view `http://localhost:3000` in your browser.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 2: ROUTING & REDIRECTION
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 2: ROUTING, URL BUILDING & REDIRECTION</div>
+
+            <!-- Topic 4 -->
+            <div class="topic-box">
+                <div class="topic-title">4. Express Routing Basics</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Routing refers to how an application responds to a client request for a specific endpoint (URI path and HTTP method).</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Defined as <span class="highlight">app.METHOD(PATH, HANDLER)</span> where `METHOD` is an HTTP verb (get, post, put, delete), `PATH` is the URI, and `HANDLER` is the function executed.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Directs incoming requests to appropriate handler functions based on requested page URLs.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A post office sorting facility routing letters to specific destination mailboxes depending on written addresses.</div>
+                <div class="code-box">app.get('/home', (req, res) => res.send('Home Page'));
+app.get('/about', (req, res) => res.send('About Us Page'));
+app.get('/contact', (req, res) => res.send('Contact Us Page'));
+
+// Express Router modular grouping
+const router = express.Router();
+router.get('/profile', (req, res) => res.send('User Profile'));
+app.use('/user', router); // Route: /user/profile</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a modular `express.Router()` file for `/api/products` and mount it inside your main server app.</div>
+            </div>
+
+            <!-- Topic 5 -->
+            <div class="topic-box">
+                <div class="topic-title">5. URL Building & Route Parameters</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Capturing dynamic values directly from URL path segments or query parameters.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Named URL path parameters defined with a colon <span class="highlight">:param</span> accessed via <span class="highlight">req.params</span>; query strings accessed via <span class="highlight">req.query</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Allows handling dynamic resource URLs like `/users/:id` or search endpoints like `/search?category=shoes`.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Looking up a book by its explicit ISBN number printed in the URL path.</div>
+                <div class="code-box">// Route Parameter: /users/101
+app.get('/users/:id', (req, res) => {
+    const userId = req.params.id; // Access route param
+    res.send(`User Details for ID: ${userId}`);
+});
+
+// Query String: /search?term=laptop&page=2
+app.get('/search', (req, res) => {
+    const { term, page } = req.query; // Access query string
+    res.json({ search: term, pageNo: page });
+});</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a route endpoint `/products/:category/:id` and log both parameters using `req.params`.</div>
+            </div>
+
+            <!-- Topic 6 -->
+            <div class="topic-box">
+                <div class="topic-title">6. Route Redirection</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Automatically redirecting a user's incoming request to a different URL path or external web address.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Executed using <span class="highlight">res.redirect([status,] url)</span> which sends 302 (Found) or 301 (Moved Permanently) HTTP headers to the browser.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Navigates users after successful logins, form submissions, or when old endpoints move to new URLs.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A mail forwarding notice automatically sending incoming letters to a tenant's new home address.</div>
+                <div class="code-box">// Redirect to another internal route
+app.get('/old-page', (req, res) => {
+    res.redirect('/new-page');
+});
+
+// Redirect to external website with specific status code
+app.get('/google', (req, res) => {
+    res.redirect(301, 'https://www.google.com');
+});</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a route `/login-success` that redirects the user's browser automatically to `/dashboard`.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 3: HTTP METHODS & MIDDLEWARE
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 3: HTTP METHODS & MIDDLEWARE</div>
+
+            <!-- Topic 7 -->
+            <div class="topic-box">
+                <div class="topic-title">7. HTTP Methods in Express</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Standard HTTP action verbs used by clients to tell Express what action to perform on a resource.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Supported methods: <span class="highlight">app.get()</span> (retrieve), <span class="highlight">app.post()</span> (create), <span class="highlight">app.put()</span> (replace), <span class="highlight">app.patch()</span> (partial update), <span class="highlight">app.delete()</span> (remove).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Establishes standardized RESTful communication protocols between client applications and backend servers.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> CRUD operations: GET = Read book, POST = Publish book, PUT = Edit entire book, DELETE = Trash book.</div>
+                <div class="code-box">app.get('/items', (req, res) => res.send('Fetch Items'));
+app.post('/items', (req, res) => res.send('Create Item'));
+app.put('/items/:id', (req, res) => res.send('Update Item'));
+app.delete('/items/:id', (req, res) => res.send('Delete Item'));</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write 4 Express route handlers covering GET, POST, PUT, and DELETE for a `/api/books` endpoint.</div>
+            </div>
+
+            <!-- Topic 8 -->
+            <div class="topic-box">
+                <div class="topic-title">8. Middleware Concepts & Built-in Middleware</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Functions that sit in the middle of request execution, having access to Request (`req`), Response (`res`), and `next()` function.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Executed sequentially in a pipeline. Must call <span class="highlight">next()</span> to pass control to the next middleware, or end the request cycle with `res.send()`.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Performs common tasks like request logging, body parsing, authentication checks, header security, and CORS management.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Airport security checkpoints: Baggage check (Middleware 1) → ID verification (Middleware 2) → Boarding gate (Final Route).</div>
+                <div class="code-box">// Built-in Middleware
+app.use(express.json()); // Parses incoming JSON payloads
+app.use(express.urlencoded({ extended: true })); // Parses form fields
+
+// Execution flow
+app.use((req, res, next) => {
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+    next(); // Pass to next handler
+});</div>
+                <div class="task-box"><span class="field-label">Task:</span> Explain what happens if a custom middleware function forgets to invoke the `next()` callback function.</div>
+            </div>
+
+            <!-- Topic 9 -->
+            <div class="topic-box">
+                <div class="topic-title">9. Custom & Third-Party Middleware</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Creating custom middleware functions or importing external NPM middleware libraries (e.g. `cors`, `morgan`, `helmet`).</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Custom: <span class="highlight">const myMiddleware = (req, res, next) => {}</span>. Third-party packages installed via NPM and mounted via `app.use()`.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Enhances application security (Helmet), enables cross-origin requests (CORS), and logs HTTP traffic automatically (Morgan).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Hiring a specialized security team (third-party middleware) to handle visitor logging at your office entrance.</div>
+                <div class="code-box">const cors = require('cors');
+const morgan = require('morgan');
+
+// Mount third-party middleware
+app.use(cors()); // Enable CORS for cross-origin frontend apps
+app.use(morgan('dev')); // Colorized HTTP request logging
+
+// Custom Auth Guard Middleware
+const checkAuth = (req, res, next) => {
+    if (req.headers.authorization === 'SecretToken') next();
+    else res.status(401).send('Unauthorized Request');
+};
+
+app.get('/protected', checkAuth, (req, res) => res.send('Secret Area'));</div>
+                <div class="task-box"><span class="field-label">Task:</span> Install `cors` and `morgan`, mount them using `app.use()`, and test request logging in your terminal console.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 4: TEMPLATING & STATIC FILES
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 4: TEMPLATING ENGINES & STATIC FILES</div>
+
+            <!-- Topic 10 -->
+            <div class="topic-box">
+                <div class="topic-title">10. Templating Engines (EJS / Pug)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Server-side template rendering tools that let you embed dynamic JavaScript variables directly inside HTML markup.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Configured using <span class="highlight">app.set('view engine', 'ejs')</span>. Views are placed inside a `views/` folder and rendered using <span class="highlight">res.render('filename', data)</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Renders dynamic HTML web pages directly from Express servers without needing a separate front-end JS framework.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Printing a personalized certificate with a student's custom name filled into a standard blank template.</div>
+                <div class="code-box"># Install EJS
+npm install ejs
+
+// server.js setup
+app.set('view engine', 'ejs');
+
+app.get('/dashboard', (req, res) => {
+    res.render('dashboard', { user: 'Alex', items: ['Pen', 'Book'] });
+});
+
+// views/dashboard.ejs file:
+// &lt;h1&gt;Welcome &lt;%= user %&gt;&lt;/h1&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Install EJS, configure `app.set('view engine', 'ejs')`, and render an array list dynamically using `res.render()`.</div>
+            </div>
+
+            <!-- Topic 11 -->
+            <div class="topic-box">
+                <div class="topic-title">11. Serving Static Files</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Exposing a directory containing static assets (CSS, images, client-side JS files) so browsers can download them directly.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses the built-in <span class="highlight">express.static('public')</span> middleware function to serve files from a designated folder directly.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Delivers client-side stylesheets, branding logos, client JS bundles, and static media files to browsers seamlessly.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A public brochure stand in a building lobby—visitors can pick up sheets directly without asking staff.</div>
+                <div class="code-box">const path = require('path');
+
+// Serve all static files inside 'public' folder
+app.use(express.static(path.join(__dirname, 'public')));
+
+// URL Access: http://localhost:3000/css/style.css
+// File Location: ./public/css/style.css</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a `public/` folder, place an image inside it, serve it via `express.static`, and load the image in your browser.</div>
+            </div>
+
+            <!-- Topic 12 -->
+            <div class="topic-box">
+                <div class="topic-title">12. Form Data & Body Parsing</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Extracting submitted data payloads from HTML forms or JSON API requests inside route handlers.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Form submissions parsed via <span class="highlight">express.urlencoded()</span>; JSON payloads parsed via <span class="highlight">express.json()</span>. Data becomes accessible at <span class="highlight">req.body</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Captures user credentials, contact submissions, and API parameters for processing and database storage.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Receiving a completed paper application form and reading the filled-in fields from the page.</div>
+                <div class="code-box">app.use(express.json()); // Essential for parsing JSON bodies
+app.use(express.urlencoded({ extended: true })); // Form bodies
+
+app.post('/api/users', (req, res) => {
+    const { name, email } = req.body; // Extract submitted body data
+    res.status(201).json({ status: 'Success', received: { name, email } });
+});</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a POST handler `/submit` that accepts `username` and `password` from `req.body` and returns a JSON confirmation.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 5: DATABASE & SESSIONS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 5: DATABASE INTEGRATION & SESSIONS</div>
+
+            <!-- Topic 13 -->
+            <div class="topic-box">
+                <div class="topic-title">13. Database Integration & CRUD Operations</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Connecting Express.js route handlers to a persistent database (MongoDB/Mongoose or MySQL) to execute CRUD operations.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Using ODM/ORM libraries like `mongoose` or `mysql2` to execute database queries inside async route callbacks.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Persists application data across server restarts and provides backend logic for database-driven websites.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Express routes act as bank tellers; database acts as the central secure vault where money records are saved.</div>
+                <div class="code-box">const mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost:27017/shop');
+
+const Product = mongoose.model('Product', { name: String, price: Number });
+
+// CREATE
+app.post('/products', async (req, res) => {
+    const prod = await Product.create(req.body);
+    res.json(prod);
+});
+
+// READ
+app.get('/products', async (req, res) => {
+    const prods = await Product.find();
+    res.json(prods);
+});</div>
+                <div class="task-box"><span class="field-label">Task:</span> Connect an Express app to MongoDB using Mongoose, and build GET and POST endpoints for a `Product` model.</div>
+            </div>
+
+            <!-- Topic 14 -->
+            <div class="topic-box">
+                <div class="topic-title">14. Cookies Management in Express</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Setting, reading, and clearing small text key-value pairs stored in the user's browser using Express responses.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses `cookie-parser` middleware. Set via <span class="highlight">res.cookie('name', 'val', options)</span>; read via <span class="highlight">req.cookies</span>; cleared via <span class="highlight">res.clearCookie('name')</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Persists small non-sensitive client preferences (e.g. theme selections, tracking flags, session tokens) across requests.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Handing a visitor a temporary visitor badge stamp on their hand when they enter a venue.</div>
+                <div class="code-box">const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+
+// Set Cookie
+app.get('/set-cookie', (req, res) => {
+    res.cookie('theme', 'dark', { maxAge: 900000, httpOnly: true });
+    res.send('Cookie Has Been Set!');
+});
+
+// Read Cookie
+app.get('/get-cookie', (req, res) => {
+    const theme = req.cookies.theme; // Read parsed cookies
+    res.send(`User Theme: ${theme}`);
+});</div>
+                <div class="task-box"><span class="field-label">Task:</span> Install `cookie-parser`, set an `httpOnly` cookie called `user_lang`, and write a route to read its value.</div>
+            </div>
+
+            <!-- Topic 15 -->
+            <div class="topic-box">
+                <div class="topic-title">15. Session Management in Express</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Storing user state on the backend server linked to a unique session ID cookie saved in the client's browser.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses `express-session` middleware. Data is stored in <span class="highlight">req.session</span> object on the server across multiple HTTP requests.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Maintains secure server-side state (e.g. user authentication state, shopping cart contents) for stateless HTTP.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A coat check counter—you hold a small numeric ticket (session ID), while your heavy coat (session data) is kept securely in the back room.</div>
+                <div class="code-box">const session = require('express-session');
+
+app.use(session({
+    secret: 'supersecretkey',
+    resave: false,
+    saveUninitialized: true,
+    cookie: { maxAge: 60000 } // 1 minute
+}));
+
+app.get('/page-views', (req, res) => {
+    req.session.views = (req.session.views || 0) + 1; // Mutate session
+    res.send(`You visited this page ${req.session.views} times`);
+});</div>
+                <div class="task-box"><span class="field-label">Task:</span> Install `express-session` and build a route that tracks how many times a user refreshes the page during their session.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 6: AUTHENTICATION & REST API
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 6: AUTHENTICATION, VALIDATION & REST APIS</div>
+
+            <!-- Topic 16 -->
+            <div class="topic-box">
+                <div class="topic-title">16. Authentication: Data Send, Receive & Validate</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Securely receiving user login credentials, verifying passwords against hashes, and sending back tokens or session cookies.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Passwords hashed using `bcrypt`; JSON Web Tokens (`jsonwebtoken`) generated on login and sent back in response headers or cookies.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Restricts access to private endpoints, confirming user identities securely without storing plain text passwords.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Showing your ID card at a concert gate to receive an wristband token that lets you re-enter anytime.</div>
+                <div class="code-box">const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+
+app.post('/api/login', async (req, res) => {
+    const { email, password } = req.body;
+    // 1. Fetch user from DB, 2. Compare password hash
+    const match = await bcrypt.compare(password, user.passwordHash);
+    if (!match) return res.status(401).send('Invalid Credentials');
+
+    // 3. Generate JWT Token
+    const token = jwt.sign({ userId: user.id }, 'SECRET_KEY', { expiresIn: '1h' });
+    res.json({ token });
+});</div>
+                <div class="task-box"><span class="field-label">Task:</span> Install `jsonwebtoken` and `bcrypt`, hash a password on signup, and generate a JWT token upon successful login.</div>
+            </div>
+
+            <!-- Topic 17 -->
+            <div class="topic-box">
+                <div class="topic-title">17. Request Data Validation & Sanitization</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Validating incoming request fields to ensure they match required formats and sanitizing them against malicious inputs.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Performed using `express-validator` middleware array chains checking input rules before execution reaches the main route controller.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Protects backend databases from SQL/NoSQL injection, XSS scripting attacks, and invalid corrupted data entries.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A border guard verifying that a passport is real, not expired, and contains valid stamp formatting before entry.</div>
+                <div class="code-box">const { body, validationResult } = require('express-validator');
+
+app.post('/register', [
+    body('email').isEmail().normalizeEmail(),
+    body('password').isLength({ min: 6 })
+], (req, res) => {
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+    }
+    res.send('Validation Passed!');
+});</div>
+                <div class="task-box"><span class="field-label">Task:</span> Add `express-validator` to a signup route checking that `email` is valid and `password` is at least 8 characters long.</div>
+            </div>
+
+            <!-- Topic 18 -->
+            <div class="topic-box">
+                <div class="topic-title">18. Building RESTful APIs with Express</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Structuring scalable API endpoints following REST architecture principles, returning standardized JSON payloads and status codes.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses noun-based URIs (`/api/v1/users`), correct HTTP methods (GET, POST, PUT, DELETE), and standard HTTP status codes (200 OK, 201 Created, 400 Bad Request, 404 Not Found, 500 Server Error).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Exposes backend server services cleanly so front-end web apps (React, Next.js) or mobile apps can consume data.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A standardized international restaurant menu—customers order items using universal numbers and categories regardless of language.</div>
+                <div class="code-box">// RESTful API Structure
+app.get('/api/v1/tasks', (req, res) => res.status(200).json(tasks));
+app.post('/api/v1/tasks', (req, res) => res.status(201).json(newTask));
+app.get('/api/v1/tasks/:id', (req, res) => res.status(200).json(task));
+app.delete('/api/v1/tasks/:id', (req, res) => res.status(204).send());</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a complete RESTful API for a `tasks` resource featuring proper JSON response structures and status codes.</div>
+            </div>
+
+            <!-- Topic 19 -->
+            <div class="topic-box">
+                <div class="topic-title">19. Error Handling & Debugging in Express</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Catching synchronous and asynchronous runtime errors gracefully without causing the Express server process to crash.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Express error-handling middleware takes 4 arguments: <span class="highlight">(err, req, res, next)</span>. Mounted at the bottom of the middleware stack after all routes.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Prevents server crashes, masks internal stack traces in production, and sends clean error messages to clients.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> An airbag system in a car—when an unexpected crash occurs, the airbag deploys gracefully to prevent severe damage.</div>
+                <div class="code-box">// Catch 404 Not Found (after all routes)
+app.use((req, res, next) => {
+    res.status(404).json({ error: 'Endpoint Not Found' });
+});
+
+// Global Error Handler Middleware (4 Arguments required!)
+app.use((err, req, res, next) => {
+    console.error('SERVER ERROR:', err.stack);
+    res.status(err.status || 500).json({
+        error: { message: err.message || 'Internal Server Error' }
+    });
+});</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a custom global error handling middleware in Express that catches 404 errors and 500 internal server exceptions.</div>
+            </div>
+
+            <div style="text-align:center; margin-top:40px; font-size:24px; color:#005f73;">
+                🎉 End of Express.js Notes 🎉
+            </div>
+            <div style="text-align:center; font-size:18px; color:#777; margin-top:10px;">
+                Next Subject: <a href="genai.html" class="menu-link">Generative AI Notes</a>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function generatePDF() {
+            const element = document.getElementById("notes-content");
+            const options = {
+                margin: [0.2, 0.2, 0.2, 0.2],
+                filename: "ExpressJS_Handwritten_Notes.pdf",
+                image: { type: "jpeg", quality: 0.98 },
+                html2canvas: { scale: 2, logging: false, useCORS: true },
+                jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
+            };
+            const bar = document.querySelector(".no-print-bar");
+            bar.style.display = "none";
+            html2pdf().set(options).from(element).save().then(() => {
+                bar.style.display = "flex";
+            });
+        }
+    </script>
+
+</body>
+</html>

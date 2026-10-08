@@ -1,0 +1,1787 @@
+<!-- Absolutely — I understand clearly now:
+
+- Every main topic must be explained.
+- Every sub-topic must also have its **own separate note**.
+- Each note must include: **Meaning, Definition, Purpose, Example, Code, and Task**.
+- This rule will apply to **all subjects** from your complete Full Stack syllabus, not only HTML/CSS selectors.
+
+Also, one small correction from the previous file: **Tag, ID, and Class selectors belong to CSS**, so they will be fully and separately covered in this CSS3 file.
+
+Save the following file as **`css3.html`** inside the same `FullStack-Notes` folder. It uses your existing `shared-style.css`.
+
+---
+
+# 📄 FILE 4: `css3.html`
+
+```html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS3 - Handwritten Notes</title>
+
+    <!-- Existing handmade notebook design -->
+    <link rel="stylesheet" href="shared-style.css">
+
+    <!-- PDF library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- TOP NAVIGATION BUTTONS -->
+    <div class="no-print-bar">
+        <button class="btn-nav btn-download" onclick="generatePDF()">
+            📥 Download PDF
+        </button>
+
+        <a href="index.html" class="btn-nav">🏠 Home</a>
+        <a href="html5.html" class="btn-nav">📘 HTML5</a>
+        <a href="javascript.html" class="btn-nav">⚡ JavaScript</a>
+        <a href="advanced-js.html" class="btn-nav">🚀 Adv JS</a>
+        <a href="bootstrap.html" class="btn-nav">💠 Bootstrap</a>
+        <a href="reactjs.html" class="btn-nav">⚛️ React</a>
+        <a href="nextjs.html" class="btn-nav">▲ NextJS</a>
+        <a href="angular.html" class="btn-nav">🅰️ Angular</a>
+        <a href="python.html" class="btn-nav">🐍 Python</a>
+        <a href="nodejs.html" class="btn-nav">🟢 NodeJS</a>
+        <a href="mysql.html" class="btn-nav">🗄️ MySQL</a>
+        <a href="mongodb.html" class="btn-nav">🍃 MongoDB</a>
+        <a href="django.html" class="btn-nav">🎸 Django</a>
+        <a href="expressjs.html" class="btn-nav">🚂 Express</a>
+        <a href="genai.html" class="btn-nav">🤖 Gen AI</a>
+        <a href="deployment.html" class="btn-nav">☁️ Deploy</a>
+    </div>
+
+    <main class="notebook-container" id="notes-content">
+
+        <!-- =========================
+             PAGE 1: INTRODUCTION
+        ========================== -->
+        <section class="paper-sheet">
+
+            <div class="notebook-header">
+                <h1 class="notebook-title">🎨 CSS3 Master Notes</h1>
+                <p style="font-size:20px; color:#555;">
+                    Cascading Style Sheets — Styling, Layout & Responsive Design
+                </p>
+            </div>
+
+            <div class="module-tag">PART 1: CSS FOUNDATIONS</div>
+
+            <div class="topic-box">
+                <div class="topic-title">1. Introduction to CSS</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    CSS is used to make HTML pages beautiful by adding colors, spacing,
+                    fonts, layouts, and animations.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    CSS stands for Cascading Style Sheets. It is a styling language used
+                    to control the visual appearance of HTML elements.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It separates webpage content (HTML) from webpage design (CSS).
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    HTML is the structure of a house; CSS is the paint, furniture,
+                    colors, and decoration.
+                </div>
+
+                <div class="code-box">body {
+    background-color: lightblue;
+    color: navy;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Change your webpage background to light yellow and paragraph text to dark blue.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">2. CSS Syntax</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    CSS syntax is the writing format used to create styling rules.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    A CSS rule contains a selector and a declaration block. Declarations
+                    contain a property and a value.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It tells the browser which element to style and how to style it.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Selector = person’s name; property = what you want to change;
+                    value = the new setting.
+                </div>
+
+                <div class="code-box">p {
+    color: red;
+    font-size: 20px;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Write a CSS rule that makes all h1 headings green and 32px.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">3. Inline CSS</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    Inline CSS is CSS written directly inside an HTML element.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It uses the <span class="highlight">style</span> attribute inside an opening HTML tag.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It is useful for quick styling of one particular element.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Like painting only one chair in a room.
+                </div>
+
+                <div class="code-box">&lt;h1 style="color: red; font-size: 35px;"&gt;
+    Hello World
+&lt;/h1&gt;</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Create one paragraph with inline CSS that gives it purple text.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">4. Internal CSS</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    Internal CSS is written inside a style tag within one HTML file.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It is CSS placed between <span class="highlight">&lt;style&gt;</span> and
+                    <span class="highlight">&lt;/style&gt;</span> inside the HTML head section.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It styles one complete page without creating a separate CSS file.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Like keeping decoration instructions inside one room only.
+                </div>
+
+                <div class="code-box">&lt;head&gt;
+    &lt;style&gt;
+        h1 {
+            color: blue;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Use internal CSS to style all paragraph tags with a gray color.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">5. External CSS</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    External CSS is written in a separate file ending with .css.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    A CSS file is connected to HTML using the link tag.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It keeps code clean and lets many HTML pages share the same design.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Like keeping one common rulebook used by every classroom in a school.
+                </div>
+
+                <div class="code-box">&lt;!-- index.html --&gt;
+&lt;link rel="stylesheet" href="style.css"&gt;
+
+/* style.css */
+h1 {
+    color: teal;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Create style.css and link it with an HTML file.
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =========================
+             PAGE 2: SELECTORS
+        ========================== -->
+        <section class="paper-sheet">
+
+            <div class="module-tag">PART 2: CSS SELECTORS</div>
+
+            <div class="topic-box">
+                <div class="topic-title">6. Tag Selector</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    A tag selector chooses elements using their HTML tag name.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It targets every occurrence of a tag, such as p, h1, button, or div.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It applies the same style to all elements of one type.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Giving every paragraph on a page the same text color.
+                </div>
+
+                <div class="code-box">p {
+    color: navy;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Use a tag selector to make every h2 heading orange.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">7. ID Selector</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    An ID selector styles one unique element.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It uses an HTML id attribute and a # symbol in CSS.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It targets one specific element precisely.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    A passport number is unique to one person.
+                </div>
+
+                <div class="code-box">&lt;h1 id="main-title"&gt;My Website&lt;/h1&gt;
+
+#main-title {
+    color: crimson;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Create a div with id="banner" and style its background color.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">8. Class Selector</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    A class selector styles multiple elements that share the same class name.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It uses the class attribute in HTML and a dot (.) in CSS.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It creates reusable styles for cards, buttons, alerts, and sections.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Students wearing the same uniform belong to the same group.
+                </div>
+
+                <div class="code-box">&lt;div class="card"&gt;Card One&lt;/div&gt;
+&lt;div class="card"&gt;Card Two&lt;/div&gt;
+
+.card {
+    border: 2px solid blue;
+    padding: 15px;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Create three cards with the same class and style them together.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">9. Descendant Combinator</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    It selects elements placed anywhere inside another element.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It uses a space between two selectors.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It styles child elements inside a particular parent section.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Style only paragraphs that are inside an article.
+                </div>
+
+                <div class="code-box">article p {
+    color: green;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Create a div with paragraphs inside it and color only those paragraphs blue.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">10. Child Combinator</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    It selects only direct children of an element.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It uses the greater-than symbol (>) between selectors.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It gives more exact control than a descendant selector.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Select only children, not grandchildren.
+                </div>
+
+                <div class="code-box">div > p {
+    font-weight: bold;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Style only direct p children of a div using the > combinator.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">11. Adjacent Sibling Combinator</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    It selects the element immediately after another element.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It uses the plus (+) symbol between selectors.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It styles the next element only when it comes directly after another one.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Style the paragraph directly after an h2 heading.
+                </div>
+
+                <div class="code-box">h2 + p {
+    color: purple;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Create an h2 followed by a paragraph and style that paragraph.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">12. General Sibling Combinator</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    It selects all sibling elements that appear after another element.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It uses the tilde (~) symbol between selectors.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It styles multiple related sibling elements.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Style every paragraph after a heading in the same container.
+                </div>
+
+                <div class="code-box">h2 ~ p {
+    color: brown;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Create one h2 and three paragraphs after it. Style all three paragraphs.
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =========================
+             PAGE 3: PSEUDO SELECTORS
+        ========================== -->
+        <section class="paper-sheet">
+
+            <div class="module-tag">PART 3: PSEUDO CLASSES & ELEMENTS</div>
+
+            <div class="topic-box">
+                <div class="topic-title">13. Pseudo-class</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    A pseudo-class styles an element in a special state.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It uses a single colon (:) followed by a state name such as hover, focus, active, or first-child.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It makes webpages interactive without JavaScript.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    A button changing color when the mouse moves over it.
+                </div>
+
+                <div class="code-box">button:hover {
+    background-color: red;
+    color: white;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Create a button that turns green when you hover over it.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">14. :hover Pseudo-class</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    It styles an element when the mouse pointer is over it.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    A CSS state selector written as :hover.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It gives visual feedback that an element is clickable or interactive.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    A shop button becoming darker when a customer points at it.
+                </div>
+
+                <div class="code-box">a:hover {
+    color: red;
+    text-decoration: underline;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Make a link turn red and underlined on hover.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">15. :focus Pseudo-class</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    It styles an input when the user clicks it or selects it with a keyboard.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    A CSS pseudo-class written as :focus.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It helps users see which form field is currently active.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    A glowing border around an input box while typing.
+                </div>
+
+                <div class="code-box">input:focus {
+    outline: 3px solid skyblue;
+    border-color: blue;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Add a blue outline to an input field when it receives focus.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">16. Pseudo-element</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    A pseudo-element styles a particular part of an element.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It uses double colons (::), such as ::before, ::after, and ::first-letter.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It adds decoration or changes a small part of content without adding extra HTML.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Making only the first letter of a paragraph large.
+                </div>
+
+                <div class="code-box">p::first-letter {
+    font-size: 40px;
+    color: crimson;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Make the first letter of every paragraph larger using ::first-letter.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">17. ::before and ::after</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    These pseudo-elements add content before or after an element.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    They create virtual content using the CSS content property.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    They add icons, labels, decorations, and effects without extra HTML tags.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Adding a star before every important heading.
+                </div>
+
+                <div class="code-box">h2::before {
+    content: "★ ";
+    color: gold;
+}
+
+h2::after {
+    content: " ✓";
+    color: green;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Add a ⭐ symbol before every h2 heading.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">18. Attribute Selector</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    It selects HTML elements according to their attributes.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It uses square brackets, such as [type="email"] or [required].
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It styles elements based on their type, value, or other attributes.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Styling only password fields, not all input fields.
+                </div>
+
+                <div class="code-box">input[type="password"] {
+    border: 2px solid red;
+}
+
+input[required] {
+    background-color: #fff8cc;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Give all email input fields a green border using an attribute selector.
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =========================
+             PAGE 4: TEXT & UNITS
+        ========================== -->
+        <section class="paper-sheet">
+
+            <div class="module-tag">PART 4: TEXT, FONTS & UNITS</div>
+
+            <div class="topic-box">
+                <div class="topic-title">19. font-family</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    font-family changes the typeface of text.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    A CSS property that selects a preferred font and fallback fonts.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It improves design, branding, and readability.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Choosing handwriting, formal, or computer-style letters.
+                </div>
+
+                <div class="code-box">p {
+    font-family: Arial, Helvetica, sans-serif;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Use Georgia font for headings and Arial font for paragraphs.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">20. font-size</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    font-size controls how large text appears.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    A CSS property that accepts units such as px, rem, em, %, vw, and more.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It creates a clear visual hierarchy between headings and normal text.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    A newspaper has large titles and smaller body text.
+                </div>
+
+                <div class="code-box">h1 {
+    font-size: 40px;
+}
+
+p {
+    font-size: 18px;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Set h1 to 40px and paragraph text to 18px.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">21. color</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    color changes the text color of an element.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    A CSS property that accepts named colors, HEX, RGB, RGBA, HSL, and HSLA values.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It improves visibility, branding, emphasis, and readability.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Important warning text is often red.
+                </div>
+
+                <div class="code-box">h1 {
+    color: #005f73;
+}
+
+.warning {
+    color: rgb(220, 20, 60);
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Style a heading using HEX color and a paragraph using RGB color.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">22. font-weight</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    font-weight controls how thick or bold text appears.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It accepts values such as normal, bold, lighter, bolder, or numeric values from 100 to 900.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It highlights important headings, labels, and key information.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Book titles are usually bolder than normal paragraphs.
+                </div>
+
+                <div class="code-box">h1 {
+    font-weight: 700;
+}
+
+p {
+    font-weight: 400;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Make your h2 heading bold and paragraph text normal.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">23. font-style</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    font-style changes text into normal, italic, or oblique style.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    A CSS property with values such as normal, italic, and oblique.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It gives special emphasis to quotes, notes, and titles.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    A quote in a book is often written in italic.
+                </div>
+
+                <div class="code-box">blockquote {
+    font-style: italic;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Create a quote paragraph and make it italic.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">24. text-align</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    text-align controls horizontal alignment of text.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It accepts left, right, center, and justify values.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It controls the layout and presentation of text content.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    A page title is often centered, while article text is left-aligned.
+                </div>
+
+                <div class="code-box">h1 {
+    text-align: center;
+}
+
+p {
+    text-align: justify;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Center a heading and justify a long paragraph.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">25. CSS Measurement Units</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    CSS units measure the size of fonts, widths, heights, margins, and padding.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    Units can be absolute (px) or relative (%, em, rem, vw, vh).
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    They help layouts work correctly on different screen sizes.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    px is like a fixed ruler; % is like using part of the available space.
+                </div>
+
+                <div class="code-box">.box {
+    width: 80%;
+    height: 200px;
+    padding: 1rem;
+    font-size: 1.2em;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Create a box with width 80%, height 200px, and padding 1rem.
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =========================
+             PAGE 5: BOX MODEL
+        ========================== -->
+        <section class="paper-sheet">
+
+            <div class="module-tag">PART 5: BOX MODEL</div>
+
+            <div class="topic-box">
+                <div class="topic-title">26. CSS Box Model</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    Every HTML element is treated as a rectangular box.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    The CSS box model contains content, padding, border, and margin.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It controls element size and spacing in webpage layouts.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    A framed photo: photo = content, inner space = padding, frame = border, outside gap = margin.
+                </div>
+
+                <div class="code-box">.card {
+    width: 250px;
+    padding: 20px;
+    border: 2px solid navy;
+    margin: 25px;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Create a card and apply width, padding, border, and margin.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">27. Padding</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    Padding is space inside an element, between the content and border.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It can be set using padding, padding-top, padding-right, padding-bottom, and padding-left.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It prevents text and content from touching the element border.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    The empty space inside a gift box around the gift.
+                </div>
+
+                <div class="code-box">.box {
+    padding: 20px;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Apply 25px padding to a paragraph container.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">28. Margin</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    Margin is space outside an element.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It controls the gap between one element and nearby elements.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It creates breathing room between sections and components.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    The empty space between two picture frames on a wall.
+                </div>
+
+                <div class="code-box">.box {
+    margin: 30px;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Give two div elements 20px space between each other.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">29. Border</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    A border is the visible line around an element.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It uses width, style, and color values.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It separates elements visually and makes cards, forms, and buttons clearer.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    The frame around a photograph.
+                </div>
+
+                <div class="code-box">.box {
+    border: 3px dashed crimson;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Create one solid blue border and one dashed red border.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">30. border-radius</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    border-radius rounds the corners of an element.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    A CSS property measured in px or percentage.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It creates modern buttons, circular images, and rounded cards.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Changing a sharp square box into a smooth rounded box.
+                </div>
+
+                <div class="code-box">.button {
+    border-radius: 25px;
+}
+
+.profile-image {
+    border-radius: 50%;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Create a rounded button and a circular profile image.
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =========================
+             PAGE 6: ADVANCED CSS
+        ========================== -->
+        <section class="paper-sheet">
+
+            <div class="module-tag">PART 6: ADVANCED CSS</div>
+
+            <div class="topic-box">
+                <div class="topic-title">31. box-shadow</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    box-shadow creates a shadow around an element.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It uses horizontal offset, vertical offset, blur, spread, and color values.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It gives cards, buttons, and boxes a raised 3D appearance.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    A physical card casting a shadow on a table.
+                </div>
+
+                <div class="code-box">.card {
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Add a soft shadow to a product card.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">32. text-shadow</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    text-shadow adds a shadow behind text.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It works like box-shadow but applies only to letters.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It makes headings more visible and decorative.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Text on a signboard with a dark shadow behind it.
+                </div>
+
+                <div class="code-box">h1 {
+    text-shadow: 2px 2px 4px gray;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Add a red shadow behind one heading.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">33. Background Color</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    background-color fills an element with a solid color.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    A CSS property that accepts color values such as names, HEX, RGB, and HSL.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It creates visual sections and improves readability.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Painting the wall behind a section.
+                </div>
+
+                <div class="code-box">section {
+    background-color: #e0f7fa;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Give header, main, and footer different background colors.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">34. Background Image</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    background-image places an image behind content.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It uses the url() function to load an image file.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It creates hero sections, banners, wallpapers, and visual effects.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Using wallpaper on a wall instead of plain paint.
+                </div>
+
+                <div class="code-box">.hero {
+    background-image: url("banner.jpg");
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Add a background image to a hero section.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">35. background-size and background-position</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    These properties control image size and placement in the background.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    background-size can use cover, contain, px, or percentage. background-position controls location.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It makes background images fit correctly on different screens.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Adjusting a photo inside a picture frame.
+                </div>
+
+                <div class="code-box">.hero {
+    background-image: url("banner.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Create a full-screen banner using background-size: cover.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">36. CSS Transition</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    A transition makes style changes smooth instead of sudden.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It controls property change duration, timing function, delay, and affected property.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It creates smooth hover effects and better user interaction.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    A door slowly opening rather than instantly jumping open.
+                </div>
+
+                <div class="code-box">button {
+    background-color: blue;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: red;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Make a button smoothly change color in 0.5 seconds on hover.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">37. 2D Transform</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    A 2D transform moves, rotates, scales, or skews an element on a flat screen.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It uses transform functions such as translate(), rotate(), scale(), and skew().
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It creates interactive hover effects and movement.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Moving or rotating a paper card on a desk.
+                </div>
+
+                <div class="code-box">.card:hover {
+    transform: translateY(-10px) scale(1.05);
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Make a card move 10px upward when hovered.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">38. CSS Animation</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    CSS animation changes an element automatically over time.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It uses @keyframes and animation properties.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It creates loaders, moving objects, fade effects, and attention-grabbing designs.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    A loading circle spinning while a webpage is opening.
+                </div>
+
+                <div class="code-box">@keyframes moveBox {
+    from { transform: translateX(0); }
+    to { transform: translateX(200px); }
+}
+
+.box {
+    animation: moveBox 2s infinite alternate;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Animate a small box so it moves from left to right.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">39. CSS Gradient</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    A gradient creates a smooth transition between two or more colors.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    CSS supports linear-gradient() and radial-gradient().
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It creates colorful backgrounds without using image files.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    A sunset changing smoothly from orange to pink to purple.
+                </div>
+
+                <div class="code-box">.banner {
+    background: linear-gradient(45deg, #ff007f, #7f00ff);
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Create a button with a blue-to-purple linear gradient.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">40. z-index</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    z-index controls which positioned element appears in front.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    A higher z-index value appears above a lower z-index value.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It manages overlapping menus, modals, badges, and popups.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Papers stacked on a desk: the top paper covers the papers under it.
+                </div>
+
+                <div class="code-box">.menu {
+    position: fixed;
+    z-index: 1000;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Create two overlapping boxes and bring one box to the front using z-index.
+                </div>
+            </div>
+
+        </section>
+
+        <!-- =========================
+             PAGE 7: RESPONSIVE DESIGN
+        ========================== -->
+        <section class="paper-sheet">
+
+            <div class="module-tag">PART 7: RESPONSIVE DESIGN</div>
+
+            <div class="topic-box">
+                <div class="topic-title">41. Meta Viewport</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    The viewport meta tag helps websites display correctly on mobile devices.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It sets the page width to the device width and controls initial zoom.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It is required for mobile-friendly responsive websites.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    It tells the browser to fit the webpage to the phone screen.
+                </div>
+
+                <div class="code-box">&lt;meta name="viewport"
+content="width=device-width, initial-scale=1.0"&gt;</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Add the viewport meta tag to every HTML page you create.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">42. Media Queries</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    Media queries apply CSS only when certain screen conditions are true.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    They use @media rules with conditions such as max-width or min-width.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    They make webpages responsive on mobile, tablet, and desktop screens.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    A three-column layout becoming one column on a phone.
+                </div>
+
+                <div class="code-box">@media (max-width: 768px) {
+    body {
+        background-color: black;
+        color: white;
+    }
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Change your page background to black when the screen is below 768px.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">43. Flexbox</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    Flexbox is a one-dimensional layout system for arranging items in rows or columns.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It starts with display: flex and uses properties such as justify-content, align-items, flex-wrap, and gap.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It easily aligns navigation bars, cards, buttons, and responsive layouts.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    Organizing books neatly on one shelf.
+                </div>
+
+                <div class="code-box">.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Create three cards in one row using Flexbox.
+                </div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">44. CSS Grid</div>
+
+                <div class="topic-field">
+                    <span class="field-label">Meaning:</span>
+                    CSS Grid is a two-dimensional layout system for rows and columns.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Definition:</span>
+                    It starts with display: grid and uses grid-template-columns, grid-template-rows, and gap.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Purpose:</span>
+                    It builds dashboards, photo galleries, product grids, and complex page layouts.
+                </div>
+
+                <div class="topic-field">
+                    <span class="field-label">Example:</span>
+                    A chessboard or timetable made of rows and columns.
+                </div>
+
+                <div class="code-box">.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+@media (max-width: 768px) {
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+}</div>
+
+                <div class="task-box">
+                    <span class="field-label">Task:</span>
+                    Create a 3-column card layout that becomes 1 column on mobile.
+                </div>
+            </div>
+
+            <div style="text-align:center; margin-top:40px; font-size:24px; color:#005f73;">
+                🎉 End of CSS3 Notes 🎉
+            </div>
+
+            <div style="text-align:center; font-size:18px; color:#777; margin-top:10px;">
+                Next Subject:
+                <a href="javascript.html" class="menu-link">JavaScript Notes</a>
+            </div>
+
+        </section>
+
+    </main>
+
+    <script>
+        function generatePDF() {
+            const element = document.getElementById("notes-content");
+
+            const options = {
+                margin: [0.2, 0.2, 0.2, 0.2],
+                filename: "CSS3_Handwritten_Notes.pdf",
+                image: {
+                    type: "jpeg",
+                    quality: 0.98
+                },
+                html2canvas: {
+                    scale: 2,
+                    logging: false,
+                    useCORS: true
+                },
+                jsPDF: {
+                    unit: "in",
+                    format: "letter",
+                    orientation: "portrait"
+                }
+            };
+
+            const navigationBar = document.querySelector(".no-print-bar");
+            navigationBar.style.display = "none";
+
+            html2pdf()
+                .set(options)
+                .from(element)
+                .save()
+                .then(() => {
+                    navigationBar.style.display = "flex";
+                });
+        }
+    </script>
+
+</body>
+</html>
+```
+
+---
+
+<!-- ## ✅ CSS3 Notes Covered Separately
+
+This file includes separate notes for:
+
+1. CSS Introduction  
+2. CSS Syntax  
+3. Inline CSS  
+4. Internal CSS  
+5. External CSS  
+6. Tag Selector  
+7. ID Selector  
+8. Class Selector  
+9. Descendant Combinator  
+10. Child Combinator  
+11. Adjacent Sibling Combinator  
+12. General Sibling Combinator  
+13. Pseudo-class  
+14. `:hover`  
+15. `:focus`  
+16. Pseudo-element  
+17. `::before` and `::after`  
+18. Attribute Selector  
+19. `font-family`  
+20. `font-size`  
+21. `color`  
+22. `font-weight`  
+23. `font-style`  
+24. `text-align`  
+25. CSS Units  
+26. Box Model  
+27. Padding  
+28. Margin  
+29. Border  
+30. Border Radius  
+31. Box Shadow  
+32. Text Shadow  
+33. Background Color  
+34. Background Image  
+35. Background Size and Position  
+36. Transition  
+37. 2D Transform  
+38. Animation  
+39. Gradient  
+40. Z-index  
+41. Meta Viewport  
+42. Media Queries  
+43. Flexbox  
+44. CSS Grid  
+
+---
+
+Reply **NEXT** when you are ready. I will then create **`javascript.html`**, and I will separately explain every syllabus part, including:
+
+- JavaScript history  
+- Features  
+- Every data type  
+- `var`, `let`, and `const` separately  
+- Each operator type separately  
+- `if`, `else if`, `else`, and `switch` separately  
+- Each function type separately  
+- Arrays and each important array method separately  
+- String methods separately  
+- Console, screen, window, alert separately  
+- DOM structure, hierarchy, selection, and manipulation separately  
+- Click, submit, and keypress events separately. -->

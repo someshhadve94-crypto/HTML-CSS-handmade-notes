@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap - Handwritten Notes</title>
+    <link rel="stylesheet" href="shared-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- TOP NAVIGATION BUTTONS -->
+    <div class="no-print-bar">
+        <button class="btn-nav btn-download" onclick="generatePDF()">📥 Download PDF</button>
+        <a href="index.html" class="btn-nav">🏠 Home</a>
+        <a href="html5.html" class="btn-nav">📘 HTML5</a>
+        <a href="css3.html" class="btn-nav">🎨 CSS3</a>
+        <a href="javascript.html" class="btn-nav">⚡ JavaScript</a>
+        <a href="advanced-js.html" class="btn-nav">🚀 Adv JS</a>
+        <a href="reactjs.html" class="btn-nav">⚛️ React</a>
+        <a href="nextjs.html" class="btn-nav">▲ NextJS</a>
+        <a href="angular.html" class="btn-nav">🅰️ Angular</a>
+        <a href="python.html" class="btn-nav">🐍 Python</a>
+        <a href="nodejs.html" class="btn-nav">🟢 NodeJS</a>
+        <a href="mysql.html" class="btn-nav">🗄️ MySQL</a>
+        <a href="mongodb.html" class="btn-nav">🍃 MongoDB</a>
+        <a href="django.html" class="btn-nav">🎸 Django</a>
+        <a href="expressjs.html" class="btn-nav">🚂 Express</a>
+        <a href="genai.html" class="btn-nav">🤖 Gen AI</a>
+        <a href="deployment.html" class="btn-nav">☁️ Deploy</a>
+    </div>
+
+    <main class="notebook-container" id="notes-content">
+
+        <!-- =========================
+             PAGE 1: INTRODUCTION & SETUP
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="notebook-header">
+                <h1 class="notebook-title">💠 Bootstrap 5 Master Notes</h1>
+                <p style="font-size:20px; color:#555;">Responsive Mobile-First CSS Framework</p>
+            </div>
+
+            <div class="module-tag">PART 1: FOUNDATIONS & SETUP</div>
+
+            <!-- Topic 1 -->
+            <div class="topic-box">
+                <div class="topic-title">1. Introduction to Bootstrap</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A popular open-source CSS framework for building responsive, mobile-first websites quickly.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Created by Twitter, Bootstrap is a collection of pre-designed CSS classes, JavaScript plugins, and layout rules.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Saves time by providing ready-made UI components instead of writing raw CSS from scratch.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Buying pre-assembled furniture instead of cutting timber and assembling chairs manually.</div>
+                <div class="code-box">&lt;!-- Pre-styled Bootstrap button --&gt;
+&lt;button class="btn btn-primary"&gt;Click Me&lt;/button&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Look up Bootstrap's official documentation website and list 3 advantages of using version 5 over version 4.</div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="topic-box">
+                <div class="topic-title">2. Responsive Web Design in Bootstrap</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Designing web layouts that automatically adapt their look and structure to fit any device screen size.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A mobile-first design strategy that uses fluid grids, flexible images, and CSS media queries.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Ensures a single website looks clean on smartphones, tablets, laptops, and wide desktop monitors.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Water taking the exact shape of whatever glass, bottle, or bowl you pour it into.</div>
+                <div class="code-box">&lt;!-- Mobile-first responsive viewport setup --&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Resize your browser window on a Bootstrap page to watch layout columns stack vertically.</div>
+            </div>
+
+            <!-- Topic 3 -->
+            <div class="topic-box">
+                <div class="topic-title">3. Environment Setup & CDN Downloads</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Connecting Bootstrap CSS and JS files to your project via online links or local downloads.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> CDN (Content Delivery Network) links load compiled Bootstrap files directly from fast global cloud servers.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Enables instant access to all Bootstrap classes and interactive components without installing build tools.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Streaming a movie live from the cloud vs. downloading the entire file to your hard drive first.</div>
+                <div class="code-box">&lt;!-- Include in &lt;head&gt; --&gt;
+&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+
+&lt;!-- Include before &lt;/body&gt; --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a blank HTML file and link Bootstrap 5 using CDN links in head and body.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 2: LAYOUT & GRID
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 2: LAYOUT & GRID SYSTEM</div>
+
+            <!-- Topic 4 -->
+            <div class="topic-box">
+                <div class="topic-title">4. Containers (.container vs .container-fluid)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Layout wrappers that align, pad, and center site content within device viewports.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> <span class="highlight">.container</span> provides a responsive fixed-width layout; <span class="highlight">.container-fluid</span> spans 100% full width.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Contains grid rows and keeps page margins organized and aligned consistently across resolutions.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A centered page sheet in a notebook (.container) vs a full whiteboard (.container-fluid).</div>
+                <div class="code-box">&lt;!-- Fixed responsive width container --&gt;
+&lt;div class="container"&gt;Centered Content&lt;/div&gt;
+
+&lt;!-- Full 100% width container --&gt;
+&lt;div class="container-fluid"&gt;Full Width Content&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create two banner divs — one using .container and the second using .container-fluid to compare padding.</div>
+            </div>
+
+            <!-- Topic 5 -->
+            <div class="topic-box">
+                <div class="topic-title">5. Content Basics & Typography</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Built-in styling rules for text, headings, lead paragraphs, blockquotes, and display text.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Utility classes like <span class="highlight">.display-1</span>, <span class="highlight">.lead</span>, <span class="highlight">.text-muted</span>, <span class="highlight">.mark</span> that format plain text.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Standardizes typography across different browsers for clean, readable editorial design.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Headline font sizes on a newspaper front page compared to small body print.</div>
+                <div class="code-box">&lt;h1 class="display-3"&gt;Huge Hero Title&lt;/h1&gt;
+&lt;p class="lead"&gt;This lead paragraph stands out from regular body text.&lt;/p&gt;
+&lt;p class="text-muted"&gt;Secondary muted information.&lt;/p&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Format an article header using display-4 heading, lead paragraph, and text-muted author timestamp.</div>
+            </div>
+
+            <!-- Topic 6 -->
+            <div class="topic-box">
+                <div class="topic-title">6. Bootstrap Grid System (12-Column Grid)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A flexbox-powered layout system that splits every row into 12 flexible vertical columns.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses <span class="highlight">.row</span> wrappers containing <span class="highlight">.col-*</span> elements whose column numbers sum up to 12.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Allows arranging components side-by-side or stacking them vertically depending on column spans.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Splitting a pie into 12 equal slices — one person can take 6 slices (half), another 4, another 2.</div>
+                <div class="code-box">&lt;div class="row"&gt;
+    &lt;div class="col-8"&gt;Main Section (8/12)&lt;/div&gt;
+    &lt;div class="col-4"&gt;Sidebar (4/12)&lt;/div&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a 3-column row where columns take 3, 6, and 3 column spans respectively.</div>
+            </div>
+
+            <!-- Topic 7 -->
+            <div class="topic-box">
+                <div class="topic-title">7. Grid Breakpoints (xs, sm, md, lg, xl, xxl)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Pre-defined screen width limits that control when grid columns change layout size.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Breakpoint prefixes: sm (&ge;576px), md (&ge;768px), lg (&ge;992px), xl (&ge;1200px), xxl (&ge;1400px).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Switches multi-column desktop layouts into single-column stacked mobile views seamlessly.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Folding a multi-panel brochure into a single stack so it fits inside a coat pocket.</div>
+                <div class="code-box">&lt;!-- 1 column on mobile, 3 equal columns on medium screens and above --&gt;
+&lt;div class="row"&gt;
+    &lt;div class="col-12 col-md-4"&gt;Card 1&lt;/div&gt;
+    &lt;div class="col-12 col-md-4"&gt;Card 2&lt;/div&gt;
+    &lt;div class="col-12 col-md-4"&gt;Card 3&lt;/div&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a 4-card grid that displays 1 column on mobile, 2 columns on tablet, and 4 on desktop.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 3: COMPONENTS (PART 1)
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 3: UI COMPONENTS (ACCORDION TO CARD)</div>
+
+            <!-- Topic 8 -->
+            <div class="topic-box">
+                <div class="topic-title">8. Accordion Component</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A vertically stacked set of interactive collapsible panels for FAQs and structured content.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Built with <span class="highlight">.accordion</span>, <span class="highlight">.accordion-item</span>, and data-bs-toggle="collapse" JS attributes.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Saves vertical screen space by expanding only one item at a time while keeping others hidden.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A folding musical accordion or a expandable file folder system.</div>
+                <div class="code-box">&lt;div class="accordion" id="faqAccordion"&gt;
+  &lt;div class="accordion-item"&gt;
+    &lt;h2 class="accordion-header"&gt;
+      &lt;button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#q1"&gt;Question 1&lt;/button&gt;
+    &lt;/h2&gt;
+    &lt;div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion"&gt;
+      &lt;div class="accordion-body"&gt;Answer 1 text...&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build an FAQ accordion holding 3 expanding question-and-answer items.</div>
+            </div>
+
+            <!-- Topic 9 -->
+            <div class="topic-box">
+                <div class="topic-title">9. Alerts Component</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Colored contextual feedback boxes used to display user notification and status messages.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Container styled with <span class="highlight">.alert</span> and contextual classes like <span class="highlight">.alert-success</span>, <span class="highlight">.alert-danger</span>, <span class="highlight">.alert-warning</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Informs users about completed operations, system warnings, errors, or info updates.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Traffic lights: Green = Success, Yellow = Warning, Red = Danger.</div>
+                <div class="code-box">&lt;div class="alert alert-success alert-dismissible fade show" role="alert"&gt;
+    &lt;strong&gt;Success!&lt;/strong&gt; Your profile has been updated.
+    &lt;button type="button" class="btn-close" data-bs-dismiss="alert"&gt;&lt;/button&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a dismissible alert box with a close button that vanishes when clicked.</div>
+            </div>
+
+            <!-- Topic 10 -->
+            <div class="topic-box">
+                <div class="topic-title">10. Badge Component</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Small highlighted labels used to display counts, status tags, or notification badges.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Inline indicator tag styled with <span class="highlight">.badge</span> and background utilities like <span class="highlight">.bg-primary</span> or <span class="highlight">.rounded-pill</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Highlights counts (e.g. 5 unread emails) or labels (e.g. "NEW") next to text or inside buttons.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A red unread message counter badge on your app icon.</div>
+                <div class="code-box">&lt;button class="btn btn-primary"&gt;
+  Notifications &lt;span class="badge bg-danger rounded-pill"&gt;9+&lt;/span&gt;
+&lt;/button&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Add a rounded pill badge displaying "NEW" next to a menu heading item.</div>
+            </div>
+
+            <!-- Topic 11 -->
+            <div class="topic-box">
+                <div class="topic-title">11. Breadcrumb Component</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A horizontal navigation path showing users their current location in the site hierarchy.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Styled list <span class="highlight">.breadcrumb</span> with <span class="highlight">.breadcrumb-item</span> links separated by slashes automatically.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Helps users navigate backward through multi-level subfolders or e-commerce categories.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Hansel and Gretel dropping breadcrumbs along a trail to trace their way back home.</div>
+                <div class="code-box">&lt;nav aria-label="breadcrumb"&gt;
+  &lt;ol class="breadcrumb"&gt;
+    &lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="breadcrumb-item"&gt;&lt;a href="#"&gt;Shop&lt;/a&gt;&lt;/li&gt;
+    &lt;li class="breadcrumb-item active"&gt;Laptops&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/nav&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a breadcrumb trail for: Home > Products > Electronics > Smartphones.</div>
+            </div>
+
+            <!-- Topic 12 -->
+            <div class="topic-box">
+                <div class="topic-title">12. Button Group Component</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Groups a series of related action buttons together on a single connected line.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Wrapper container <span class="highlight">.btn-group</span> placing multiple <span class="highlight">.btn</span> elements side-by-side cleanly.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Used for toolbars, view toggle switches (Left / Center / Right), and pagination tool sets.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Text alignment buttons inside Microsoft Word (Left, Center, Right, Justify).</div>
+                <div class="code-box">&lt;div class="btn-group" role="group"&gt;
+  &lt;button class="btn btn-outline-primary"&gt;Left&lt;/button&gt;
+  &lt;button class="btn btn-outline-primary"&gt;Middle&lt;/button&gt;
+  &lt;button class="btn btn-outline-primary"&gt;Right&lt;/button&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a button group toolbar containing 3 outline-style buttons.</div>
+            </div>
+
+            <!-- Topic 13 -->
+            <div class="topic-box">
+                <div class="topic-title">13. Card Component</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A flexible content container with headers, images, body text, and footers.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Styled box wrapper <span class="highlight">.card</span> containing <span class="highlight">.card-img-top</span>, <span class="highlight">.card-body</span>, <span class="highlight">.card-title</span>, and <span class="highlight">.card-text</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Perfect for displaying blog posts, e-commerce products, user profiles, and portfolio items.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A baseball trading card showing player image, stats, title, and description.</div>
+                <div class="code-box">&lt;div class="card" style="width: 18rem;"&gt;
+  &lt;img src="laptop.jpg" class="card-img-top" alt="Laptop"&gt;
+  &lt;div class="card-body"&gt;
+    &lt;h5 class="card-title"&gt;Pro Laptop&lt;/h5&gt;
+    &lt;p class="card-text"&gt;High performance work machine.&lt;/p&gt;
+    &lt;a href="#" class="btn btn-primary"&gt;Buy Now&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build an e-commerce product card with an image, title, price text, and buy button.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 4: CAROUSEL, MODAL & NAVIGATION
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 4: CAROUSEL, MODALS & NAVIGATION</div>
+
+            <!-- Topic 14 -->
+            <div class="topic-box">
+                <div class="topic-title">14. Carousel Component</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> An interactive slideshow component for cycling through images or banner slides.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Wrapper <span class="highlight">.carousel</span> containing <span class="highlight">.carousel-inner</span> and <span class="highlight">.carousel-item</span> animated via JS controls.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Showcases homepage hero banners, image galleries, and promotional featured content.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> An automated rotating billboard banner at a city square.</div>
+                <div class="code-box">&lt;div id="heroSlider" class="carousel slide" data-bs-ride="carousel"&gt;
+  &lt;div class="carousel-inner"&gt;
+    &lt;div class="carousel-item active"&gt;&lt;img src="slide1.jpg" class="d-block w-100"&gt;&lt;/div&gt;
+    &lt;div class="carousel-item"&gt;&lt;img src="slide2.jpg" class="d-block w-100"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;button class="carousel-control-prev" data-bs-target="#heroSlider" data-bs-slide="prev"&gt;&lt;/button&gt;
+  &lt;button class="carousel-control-next" data-bs-target="#heroSlider" data-bs-slide="next"&gt;&lt;/button&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a 2-slide image carousel featuring previous and next navigation controls.</div>
+            </div>
+
+            <!-- Topic 15 -->
+            <div class="topic-box">
+                <div class="topic-title">15. Modal Component</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A popup dialog window that sits on top of the main page content, dimming background.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Container <span class="highlight">.modal</span> triggered via data-bs-toggle="modal" data-bs-target="#myModal".</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Prompts users for confirmation, login forms, alert popups, or displaying detail views without navigating away.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> An overlay popup asking "Save changes before exiting?"</div>
+                <div class="code-box">&lt;!-- Trigger Button --&gt;
+&lt;button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmModal"&gt;Delete&lt;/button&gt;
+
+&lt;!-- Modal Element --&gt;
+&lt;div class="modal fade" id="confirmModal"&gt;
+  &lt;div class="modal-dialog"&gt;
+    &lt;div class="modal-content"&gt;
+      &lt;div class="modal-header"&gt;&lt;h5 class="modal-title"&gt;Confirm Action&lt;/h5&gt;&lt;/div&gt;
+      &lt;div class="modal-body"&gt;Are you sure?&lt;/div&gt;
+      &lt;div class="modal-footer"&gt;&lt;button class="btn btn-secondary" data-bs-dismiss="modal"&gt;Close&lt;/button&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Construct a popup login modal triggered by a top navbar button.</div>
+            </div>
+
+            <!-- Topic 16 -->
+            <div class="topic-box">
+                <div class="topic-title">16. Navbar Component</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A responsive navigation header bar that collapses into a hamburger icon on mobile screens.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Built with <span class="highlight">.navbar</span>, <span class="highlight">.navbar-expand-lg</span>, <span class="highlight">.navbar-brand</span>, and collapsible <span class="highlight">.navbar-toggler</span> button.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Houses branding logo, navigation links, search bars, and user profile menus consistently.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> The main menu bar pinned across the top of almost every professional website.</div>
+                <div class="code-box">&lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
+  &lt;div class="container-fluid"&gt;
+    &lt;a class="navbar-brand" href="#"&gt;MyLogo&lt;/a&gt;
+    &lt;button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navMenu"&gt;
+      &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+    &lt;/button&gt;
+    &lt;div class="collapse navbar-collapse" id="navMenu"&gt;
+      &lt;div class="navbar-nav"&gt;
+        &lt;a class="nav-link active" href="#"&gt;Home&lt;/a&gt;
+        &lt;a class="nav-link" href="#"&gt;Services&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/nav&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a dark navbar containing branding text and 3 responsive menu links.</div>
+            </div>
+
+            <!-- Topic 17 -->
+            <div class="topic-box">
+                <div class="topic-title">17. Navs & Tabs Component</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Tabbed interface component used to switch between different content views inside the same page container.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Styled list <span class="highlight">.nav</span> with <span class="highlight">.nav-tabs</span> or <span class="highlight">.nav-pills</span> linking to matching <span class="highlight">.tab-pane</span> elements.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Organizes dense content into tabbed sub-pages (e.g., Overview / Specifications / Reviews).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Tabbed dividers inside a physical ring binder folder.</div>
+                <div class="code-box">&lt;ul class="nav nav-tabs"&gt;
+  &lt;li class="nav-item"&gt;&lt;a class="nav-link active" data-bs-toggle="tab" href="#desc"&gt;Description&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="nav-item"&gt;&lt;a class="nav-link" data-bs-toggle="tab" href="#specs"&gt;Specs&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="tab-content"&gt;
+  &lt;div class="tab-pane fade show active" id="desc"&gt;Product Description text...&lt;/div&gt;
+  &lt;div class="tab-pane fade" id="specs"&gt;Product Specs text...&lt;/div&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a 2-tab navigation view toggling between "User Info" and "Account Settings".</div>
+            </div>
+
+            <!-- Topic 18 -->
+            <div class="topic-box">
+                <div class="topic-title">18. Pagination Component</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A row of numbered buttons used to navigate across large multi-page datasets or search results.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> List container <span class="highlight">.pagination</span> holding <span class="highlight">.page-item</span> elements and <span class="highlight">.page-link</span> anchors.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Prevents page clutter by breaking long lists into bite-sized pages (e.g. Page 1, 2, 3... Next).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Numbered page footers printed at the bottom of book pages.</div>
+                <div class="code-box">&lt;ul class="pagination"&gt;
+  &lt;li class="page-item disabled"&gt;&lt;a class="page-link" href="#"&gt;Previous&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="page-item active"&gt;&lt;a class="page-link" href="#"&gt;1&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="page-item"&gt;&lt;a class="page-link" href="#"&gt;2&lt;/a&gt;&lt;/li&gt;
+  &lt;li class="page-item"&gt;&lt;a class="page-link" href="#"&gt;Next&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a pagination control bar showing 3 page numbers with Previous and Next buttons.</div>
+            </div>
+
+            <!-- Topic 19 -->
+            <div class="topic-box">
+                <div class="topic-title">19. Progress Bar Component</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A visual status bar indicating completion progress of an ongoing task, upload, or skill level.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Outer container <span class="highlight">.progress</span> holding an inner <span class="highlight">.progress-bar</span> with percentage width setting.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Provides real-time feedback for file uploads, setup steps, or skill percentage indicators.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Battery percentage indicator filling up as your phone charges.</div>
+                <div class="code-box">&lt;div class="progress" role="progressbar" style="height: 25px;"&gt;
+  &lt;div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width: 75%;"&gt;75% Done&lt;/div&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build an animated striped progress bar displaying 60% completion status.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 5: FORMS, UTILITIES & ICONS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 5: FORMS, UTILITIES & ICONS</div>
+
+            <!-- Topic 20 -->
+            <div class="topic-box">
+                <div class="topic-title">20. Form Controls</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Styled form fields including text inputs, textareas, select dropdowns, radios, and checkboxes.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Standardizes form styling using <span class="highlight">.form-control</span> for inputs and <span class="highlight">.form-select</span> for dropdowns.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Ensures uniform sizing, focus highlights, and clean typography across form inputs.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Neatly lined text entry boxes on a printed application form.</div>
+                <div class="code-box">&lt;div class="mb-3"&gt;
+  &lt;label class="form-label"&gt;Email Address&lt;/label&gt;
+  &lt;input type="email" class="form-control" placeholder="name@example.com"&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Style an email input field and message textarea using Bootstrap form-control class.</div>
+            </div>
+
+            <!-- Topic 21 -->
+            <div class="topic-box">
+                <div class="topic-title">21. Form Validation</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Visual error/success feedback indicators informing users if their form inputs pass required validation.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Applies <span class="highlight">.is-valid</span> or <span class="highlight">.is-invalid</span> classes along with <span class="highlight">.valid-feedback</span> or <span class="highlight">.invalid-feedback</span> messages.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Guides users to fix incorrect inputs (e.g. missing @ in email) before submitting form data.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Red warning cross next to invalid inputs vs green checkmark next to correct entries.</div>
+                <div class="code-box">&lt;input type="text" class="form-control is-invalid" placeholder="Username"&gt;
+&lt;div class="invalid-feedback"&gt;Username is required!&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create an input field showing an invalid border and error feedback text message.</div>
+            </div>
+
+            <!-- Topic 22 -->
+            <div class="topic-box">
+                <div class="topic-title">22. Input Groups</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Attaches text labels, icons, or action buttons directly to the front or back edge of inputs.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Container <span class="highlight">.input-group</span> holding <span class="highlight">.input-group-text</span> spans alongside <span class="highlight">.form-control</span> inputs.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Adds visual context like currency symbols ($), @ handle prefixes, or submit search buttons inside input fields.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A price input field pre-filled with a permanent "$" symbol prefix inside the box.</div>
+                <div class="code-box">&lt;div class="input-group"&gt;
+  &lt;span class="input-group-text"&gt;@&lt;/span&gt;
+  &lt;input type="text" class="form-control" placeholder="Username"&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a price input field prefixed with a "$" symbol and suffixed with ".00" using input groups.</div>
+            </div>
+
+            <!-- Topic 23 -->
+            <div class="topic-box">
+                <div class="topic-title">23. Floating Labels</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Modern inputs where labels rest inside the box as placeholders and float upward smoothly when focused.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Wrapper <span class="highlight">.form-floating</span> containing an <span class="highlight">&lt;input&gt;</span> followed immediately by a <span class="highlight">&lt;label&gt;</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Saves vertical space while providing modern animated user input interactions.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Modern mobile app inputs (like Google login) where placeholder text animates up into a small label header.</div>
+                <div class="code-box">&lt;div class="form-floating mb-3"&gt;
+  &lt;input type="password" class="form-control" id="pass" placeholder="Password"&gt;
+  &lt;label for="pass"&gt;Password&lt;/label&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a floating label login form with Email and Password input fields.</div>
+            </div>
+
+            <!-- Topic 24 -->
+            <div class="topic-box">
+                <div class="topic-title">24. Bootstrap Utilities (Spacing, Colors, Borders, Flex)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Helper utility classes for instantly applying margins, padding, colors, borders, and alignment.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Utility shortcuts: <span class="highlight">m-3</span> (margin), <span class="highlight">p-2</span> (padding), <span class="highlight">bg-dark</span>, <span class="highlight">text-white</span>, <span class="highlight">border-rounded</span>, <span class="highlight">d-flex</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Eliminates writing custom CSS declarations for minor layout and spacing adjustments.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Rapid shorthand notes — "m-3" stands for "apply margin level 3 on all sides".</div>
+                <div class="code-box">&lt;div class="p-4 mb-3 bg-light text-primary border border-secondary rounded shadow-sm"&gt;
+    Quick styled box using utility classes only!
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Style a div box using p-3, m-2, bg-warning, text-dark, and shadow utilities without custom CSS.</div>
+            </div>
+
+            <!-- Topic 25 -->
+            <div class="topic-box">
+                <div class="topic-title">25. Bootstrap Icons</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Official vector icon library designed to work seamlessly with Bootstrap components and utilities.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> SVG icon fonts included via CDN link and rendered using <span class="highlight">&lt;i class="bi bi-icon-name"&gt;&lt;/i&gt;</span> elements.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Adds clean scalable visual icons to buttons, menus, alert messages, and features lists.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Universal signs: heart icon for likes, cart icon for shopping, trash icon for delete.</div>
+                <div class="code-box">&lt;!-- Bootstrap Icon CDN --&gt;
+&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"&gt;
+
+&lt;button class="btn btn-success"&gt;
+  &lt;i class="bi bi-cart-check"&gt;&lt;/i&gt; Checkout
+&lt;/button&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create 3 buttons displaying icons for: Search (bi-search), User (bi-person), and Trash (bi-trash).</div>
+            </div>
+
+            <!-- Topic 26 -->
+            <div class="topic-box">
+                <div class="topic-title">26. Popovers & Tooltips</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Small informative popup overlays that appear when hovering over or clicking an element.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> JavaScript-powered popups initialized via <span class="highlight">data-bs-toggle="tooltip"</span> or <span class="highlight">data-bs-toggle="popover"</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Provides contextual help notes, button descriptions, or extra info without cluttering main layout.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Hovering over an icon and seeing a small hint box explaining "Click to edit profile".</div>
+                <div class="code-box">&lt;button type="button" class="btn btn-secondary" 
+        data-bs-toggle="tooltip" 
+        data-bs-placement="top" 
+        title="Tooltip message on top!"&gt;
+  Hover over me
+&lt;/button&gt;
+
+&lt;script&gt;
+  // Initialize tooltips via JS
+  const tooltipList = [...document.querySelectorAll('[data-bs-toggle="tooltip"]')].map(el => new bootstrap.Tooltip(el));
+&lt;/script&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Add a button that displays a helpful tooltip note when hovered over.</div>
+            </div>
+
+            <div style="text-align:center; margin-top:40px; font-size:24px; color:#005f73;">
+                🎉 End of Bootstrap Notes 🎉
+            </div>
+            <div style="text-align:center; font-size:18px; color:#777; margin-top:10px;">
+                Next Subject: <a href="reactjs.html" class="menu-link">React JS Notes</a>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function generatePDF() {
+            const element = document.getElementById("notes-content");
+            const options = {
+                margin: [0.2, 0.2, 0.2, 0.2],
+                filename: "Bootstrap_Handwritten_Notes.pdf",
+                image: { type: "jpeg", quality: 0.98 },
+                html2canvas: { scale: 2, logging: false, useCORS: true },
+                jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
+            };
+            const bar = document.querySelector(".no-print-bar");
+            bar.style.display = "none";
+            html2pdf().set(options).from(element).save().then(() => {
+                bar.style.display = "flex";
+            });
+        }
+    </script>
+
+</body>
+</html>

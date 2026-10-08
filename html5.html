@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5 - Handwritten Notes</title>
+    <link rel="stylesheet" href="shared-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- Navigation Bar with Download Button -->
+    <div class="no-print-bar">
+        <button class="btn-nav btn-download" onclick="generatePDF()">📥 Download PDF</button>
+        <a href="index.html" class="btn-nav">🏠 Home</a>
+        <a href="css3.html" class="btn-nav">🎨 CSS3</a>
+        <a href="javascript.html" class="btn-nav">⚡ JavaScript</a>
+        <a href="reactjs.html" class="btn-nav">⚛️ React</a>
+        <a href="python.html" class="btn-nav">🐍 Python</a>
+        <a href="nodejs.html" class="btn-nav">🟢 NodeJS</a>
+        <a href="mysql.html" class="btn-nav">🗄️ MySQL</a>
+        <a href="mongodb.html" class="btn-nav">🍃 MongoDB</a>
+        <a href="django.html" class="btn-nav">🎸 Django</a>
+        <a href="genai.html" class="btn-nav">🤖 Gen AI</a>
+    </div>
+
+    <div class="notebook-container" id="notes-content">
+        
+        <!-- SHEET 1 -->
+        <div class="paper-sheet">
+            <div class="notebook-header">
+                <h1 class="notebook-title">📘 HTML5 Master Notes</h1>
+                <p style="font-size: 20px; color: #555;">Structure & Markup Language</p>
+            </div>
+
+            <div class="module-tag">PART 1: FOUNDATIONS</div>
+
+            <!-- Topic 1 -->
+            <div class="topic-box">
+                <div class="topic-title">1. Introduction to the World Wide Web</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A global network of digital documents and resources accessible via web browsers over the internet.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> An information space where resources are identified by URLs, interlinked via hypertext, and retrieved using HTTP/HTTPS.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> To share, discover, store, and access cross-platform documents seamlessly worldwide.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Internet is the highway system; the Web represents destinations (websites) built along those roads.</div>
+                <div class="code-box">&lt;!-- Accessing web resource via URL --&gt;
+&lt;a href="https://www.example.com"&gt;Visit Resource&lt;/a&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Open DevTools (F12) in your browser and inspect the HTML structure of any popular website.</div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="topic-box">
+                <div class="topic-title">2. Client-Server Architecture</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A system where your browser <span class="highlight">(Client)</span> requests pages, and a remote machine <span class="highlight">(Server)</span> delivers them.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A distributed network model splitting tasks between service providers (servers) and service requesters (clients).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> To centralize data storage, manage application logic, and serve dynamic content to millions securely.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Restaurant ordering—You (Client) place order, Kitchen (Server) prepares and delivers meal.</div>
+                <div class="code-box">&lt;form action="/api/submit" method="POST"&gt;
+  &lt;input type="text" name="user" placeholder="Enter Name"&gt;
+  &lt;button type="submit"&gt;Send Request&lt;/button&gt;
+&lt;/form&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Draw a request-response flowchart illustrating browser navigation to google.com.</div>
+            </div>
+
+            <!-- Topic 3 -->
+            <div class="topic-box">
+                <div class="topic-title">3. HTML Document Structure</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The essential skeletal layout dividing hidden page setup from visual content.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Standard HTML tree composed of &lt;!DOCTYPE&gt;, &lt;html&gt;, &lt;head&gt;, and &lt;body&gt; elements organized hierarchically.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Provides standardized document parsing instructions to browsers for accurate rendering.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Human body—Head manages hidden logic/thoughts; Body presents visible physical traits.</div>
+                <div class="code-box">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;&lt;title&gt;Page&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;&lt;h1&gt;Visible Content&lt;/h1&gt;&lt;/body&gt;
+&lt;/html&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write complete HTML skeleton from memory in a file named index.html.</div>
+            </div>
+        </div>
+
+        <!-- SHEET 2: COMMENTS & METADATA (BROKEN DOWN) -->
+        <div class="paper-sheet">
+            <div class="module-tag">PART 2: COMMENTS & METADATA</div>
+
+            <!-- Topic 4 -->
+            <div class="topic-box">
+                <div class="topic-title">4. HTML Comments</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Hidden developer notes written inside HTML files that browsers completely ignore when rendering pages.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Non-rendered annotations enclosed between &lt;!-- and --&gt; tags used purely for internal documentation.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Documents code logic, marks important sections, and temporarily disables code without deletion.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Sticky notes on a desk—visible to you for reference but invisible to visitors reading the document.</div>
+                <div class="code-box">&lt;!-- This is a single-line HTML comment --&gt;
+
+&lt;!-- 
+  Multi-line comment:
+  Explains why this div exists
+--&gt;
+&lt;div&gt;Visible content here&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Add 3 different comments in your HTML file: a header note, a code explanation, and a TODO note.</div>
+            </div>
+
+            <!-- Topic 5: TITLE TAG (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">5. &lt;title&gt; Tag (Metadata)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The element that defines the text displayed on the browser tab and in search engine results.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A required head element containing a single string shown on browser tabs, bookmarks, and SEO snippets.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Identifies pages for users, improves SEO rankings, and provides accessibility context.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> The name printed on the spine of a book—helps you identify it without opening it.</div>
+                <div class="code-box">&lt;head&gt;
+    &lt;title&gt;My Portfolio - John Doe&lt;/title&gt;
+&lt;/head&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create 3 HTML pages (Home, About, Contact), each with a unique descriptive title tag.</div>
+            </div>
+
+            <!-- Topic 6: META TAG (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">6. &lt;meta&gt; Tag (Metadata)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Self-closing tags that provide hidden metadata like character encoding, viewport settings, and SEO details.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Void HTML elements inside &lt;head&gt; defining page-level information via 'name', 'content', 'charset', and 'property' attributes.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Sets character encoding, enables responsive design, controls search engines, and shares social media previews.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Hidden product label tags on clothing items—provides info without being part of the main design.</div>
+                <div class="code-box">&lt;meta charset="UTF-8"&gt;
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+&lt;meta name="description" content="Learn Full Stack Development"&gt;
+&lt;meta name="keywords" content="HTML, CSS, JS"&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Add 4 meta tags to a page: charset, viewport, description, and author.</div>
+            </div>
+
+            <!-- Topic 7: LINK TAG (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">7. &lt;link&gt; Tag (Metadata)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Self-closing tag used to connect external resources like stylesheets, icons, and fonts to your HTML page.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A void element with 'rel' (relationship) and 'href' (resource path) attributes importing external files into the document.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Loads CSS files, favicons, preloaded resources, and alternate language versions of pages.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Hiring external contractors to bring in materials from outside your main project workspace.</div>
+                <div class="code-box">&lt;link rel="stylesheet" href="style.css"&gt;
+&lt;link rel="icon" href="favicon.ico" type="image/x-icon"&gt;
+&lt;link rel="preconnect" href="https://fonts.googleapis.com"&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Link an external CSS file and a favicon icon to your HTML page using &lt;link&gt; tags.</div>
+            </div>
+        </div>
+
+        <!-- SHEET 3 -->
+        <div class="paper-sheet">
+            <!-- Topic 8: STYLE TAG (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">8. &lt;style&gt; Tag (Metadata)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Container tag that holds internal CSS code directly inside the HTML document's head section.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Non-void HTML element wrapping CSS rules applied only to the current page's elements.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Writes page-specific internal CSS styles without needing an external .css file.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Writing paint instructions directly on a wall vs. keeping them in a separate instruction manual.</div>
+                <div class="code-box">&lt;style&gt;
+    body { background-color: #f4f4f9; }
+    h1 { color: blue; text-align: center; }
+&lt;/style&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Use a &lt;style&gt; tag to style your page's body background and heading colors.</div>
+            </div>
+
+            <!-- Topic 9: SCRIPT TAG (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">9. &lt;script&gt; Tag (Metadata)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Container tag used to embed executable JavaScript code inline or load external .js files.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> HTML element placing executable logic into pages via inline code or 'src' attribute pointing to external scripts.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Adds interactivity, dynamic behavior, event handling, and API communications to web pages.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Adding an electric motor to a toy car—the plain body (HTML) now moves and reacts dynamically.</div>
+                <div class="code-box">&lt;!-- Inline Script --&gt;
+&lt;script&gt;
+    alert("Hello from JS!");
+&lt;/script&gt;
+
+&lt;!-- External Script --&gt;
+&lt;script src="app.js" defer&gt;&lt;/script&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Add an inline script that shows an alert, then link an external JS file using the 'src' attribute.</div>
+            </div>
+
+            <div class="module-tag">PART 3: TAGS & ATTRIBUTES</div>
+
+            <!-- Topic 10: TAGS CONCEPT (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">10. HTML Tags (Concept)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Special keywords wrapped in angle brackets &lt; &gt; that define types of elements on your web page.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Markup instructions written as &lt;tagname&gt;content&lt;/tagname&gt; (paired) or &lt;tagname /&gt; (self-closing) to structure documents.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Tells the browser what kind of element to render (heading, image, link, paragraph, etc.).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Labels placed on physical boxes—"Fragile", "Books", "Clothes"—so you know what's inside each box.</div>
+                <div class="code-box">&lt;!-- Paired Tag --&gt;
+&lt;p&gt;This is a paragraph&lt;/p&gt;
+
+&lt;!-- Self-closing Tag --&gt;
+&lt;br /&gt;
+&lt;img src="pic.jpg" /&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> List 10 commonly used HTML tags and classify each as paired or self-closing.</div>
+            </div>
+
+            <!-- Topic 11: ATTRIBUTES CONCEPT (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">11. HTML Attributes (Concept)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Extra properties written inside opening tags that modify the behavior or appearance of elements.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Key-value pairs following the pattern <span class="highlight">name="value"</span> placed inside opening tags to add configuration data.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Provides elements with IDs, classes, URLs, image paths, form data, event handlers, and more.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Describing a car: Tag = "Car", Attributes = color="red", doors="4", brand="Toyota".</div>
+                <div class="code-box">&lt;!-- 'href' and 'target' are attributes --&gt;
+&lt;a href="https://google.com" target="_blank"&gt;Visit&lt;/a&gt;
+
+&lt;!-- 'src', 'alt', 'width' are attributes --&gt;
+&lt;img src="pic.jpg" alt="Photo" width="300"&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create an anchor tag with href, target, and title attributes, plus an image with src, alt, and width.</div>
+            </div>
+        </div>
+
+        <!-- SHEET 4 -->
+        <div class="paper-sheet">
+            <!-- Topic 12: HEADING TAGS (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">12. Heading Tags (h1-h6)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Six levels of heading tags used to define titles and subheadings in a hierarchical structure.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Block-level elements ranging from &lt;h1&gt; (largest, most important) down to &lt;h6&gt; (smallest, least important).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Creates visual hierarchy, improves SEO rankings, and enhances accessibility for screen readers.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Book structure—h1 is the book title, h2 is chapter names, h3 is section titles, h4+ is subsections.</div>
+                <div class="code-box">&lt;h1&gt;Main Page Title&lt;/h1&gt;
+&lt;h2&gt;Section Heading&lt;/h2&gt;
+&lt;h3&gt;Sub-section&lt;/h3&gt;
+&lt;h4&gt;Minor Heading&lt;/h4&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a blog post structure using all 6 heading levels appropriately.</div>
+            </div>
+
+            <!-- Topic 13: PARAGRAPH TAG (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">13. Paragraph Tag (&lt;p&gt;)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A block-level element that wraps blocks of body text into readable paragraphs.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Paired HTML element &lt;p&gt;...&lt;/p&gt; automatically adding vertical margins between text blocks.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Organizes long-form content into readable, well-spaced paragraphs for better user experience.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Writing in a notebook—each new idea starts on a fresh line with space from the previous one.</div>
+                <div class="code-box">&lt;p&gt;This is the first paragraph of my article.&lt;/p&gt;
+&lt;p&gt;This is a second, separate paragraph.&lt;/p&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a short "About Me" page using 3 paragraph tags describing yourself.</div>
+            </div>
+
+            <!-- Topic 14: LABEL TAG (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">14. Label Tag (&lt;label&gt;)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Tag used to provide descriptive text labels for form input fields, improving accessibility.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Form-related inline element connected to inputs via the 'for' attribute matching the input's 'id'.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Improves usability (clicking the label focuses the input) and screen reader accessibility.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Writing "Name:" next to a blank line on a paper form—telling users what to fill in.</div>
+                <div class="code-box">&lt;label for="email"&gt;Email Address:&lt;/label&gt;
+&lt;input type="email" id="email" name="email"&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a form with 3 inputs (name, email, phone), each with its own associated label tag.</div>
+            </div>
+
+            <!-- Topic 15 -->
+            <div class="topic-box">
+                <div class="topic-title">15. Building Your First Page "Hello World"</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The traditional first program created to confirm your file setup produces visible output.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A minimal HTML document displaying "Hello World" to verify environment configuration and syntax correctness.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Verifies text editor, file extensions, and browser rendering are working correctly.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Testing a new lamp by plugging it in to see if the light turns on properly.</div>
+                <div class="code-box">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;First Page&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;Hello World!&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create hello.html on your desktop and open it directly in a web browser.</div>
+            </div>
+        </div>
+
+        <!-- SHEET 5: Text Formatting + Block Elements -->
+        <div class="paper-sheet">
+            <!-- Topic 16 -->
+            <div class="topic-box">
+                <div class="topic-title">16. Text Formatting Tags</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Inline tags used around text to add visual emphasis, highlights, or special formatting.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> HTML inline elements including &lt;b&gt;, &lt;strong&gt;, &lt;i&gt;, &lt;em&gt;, &lt;u&gt;, &lt;mark&gt;, &lt;sub&gt;, &lt;sup&gt;, &lt;small&gt;, &lt;del&gt;.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Improves readability, stresses key terms, and displays mathematical or scientific symbols correctly.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Using fluorescent highlighter marker and underlines on a printed textbook to emphasize important words.</div>
+                <div class="code-box">&lt;p&gt;Water formula: H&lt;sub&gt;2&lt;/sub&gt;O&lt;/p&gt;
+&lt;p&gt;Einstein: E = mc&lt;sup&gt;2&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; &lt;mark&gt;Important!&lt;/mark&gt;&lt;/p&gt;
+&lt;p&gt;&lt;del&gt;Old price&lt;/del&gt; &lt;b&gt;New price&lt;/b&gt;&lt;/p&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a paragraph using subscript, superscript, highlighted, bold, and strikethrough text.</div>
+            </div>
+
+            <!-- Topic 17: DIV ELEMENT (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">17. &lt;div&gt; Element (Block)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A generic, non-semantic container block used to group related elements together for styling.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Block-level element without inherent meaning used purely as a layout wrapper or styling container.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Groups elements into sections for layout, applies CSS styles, and creates reusable layout blocks.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Cardboard moving boxes—holds many related items together inside one convenient container.</div>
+                <div class="code-box">&lt;div class="card"&gt;
+    &lt;h2&gt;Product Name&lt;/h2&gt;
+    &lt;p&gt;Product description here.&lt;/p&gt;
+    &lt;button&gt;Buy Now&lt;/button&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create 3 div containers (header, main, footer) and style them with different background colors.</div>
+            </div>
+
+            <!-- Topic 18: NAV ELEMENT (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">18. &lt;nav&gt; Element (Block)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A semantic block element specifically designed to hold the main navigation menu of a website.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> HTML5 semantic element wrapping primary navigation links—used by browsers and screen readers to identify menus.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Improves accessibility, SEO, and semantic clarity by explicitly marking navigation sections.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A table of contents in a book—a dedicated area directing readers to different chapters.</div>
+                <div class="code-box">&lt;nav&gt;
+    &lt;a href="/home"&gt;Home&lt;/a&gt;
+    &lt;a href="/about"&gt;About&lt;/a&gt;
+    &lt;a href="/contact"&gt;Contact&lt;/a&gt;
+&lt;/nav&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a navigation bar containing 5 menu links wrapped inside a &lt;nav&gt; element.</div>
+            </div>
+        </div>
+
+        <!-- SHEET 6: Image, Anchor, Lists -->
+        <div class="paper-sheet">
+            <!-- Topic 19: IMAGE TAG (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">19. Image Tag (&lt;img&gt;)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A self-closing tag that embeds visual graphics (photos, icons, illustrations) onto web pages.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Void element requiring 'src' (image path) and 'alt' (alternative text) attributes for display and accessibility.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Displays visual content, improves page aesthetics, and provides accessibility via alt descriptions.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A picture frame hanging on a wall—shows visual content inside a defined boundary.</div>
+                <div class="code-box">&lt;img src="logo.png" 
+     alt="Company Logo" 
+     width="200" 
+     height="100"&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Insert 3 images into a page with proper alt text, width, and height attributes.</div>
+            </div>
+
+            <!-- Topic 20: ANCHOR TAG (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">20. Anchor Tag (&lt;a&gt;)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A paired tag used to create clickable hyperlinks that navigate between pages or jump to sections.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Inline element using 'href' (destination URL) and 'target' (open location) attributes to create hypertext links.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Enables web navigation between pages, external sites, email, phone, and in-page anchors.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A doorway in a building—click it to walk through to a different room or location.</div>
+                <div class="code-box">&lt;a href="about.html"&gt;About Page&lt;/a&gt;
+&lt;a href="https://google.com" target="_blank"&gt;Google&lt;/a&gt;
+&lt;a href="mailto:me@mail.com"&gt;Email Me&lt;/a&gt;
+&lt;a href="#section1"&gt;Jump to Section&lt;/a&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create 4 anchor tags: internal page link, external site, email link, and in-page jump link.</div>
+            </div>
+
+            <!-- Topic 21: ORDERED LIST (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">21. Ordered List (&lt;ol&gt;)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A numbered list used when the sequence or order of items matters.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Block element wrapping &lt;li&gt; items displayed with automatic numbering (1, 2, 3 or A, B, C via 'type' attribute).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Displays step-by-step instructions, rankings, or any content where order carries meaning.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A recipe's cooking steps—each step must happen in the correct numbered sequence.</div>
+                <div class="code-box">&lt;ol&gt;
+    &lt;li&gt;Install Node.js&lt;/li&gt;
+    &lt;li&gt;Create project folder&lt;/li&gt;
+    &lt;li&gt;Run npm install&lt;/li&gt;
+&lt;/ol&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create an ordered list showing the top 5 steps to bake a cake.</div>
+            </div>
+
+            <!-- Topic 22: UNORDERED LIST (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">22. Unordered List (&lt;ul&gt;)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A bulleted list used when the order of items does not matter.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Block element wrapping &lt;li&gt; items displayed with bullet points (dots, circles, squares).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Shows collections of items where sequence is irrelevant—features, options, categories.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A grocery shopping list—items can be purchased in any order you prefer.</div>
+                <div class="code-box">&lt;ul&gt;
+    &lt;li&gt;Apples&lt;/li&gt;
+    &lt;li&gt;Bread&lt;/li&gt;
+    &lt;li&gt;Milk&lt;/li&gt;
+&lt;/ul&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create an unordered list of your 5 favorite hobbies.</div>
+            </div>
+        </div>
+
+        <!-- SHEET 7: Table + Forms -->
+        <div class="paper-sheet">
+            <!-- Topic 23 -->
+            <div class="topic-box">
+                <div class="topic-title">23. Table Structure</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> HTML elements used to organize structured data into rows and columns.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Composed of &lt;table&gt; (container), &lt;tr&gt; (row), &lt;th&gt; (header cell), &lt;td&gt; (data cell), &lt;thead&gt;, &lt;tbody&gt;, &lt;tfoot&gt;.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Displays tabular data like schedules, pricing comparisons, and database records clearly.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A school timetable—rows for time slots, columns for days of the week.</div>
+                <div class="code-box">&lt;table border="1"&gt;
+    &lt;tr&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Score&lt;/th&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Alex&lt;/td&gt;&lt;td&gt;90&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;&lt;td&gt;Maya&lt;/td&gt;&lt;td&gt;85&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a 4-column table showing student names, subjects, grades, and attendance.</div>
+            </div>
+
+            <!-- Topic 24 -->
+            <div class="topic-box">
+                <div class="topic-title">24. HTML5 Forms</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Interactive panels that collect user input and send it to a server for processing.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> The &lt;form&gt; container wrapping input fields with 'action' (destination URL) and 'method' (GET/POST) attributes.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Enables user registration, login, search queries, feedback, and data submission.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Filling out a paper application form at a bank and submitting it at the counter.</div>
+                <div class="code-box">&lt;form action="/submit" method="POST"&gt;
+    &lt;label for="user"&gt;Name:&lt;/label&gt;
+    &lt;input type="text" id="user" name="username"&gt;
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+&lt;/form&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a signup form with name, email, password fields and a submit button.</div>
+            </div>
+
+            <!-- Topic 25 -->
+            <div class="topic-box">
+                <div class="topic-title">25. Form Methods: GET vs POST</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Two primary HTTP methods used by forms to send user data to a server.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> <span class="highlight">GET</span> sends data in URL (visible, cached, limited size); <span class="highlight">POST</span> sends data in request body (hidden, secure, larger).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> GET for search/retrieval; POST for sensitive data like passwords, uploads, and record creation.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> GET = sending a postcard (open, visible); POST = sending a sealed envelope (private, hidden).</div>
+                <div class="code-box">&lt;!-- GET: data visible in URL --&gt;
+&lt;form action="/search" method="GET"&gt;...&lt;/form&gt;
+
+&lt;!-- POST: data hidden in body --&gt;
+&lt;form action="/login" method="POST"&gt;...&lt;/form&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create 2 forms—a search form using GET and a login form using POST.</div>
+            </div>
+        </div>
+
+        <!-- SHEET 8: Selectors (BROKEN DOWN) -->
+        <div class="paper-sheet">
+            <div class="module-tag">PART 4: HTML SELECTORS</div>
+
+            <!-- Topic 26: TAG SELECTOR (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">26. Tag Selector</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Targeting an element in CSS or JavaScript using its tag name directly.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Selector matching every occurrence of a specific tag type across the entire document.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Applies universal styles to all elements of a specific type (all h1s, all p's, all a's).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Giving every student in a school the same uniform—no exceptions, affects everyone.</div>
+                <div class="code-box">&lt;!-- HTML --&gt;
+&lt;h1&gt;Title&lt;/h1&gt;
+&lt;p&gt;Paragraph&lt;/p&gt;
+
+&lt;!-- CSS: targets ALL h1s --&gt;
+&lt;style&gt; h1 { color: red; } &lt;/style&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Use a tag selector to change the color of all paragraphs on your page.</div>
+            </div>
+
+            <!-- Topic 27: ID SELECTOR (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">27. ID Selector</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A unique identifier assigned to one specific element on the page using the 'id' attribute.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Unique attribute (id="name") targeted in CSS using the '#' prefix (#name) — must be used only ONCE per page.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Targets exactly one specific element precisely for styling or JavaScript manipulation.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Your passport number—completely unique to you, no other person shares the same ID.</div>
+                <div class="code-box">&lt;!-- HTML --&gt;
+&lt;div id="main-header"&gt;Welcome&lt;/div&gt;
+
+&lt;!-- CSS: # prefix --&gt;
+&lt;style&gt; #main-header { font-size: 40px; } &lt;/style&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create one div with a unique ID and style it specifically using the # selector.</div>
+            </div>
+
+            <!-- Topic 28: CLASS SELECTOR (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">28. Class Selector</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A reusable identifier that can be shared among multiple elements for grouped styling.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Reusable attribute (class="name") targeted in CSS using the '.' prefix (.name) — can be used multiple times.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Groups multiple elements under one style rule, enabling consistent and reusable design.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A school uniform shared by all students of the same class—same style, many wearers.</div>
+                <div class="code-box">&lt;!-- HTML: same class on multiple elements --&gt;
+&lt;div class="card"&gt;Card 1&lt;/div&gt;
+&lt;div class="card"&gt;Card 2&lt;/div&gt;
+
+&lt;!-- CSS: . prefix --&gt;
+&lt;style&gt; .card { padding: 20px; } &lt;/style&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create 4 divs sharing the same class and style them all together with one rule.</div>
+            </div>
+        </div>
+
+        <!-- SHEET 9: Semantic Elements (BROKEN DOWN) + Media -->
+        <div class="paper-sheet">
+            <div class="module-tag">PART 5: SEMANTIC & MEDIA</div>
+
+            <!-- Topic 29: IFRAMES (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">29. Iframes (&lt;iframe&gt;)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> An inline frame tag that embeds another webpage inside your current webpage.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> HTML element loading external web content from a URL via 'src' attribute within a defined rectangular area.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Embeds YouTube videos, Google Maps, external forms, or third-party content directly inside your page.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A small TV screen placed inside your room showing a different channel/program.</div>
+                <div class="code-box">&lt;iframe 
+    src="https://www.youtube.com/embed/VIDEO_ID"
+    width="560" 
+    height="315"
+    frameborder="0"
+    allowfullscreen&gt;
+&lt;/iframe&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Embed a YouTube video and a Google Map inside your page using iframes.</div>
+            </div>
+
+            <!-- Topic 30: ENTITIES (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">30. HTML Entities</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Special character codes used to display reserved HTML characters as plain text in the browser.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Character references starting with '&amp;' and ending with ';' (e.g., &amp;lt;, &amp;gt;, &amp;amp;, &amp;nbsp;).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Prevents browser from interpreting characters as HTML code (e.g., displaying &lt; without starting a tag).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Using escape codes in a text message to display emoji faces that your keyboard can't type directly.</div>
+                <div class="code-box">&lt;p&gt;If 5 &amp;lt; 10 &amp;amp; 20 &amp;gt; 15&lt;/p&gt;
+&lt;!-- Displays: If 5 &lt; 10 &amp; 20 &gt; 15 --&gt;
+
+&lt;p&gt;Space&amp;nbsp;&amp;nbsp;&amp;nbsp;here&lt;/p&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Use HTML entities to display: less-than, greater-than, ampersand, and non-breaking space characters.</div>
+            </div>
+
+            <!-- Topic 31: SYMBOLS (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">31. HTML Symbols</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Special decorative characters like copyright, trademark, currency, and math symbols displayed via entities.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Named or numeric entity references (&amp;copy;, &amp;reg;, &amp;trade;, &amp;euro;) rendering non-keyboard symbols.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Displays legal symbols, mathematical operators, currency marks, and arrows without needing images.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Rubber stamp impressions—quick ways to add official symbols without drawing them manually.</div>
+                <div class="code-box">&lt;p&gt;&amp;copy; 2026 All Rights Reserved&lt;/p&gt;
+&lt;p&gt;Brand&amp;trade; and Reg&amp;reg;&lt;/p&gt;
+&lt;p&gt;Price: &amp;euro;50 or &amp;pound;45&lt;/p&gt;
+&lt;p&gt;&amp;hearts; &amp;star; &amp;check;&lt;/p&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a footer using copyright (&amp;copy;), trademark (&amp;trade;), and heart (&amp;hearts;) symbols.</div>
+            </div>
+        </div>
+
+        <!-- SHEET 10: Media -->
+        <div class="paper-sheet">
+            <!-- Topic 32: AUDIO TAG (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">32. Audio Tag (&lt;audio&gt;)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> HTML5 tag used to embed audio files like music, podcasts, or sound effects into web pages.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Paired element supporting formats like MP3, OGG, WAV with 'controls', 'autoplay', 'loop' attributes.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Plays sound content natively in the browser without third-party plugins or players.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Built-in music player speakers in your car—audio plays directly without external devices.</div>
+                <div class="code-box">&lt;audio controls&gt;
+    &lt;source src="song.mp3" type="audio/mpeg"&gt;
+    &lt;source src="song.ogg" type="audio/ogg"&gt;
+    Your browser doesn't support audio.
+&lt;/audio&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Embed an audio file into your page with playback controls and multiple format sources.</div>
+            </div>
+
+            <!-- Topic 33: VIDEO TAG (SEPARATE) -->
+            <div class="topic-box">
+                <div class="topic-title">33. Video Tag (&lt;video&gt;)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> HTML5 tag used to embed video files like movies, clips, or tutorials into web pages.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Paired element supporting MP4, WebM, OGG formats with 'controls', 'width', 'height', 'poster', 'autoplay' attributes.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Streams video content natively without external players, with full control over playback behavior.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A built-in TV screen mounted on your wall—plays videos directly, no DVD player needed.</div>
+                <div class="code-box">&lt;video 
+    width="640" 
+    height="360" 
+    controls 
+    poster="thumbnail.jpg"&gt;
+    &lt;source src="movie.mp4" type="video/mp4"&gt;
+    &lt;source src="movie.webm" type="video/webm"&gt;
+&lt;/video&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Embed a video file with controls, custom width/height, and a poster thumbnail image.</div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px; font-size: 24px; color: #005f73;">
+                🎉 End of HTML5 Notes 🎉
+            </div>
+            <div style="text-align: center; font-size: 18px; color: #777; margin-top: 10px;">
+                👉 Next: Open <a href="css3.html" class="menu-link">CSS3</a> notes
+            </div>
+        </div>
+
+    </div>
+
+    <!-- PDF Download Script -->
+    <script>
+        function generatePDF() {
+            const element = document.getElementById('notes-content');
+            const opt = {
+                margin: [0.2, 0.2, 0.2, 0.2],
+                filename: 'HTML5_Handwritten_Notes.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, logging: false, useCORS: true },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            const bar = document.querySelector('.no-print-bar');
+            bar.style.display = 'none';
+            html2pdf().set(opt).from(element).save().then(() => {
+                bar.style.display = 'flex';
+            });
+        }
+    </script>
+</body>
+</html>

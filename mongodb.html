@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MongoDB - Handwritten Notes</title>
+    <link rel="stylesheet" href="shared-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- TOP NAVIGATION BUTTONS -->
+    <div class="no-print-bar">
+        <button class="btn-nav btn-download" onclick="generatePDF()">📥 Download PDF</button>
+        <a href="index.html" class="btn-nav">🏠 Home</a>
+        <a href="html5.html" class="btn-nav">📘 HTML5</a>
+        <a href="css3.html" class="btn-nav">🎨 CSS3</a>
+        <a href="javascript.html" class="btn-nav">⚡ JavaScript</a>
+        <a href="advanced-js.html" class="btn-nav">🚀 Adv JS</a>
+        <a href="bootstrap.html" class="btn-nav">💠 Bootstrap</a>
+        <a href="reactjs.html" class="btn-nav">⚛️ React</a>
+        <a href="nextjs.html" class="btn-nav">▲ NextJS</a>
+        <a href="angular.html" class="btn-nav">🅰️ Angular</a>
+        <a href="python.html" class="btn-nav">🐍 Python</a>
+        <a href="nodejs.html" class="btn-nav">🟢 NodeJS</a>
+        <a href="mysql.html" class="btn-nav">🗄️ MySQL</a>
+        <a href="django.html" class="btn-nav">🎸 Django</a>
+        <a href="expressjs.html" class="btn-nav">🚂 Express</a>
+        <a href="genai.html" class="btn-nav">🤖 Gen AI</a>
+        <a href="deployment.html" class="btn-nav">☁️ Deploy</a>
+    </div>
+
+    <main class="notebook-container" id="notes-content">
+
+        <!-- =========================
+             PAGE 1: NOSQL & MONGODB OVERVIEW
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="notebook-header">
+                <h1 class="notebook-title">🍃 MongoDB Master Notes</h1>
+                <p style="font-size:20px; color:#555;">NoSQL Document-Oriented Database</p>
+            </div>
+
+            <div class="module-tag">PART 1: NOSQL & MONGODB FOUNDATIONS</div>
+
+            <!-- Topic 1 -->
+            <div class="topic-box">
+                <div class="topic-title">1. What is NoSQL?</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> NoSQL stands for "Not Only SQL". It describes non-relational database systems that store data in dynamic formats other than rigid tabular rows and columns.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A class of database management systems designed to handle unstructured, semi-structured, or rapidly changing data at high velocity using flexible models like Document, Key-Value, Column-Family, or Graph.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Solves scaling limitations of relational databases when dealing with massive big data, real-time streaming, dynamic schemas, and distributed cloud computing.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Storing user profiles where one user has 2 phone numbers, another has 5 addresses, and another has custom social media links—without needing empty NULL table cells.</div>
+                <div class="code-box">// Flexible Document format in NoSQL (JSON/BSON)
+{
+  "_id": "usr_101",
+  "name": "Alex",
+  "skills": ["JavaScript", "Node.js", "MongoDB"],
+  "address": { "city": "New York", "zip": "10001" }
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Research and list the 4 main types of NoSQL databases (Document, Key-Value, Wide-Column, Graph) with one real-world database example for each.</div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="topic-box">
+                <div class="topic-title">2. What is MongoDB?</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> MongoDB is the world's most popular open-source, document-based NoSQL database designed for high performance, high availability, and easy scalability.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A cross-platform document store that saves data in flexible, JSON-like structures called <span class="highlight">BSON</span> (Binary JSON). Collections contain Documents instead of Tables containing Rows.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Allows developers to store complex nested data structures natively in a format that maps directly to objects used in modern programming languages like JavaScript.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Storing an e-commerce product with its reviews, images, and seller info embedded directly inside one document instead of spreading it across 4 linked SQL tables.</div>
+                <div class="code-box">// Structural Comparison:
+// SQL Database   -->  MongoDB Database
+// SQL Table      -->  MongoDB Collection
+// SQL Row        -->  MongoDB Document
+// SQL Column     -->  MongoDB Field</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a small summary explaining why BSON is used by MongoDB internally instead of plain text JSON.</div>
+            </div>
+
+            <!-- Topic 3 -->
+            <div class="topic-box">
+                <div class="topic-title">3. Differences Between SQL and NoSQL</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A fundamental comparison between structured relational database systems (SQL) and flexible document-based database systems (NoSQL).</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> SQL databases are relational, table-based, strict schema, vertically scalable, and ACID-compliant. NoSQL databases are non-relational, document/key-value based, dynamic schema, horizontally scalable, and prioritize BASE (Basically Available, Soft-state, Eventual consistency).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Helps developers choose the right database architecture depending on data structure predictability, transaction needs, and traffic scaling goals.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> SQL = A printed tax form (fixed fields, strict rules); NoSQL = A flexible notebook page (add lists, images, bullet points anywhere).</div>
+                <div class="code-box">/* 
+   SQL (MySQL):
+   - Strict Schema (Tables & Columns)
+   - Joined Tables via Foreign Keys
+   - Vertical Scaling (Bigger Server CPU/RAM)
+
+   NoSQL (MongoDB):
+   - Dynamic Schema (Collections & Documents)
+   - Embedded Sub-Documents & Arrays
+   - Horizontal Scaling (Sharding across clusters)
+*/</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a 2-column comparison table listing 5 key differences between MySQL and MongoDB.</div>
+            </div>
+
+            <!-- Topic 4 -->
+            <div class="topic-box">
+                <div class="topic-title">4. MongoDB Overview & Installation</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Setting up the MongoDB server daemon (`mongod`), client shell (`mongosh`), and environment services on a local machine or cloud cluster (MongoDB Atlas).</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Involves installing MongoDB Community Server locally or configuring a hosted MongoDB Atlas cloud cluster, setting environment variables, and establishing connections via port `27017`.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Provides the active database engine service needed to store, process, and retrieve BSON document collections.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Installing a central filing vault engine in your office before filing client folders.</div>
+                <div class="code-box"># Terminal command to launch MongoDB Shell
+mongosh
+
+# Default Local Connection String:
+# mongodb://localhost:27017/myDatabase
+
+# Check active database
+db</div>
+                <div class="task-box"><span class="field-label">Task:</span> Install MongoDB Community Edition and MongoDB Shell (`mongosh`) on your computer, launch `mongosh` in terminal, and verify the active connection port.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 2: DATA TYPES & TOOLS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 2: DATA TYPES & SHELL TOOLS</div>
+
+            <!-- Topic 5 -->
+            <div class="topic-box">
+                <div class="topic-title">5. Data Types in MongoDB (BSON)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> BSON data types define the specific kinds of values that can be stored inside document fields.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Includes <span class="highlight">ObjectId</span> (unique 12-byte 24-char hex ID), <span class="highlight">String</span> (UTF-8), <span class="highlight">Int/Long/Double</span> (numeric), <span class="highlight">Boolean</span> (true/false), <span class="highlight">Array</span> (lists), <span class="highlight">Embedded Document</span> (nested objects), <span class="highlight">Date</span>, and <span class="highlight">Null</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Allows storing rich, complex, nested data structures natively in a single queryable document.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> An ObjectId acts as a globally unique digital fingerprint for every single document automatically.</div>
+                <div class="code-box">{
+  "_id": ObjectId("65df1234567890abcdef1234"), // Unique ObjectId
+  "title": "Full Stack Guide",               // String
+  "views": NumberInt(1250),                   // Integer
+  "price": 49.99,                             // Double
+  "isPublished": true,                        // Boolean
+  "tags": ["mongodb", "nosql", "database"],   // Array
+  "author": { "name": "Alex", "age": 30 },    // Embedded Document
+  "createdAt": ISODate("2026-03-01T10:00:00Z")// Date
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a sample BSON document containing at least 6 different data types (including ObjectId, Array, and Embedded Document).</div>
+            </div>
+
+            <!-- Topic 6 -->
+            <div class="topic-box">
+                <div class="topic-title">6. MongoDB Shell (mongosh) & Compass</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The two primary administrative tools used to interact with MongoDB: `mongosh` (Command-Line Interface) and MongoDB Compass (Graphical User Interface).</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> `mongosh` is an interactive JavaScript shell for executing database commands; Compass is a visual GUI desktop app for viewing collections, running queries, creating indexes, and analyzing performance visually.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Provides flexible terminal automation for developers alongside intuitive visual data management for administrative tasks.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Terminal vs File Explorer—terminal commands give fast raw control; File Explorer gives a visual click-and-view representation.</div>
+                <div class="code-box">// Common mongosh terminal commands:
+show dbs              // List all databases
+use shop_db           // Switch to or create database
+show collections      // List collections in active database
+db.createCollection("products") // Create new collection</div>
+                <div class="task-box"><span class="field-label">Task:</span> Open MongoDB Compass, connect to `mongodb://localhost:27017`, create a database called `company_db` with a collection called `employees`, and view it visually.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 3: CRUD OPERATIONS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 3: CRUD OPERATIONS (CREATE, READ, UPDATE, DELETE)</div>
+
+            <!-- Topic 7 -->
+            <div class="topic-box">
+                <div class="topic-title">7. CRUD - Create (insertOne & insertMany)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Inserting new document records into a collection. If the collection doesn't exist, MongoDB creates it automatically on the fly.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> <span class="highlight">db.collection.insertOne(doc)</span> inserts a single document; <span class="highlight">db.collection.insertMany([doc1, doc2])</span> inserts an array of documents. MongoDB automatically generates a unique `_id` if not provided.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Adds new data items like user profiles, products, or log entries to the database.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Dropping a new document folder into a file cabinet drawer.</div>
+                <div class="code-box">// Insert a Single Document
+db.users.insertOne({
+    name: "Alex",
+    email: "alex@mail.com",
+    age: 25
+});
+
+// Insert Multiple Documents at once
+db.users.insertMany([
+    { name: "Maya", email: "maya@mail.com", age: 28 },
+    { name: "John", email: "john@mail.com", age: 22 }
+]);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Use `insertMany` to insert 4 product documents into a `products` collection with `title`, `price`, and `category` fields.</div>
+            </div>
+
+            <!-- Topic 8 -->
+            <div class="topic-box">
+                <div class="topic-title">8. CRUD - Read (find & findOne)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Querying and retrieving stored document records from a collection matching specific filter criteria.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> <span class="highlight">db.collection.find(filter)</span> returns a cursor pointing to all matching documents; <span class="highlight">db.collection.findOne(filter)</span> returns only the first matching document object directly.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Fetches records for display on web UI screens, search results, or API data responses.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Searching a file drawer for all folders tagged with "Category: Electronics".</div>
+                <div class="code-box">// Find ALL documents in collection
+db.users.find();
+
+// Find documents matching specific filter criteria
+db.users.find({ age: 25 });
+
+// Find SINGLE document (returns first match or null)
+db.users.findOne({ email: "alex@mail.com" });
+
+// Pretty-print results in shell
+db.users.find().pretty();</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a `find` query that retrieves all products in your `products` collection priced at 49.99.</div>
+            </div>
+
+            <!-- Topic 9 -->
+            <div class="topic-box">
+                <div class="topic-title">9. CRUD - Update (updateOne & updateMany with $set)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Modifying existing fields or adding new fields to documents inside a collection.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Executed as <span class="highlight">db.collection.updateOne(filter, updateDoc)</span> or <span class="highlight">updateMany(filter, updateDoc)</span>. Uses update operators like <span class="highlight">$set</span> (modify/add fields), <span class="highlight">$unset</span> (remove fields), and <span class="highlight">$inc</span> (increment numeric values).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Updates changing information like user profile edits, inventory quantity adjustments, or status updates.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Writing an updated phone number on an existing client information card.</div>
+                <div class="code-box">// Update a Single Document using $set
+db.users.updateOne(
+    { name: "Alex" }, 
+    { $set: { age: 26, status: "Active" } }
+);
+
+// Update Multiple Documents + Increment numeric field ($inc)
+db.users.updateMany(
+    { status: "Active" }, 
+    { $inc: { loginCount: 1 } }
+);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write an `updateMany` query that uses `$inc` to increase the price of all products in the "Electronics" category by 10.</div>
+            </div>
+
+            <!-- Topic 10 -->
+            <div class="topic-box">
+                <div class="topic-title">10. CRUD - Delete (deleteOne & deleteMany)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Removing specific documents permanently from a collection based on filter criteria.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> <span class="highlight">db.collection.deleteOne(filter)</span> deletes the first document matching the filter; <span class="highlight">db.collection.deleteMany(filter)</span> deletes all documents matching the filter.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Cleans up obsolete data, user-requested account deletions, or temporary log files.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Shredding expired contract files from a filing drawer.</div>
+                <div class="code-box">// Delete a SINGLE matching document
+db.users.deleteOne({ email: "alex@mail.com" });
+
+// Delete MULTIPLE documents matching filter
+db.users.deleteMany({ age: { $lt: 18 } });
+
+// WARNING: Delete ALL documents in collection (empty collection)
+db.users.deleteMany({});</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a `deleteOne` query to remove a product by its name, and verify the document is gone using `find()`.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 4: PROJECTIONS & OPERATORS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 4: PROJECTIONS & QUERY OPERATORS</div>
+
+            <!-- Topic 11 -->
+            <div class="topic-box">
+                <div class="topic-title">11. Projections for Query Optimization</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Projections specify exactly which fields should be included or excluded in query results, reducing network bandwidth and RAM usage.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Passed as the second argument to `find(filter, projection)`: setting <span class="highlight">field: 1</span> includes it; setting <span class="highlight">field: 0</span> excludes it. The `_id` field is included by default unless explicitly set to `_id: 0`.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Optimizes database performance by avoiding fetching massive unnecessary fields (like large text content or password hashes) when only basic fields (like name/email) are needed.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Photocopying only the name and photo from a passport document instead of copying every single page.</div>
+                <div class="code-box">// Return ONLY name and email (exclude _id explicitly)
+db.users.find(
+    { age: { $gte: 18 } },          // Filter criteria
+    { name: 1, email: 1, _id: 0 }   // Projection specification
+);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Query your `products` collection to return only `title` and `price` fields, explicitly suppressing the `_id` field using projection.</div>
+            </div>
+
+            <!-- Topic 12 -->
+            <div class="topic-box">
+                <div class="topic-title">12. Comparison Query Operators</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Operators used inside query filters to compare document field values against specified targets.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Operators: <span class="highlight">$eq</span> (equal), <span class="highlight">$ne</span> (not equal), <span class="highlight">$gt</span> (greater than), <span class="highlight">$gte</span> (greater than/equal), <span class="highlight">$lt</span> (less than), <span class="highlight">$lte</span> (less than/equal), <span class="highlight">$in</span> (in array), <span class="highlight">$nin</span> (not in array).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Allows flexible numerical and value range filtering across collections.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Filtering a product list for items priced between $20 and $100.</div>
+                <div class="code-box">// Price greater than 50 AND less than/equal to 200
+db.products.find({ price: { $gt: 50, $lte: 200 } });
+
+// Category IS IN specified list
+db.products.find({ category: { $in: ["Electronics", "Books"] } });</div>
+                <div class="task-box"><span class="field-label">Task:</span> Find all users whose age is `$gte: 21` and `$nin: [25, 30]`.</div>
+            </div>
+
+            <!-- Topic 13 -->
+            <div class="topic-box">
+                <div class="topic-title">13. Logical Query Operators</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Operators used to combine or negate multiple condition clauses inside a single query filter.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Operators: <span class="highlight">$and</span> (all conditions true), <span class="highlight">$or</span> (at least one condition true), <span class="highlight">$not</span> (negates condition), <span class="highlight">$nor</span> (fails all conditions).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Constructs complex decision queries (e.g. User is Admin OR (Age &gt; 18 AND Active)).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Selecting candidates who either speak Spanish OR (have 5+ years experience AND speak French).</div>
+                <div class="code-box">// Find users where (Age > 20 OR Role is "Admin")
+db.users.find({
+    $or: [
+        { age: { $gt: 20 } },
+        { role: "Admin" }
+    ]
+});
+
+// Combining $and with $or
+db.users.find({
+    $and: [
+        { status: "Active" },
+        { $or: [{ role: "Admin" }, { role: "Manager" }] }
+    ]
+});</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a query using `$or` to find products that are either in category "Electronics" OR have a price `$lt: 15`.</div>
+            </div>
+
+            <!-- Topic 14 -->
+            <div class="topic-box">
+                <div class="topic-title">14. Element & Array Query Operators</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Operators designed specifically to query fields based on existence, BSON type, or array content contents.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Element: <span class="highlight">$exists</span> (checks if field exists), <span class="highlight">$type</span> (checks BSON data type). Array: <span class="highlight">$all</span> (contains all elements), <span class="highlight">$elemMatch</span> (array element matches all nested criteria), <span class="highlight">$size</span> (array length).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Handles queries against flexible schemas and complex embedded array fields efficiently.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Finding all users who have listed BOTH "JavaScript" AND "React" in their skills array.</div>
+                <div class="code-box">// Check if field EXISTS in document schema
+db.users.find({ phone: { $exists: true } });
+
+// Array contains ALL specified items
+db.users.find({ skills: { $all: ["JavaScript", "MongoDB"] } });
+
+// Array element matching nested condition
+db.orders.find({
+    items: { $elemMatch: { product: "Laptop", qty: { $gte: 2 } } }
+});</div>
+                <div class="task-box"><span class="field-label">Task:</span> Query all documents where a `discount` field `$exists: true` and a `tags` array contains `$all: ["sale", "clearance"]`.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 5: AGGREGATION FRAMEWORK
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 5: AGGREGATION FRAMEWORK</div>
+
+            <!-- Topic 15 -->
+            <div class="topic-box">
+                <div class="topic-title">15. Introduction to Aggregation Framework</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A powerful data processing pipeline in MongoDB used to transform, filter, group, calculate, and analyze documents.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Executed as <span class="highlight">db.collection.aggregate([ stage1, stage2, stage3 ])</span> where documents pass through a sequential pipeline array of processing stages.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Performs complex analytics, metrics reporting, data transformations, and grouping operations (similar to SQL `GROUP BY` and JOINs).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> An automated factory assembly line—raw materials (documents) pass from machine to machine (pipeline stages), getting filtered, combined, and calculated into a final report.</div>
+                <div class="code-box">// Basic Aggregation Pipeline Structure
+db.orders.aggregate([
+    { /* Stage 1: Filter documents */ },
+    { /* Stage 2: Group and calculate */ },
+    { /* Stage 3: Sort results */ }
+]);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a short explanation comparing how aggregation pipelines differ from standard `find()` queries.</div>
+            </div>
+
+            <!-- Topic 16 -->
+            <div class="topic-box">
+                <div class="topic-title">16. Aggregation Stages ($match, $group, $project, $sort)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The core pipeline stage operators used to manipulate documents as they flow through an aggregation query.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> <span class="highlight">$match</span> filters documents (like `WHERE`); <span class="highlight">$group</span> aggregates data by key (like `GROUP BY`) using accumulators (`$sum`, `$avg`, `$min`, `$max`); <span class="highlight">$project</span> reshapes fields; <span class="highlight">$sort</span> orders results; <span class="highlight">$limit</span> caps counts.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Builds complex analytical reports like calculating total sales per product category or finding average customer spending.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Filter for 2026 orders → Group by category and sum total revenue → Sort by highest revenue first.</div>
+                <div class="code-box">// Complete Analytics Aggregation Pipeline
+db.orders.aggregate([
+    // Stage 1: Filter for Completed orders ($match)
+    { $match: { status: "Completed" } },
+
+    // Stage 2: Group by category and calculate sum & avg ($group)
+    { 
+      $group: {
+        _id: "$category",
+        totalRevenue: { $sum: "$amount" },
+        avgOrderValue: { $avg: "$amount" },
+        totalOrders: { $sum: 1 }
+      } 
+    },
+
+    // Stage 3: Sort by totalRevenue descending ($sort)
+    { $sort: { totalRevenue: -1 } },
+
+    // Stage 4: Reshape output fields ($project)
+    { 
+      $project: {
+        category: "$_id",
+        totalRevenue: 1,
+        avgOrderValue: 1,
+        _id: 0
+      } 
+    }
+]);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build an aggregation pipeline on your `products` collection that `$match`es items priced `&gt; 20`, `$group`s them by `category` to find total product count (`$sum: 1`), and `$sort`s by total count descending.</div>
+            </div>
+
+            <div style="text-align:center; margin-top:40px; font-size:24px; color:#005f73;">
+                🎉 End of MongoDB Notes 🎉
+            </div>
+            <div style="text-align:center; font-size:18px; color:#777; margin-top:10px;">
+                Next Subject: <a href="django.html" class="menu-link">Django Notes</a>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function generatePDF() {
+            const element = document.getElementById("notes-content");
+            const options = {
+                margin: [0.2, 0.2, 0.2, 0.2],
+                filename: "MongoDB_Handwritten_Notes.pdf",
+                image: { type: "jpeg", quality: 0.98 },
+                html2canvas: { scale: 2, logging: false, useCORS: true },
+                jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
+            };
+            const bar = document.querySelector(".no-print-bar");
+            bar.style.display = "none";
+            html2pdf().set(options).from(element).save().then(() => {
+                bar.style.display = "flex";
+            });
+        }
+    </script>
+
+</body>
+</html>

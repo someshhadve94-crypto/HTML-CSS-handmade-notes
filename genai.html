@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generative AI - Handwritten Notes</title>
+    <link rel="stylesheet" href="shared-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- TOP NAVIGATION BUTTONS -->
+    <div class="no-print-bar">
+        <button class="btn-nav btn-download" onclick="generatePDF()">📥 Download PDF</button>
+        <a href="index.html" class="btn-nav">🏠 Home</a>
+        <a href="html5.html" class="btn-nav">📘 HTML5</a>
+        <a href="css3.html" class="btn-nav">🎨 CSS3</a>
+        <a href="javascript.html" class="btn-nav">⚡ JavaScript</a>
+        <a href="advanced-js.html" class="btn-nav">🚀 Adv JS</a>
+        <a href="bootstrap.html" class="btn-nav">💠 Bootstrap</a>
+        <a href="reactjs.html" class="btn-nav">⚛️ React</a>
+        <a href="nextjs.html" class="btn-nav">▲ NextJS</a>
+        <a href="angular.html" class="btn-nav">🅰️ Angular</a>
+        <a href="python.html" class="btn-nav">🐍 Python</a>
+        <a href="nodejs.html" class="btn-nav">🟢 NodeJS</a>
+        <a href="mysql.html" class="btn-nav">🗄️ MySQL</a>
+        <a href="mongodb.html" class="btn-nav">🍃 MongoDB</a>
+        <a href="django.html" class="btn-nav">🎸 Django</a>
+        <a href="expressjs.html" class="btn-nav">🚂 Express</a>
+        <a href="deployment.html" class="btn-nav">☁️ Deploy</a>
+    </div>
+
+    <main class="notebook-container" id="notes-content">
+
+        <!-- =========================
+             PAGE 1: INTRODUCTION TO GEN AI & LLMS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="notebook-header">
+                <h1 class="notebook-title">🤖 Generative AI Master Notes</h1>
+                <p style="font-size:20px; color:#555;">LLMs, Prompt Engineering, AI Developer Tools & LangChain</p>
+            </div>
+
+            <div class="module-tag">PART 1: INTRODUCTION TO GEN AI & LLMS</div>
+
+            <!-- Topic 1 -->
+            <div class="topic-box">
+                <div class="topic-title">1. What is Generative AI?</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Generative AI refers to artificial intelligence systems capable of creating brand new content (text, code, images, audio, video) based on learned patterns from existing data.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A branch of artificial intelligence utilizing deep learning architectures (like Transformers and Diffusion models) to analyze vast datasets and generate novel, human-like outputs in response to user prompts.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Automates content creation, accelerates software engineering workflows, assists design processes, and enables natural language interaction between humans and machines.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Traditional AI classifies whether a picture is a dog or cat; Generative AI draws a brand new image of a flying cat on Mars upon request.</div>
+                <div class="code-box"># High-level Gen AI execution flow concept:
+Input Prompt ("Write a Python function") -> Deep Learning Model -> Generated Output (New Code)</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a short comparison summarizing the core differences between Discriminative AI and Generative AI.</div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="topic-box">
+                <div class="topic-title">2. Large Language Models (LLMs) Overview</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Large Language Models are massive neural network algorithms trained on billions of text parameters to comprehend and generate human language.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> AI models built upon the Transformer neural network architecture (featuring self-attention mechanisms) trained on petabytes of text data to predict subsequent tokens in a sequence.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Powers conversational assistants, code completion tools, language translation, automated summarization, and logical reasoning engines.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Autocomplete on steroids—predicting the most statistically accurate next paragraph across complex technical domains.</div>
+                <div class="code-box"># Calling an LLM API via OpenAI Python SDK
+from openai import OpenAI
+client = OpenAI(api_key="YOUR_API_KEY")
+
+response = client.chat.completions.create(
+    model="gpt-4o",
+    messages=[{"role": "user", "content": "Explain LLMs in one sentence."}]
+)
+print(response.choices[0].message.content)</div>
+                <div class="task-box"><span class="field-label">Task:</span> Research the parameter size of GPT-3 (175 Billion) versus modern LLM models and note why parameter count matters.</div>
+            </div>
+
+            <!-- Topic 3 -->
+            <div class="topic-box">
+                <div class="topic-title">3. ChatGPT (OpenAI)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> An advanced conversational AI chatbot developed by OpenAI based on the GPT (Generative Pre-trained Transformer) model series.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> An interactive LLM service fine-tuned using Reinforcement Learning from Human Feedback (RLHF), supporting multi-turn dialogue, web browsing, image vision, and code execution.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Assists developers with debugging, refactoring, architectural advice, documentation writing, and rapid prototyping.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Asking ChatGPT to review a messy JavaScript file and suggest performance improvements along with clean code examples.</div>
+                <div class="code-box"># Prompting ChatGPT for code review:
+"Act as a Senior React Engineer. Review this component for memory leaks: [code]"</div>
+                <div class="task-box"><span class="field-label">Task:</span> Use ChatGPT free tier to debug a broken piece of code and analyze the quality of its solution.</div>
+            </div>
+
+            <!-- Topic 4 -->
+            <div class="topic-box">
+                <div class="topic-title">4. Google Gemini</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Google's multimodal AI model ecosystem designed natively to understand text, code, images, audio, and video seamlessly.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A family of models (Gemini Ultra, Pro, Flash, Nano) featuring ultra-large context windows (up to 1-2 million tokens) built directly into Google Cloud and developer tools.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Processes massive codebases, long video files, and dense PDF manuals in a single context query window.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Uploading an entire 500-page software documentation PDF to Gemini and asking precise API syntax questions.</div>
+                <div class="code-box"># Calling Gemini API in Python
+import google.generativeai as genai
+genai.configure(api_key="GEMINI_API_KEY")
+
+model = genai.GenerativeModel('gemini-1.5-flash')
+response = model.generate_content("Write a Express.js route handler")
+print(response.text)</div>
+                <div class="task-box"><span class="field-label">Task:</span> Access Google AI Studio (aistudio.google.com) and test Gemini's free tier with a 100-line code snippet.</div>
+            </div>
+
+            <!-- Topic 5 -->
+            <div class="topic-box">
+                <div class="topic-title">5. HuggingFace Free Models</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The leading open-source platform hosting thousands of community-built AI models, datasets, and spaces available for public use.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A central repository containing open-weights LLMs (Llama 3, Mistral, Gemma, Qwen) that developers can download or run via free inference endpoints.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Provides accessible, cost-free, open-source AI models preventing vendor lock-in to commercial APIs.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Downloading a specialized open-source code LLM from HuggingFace to run locally on your server.</div>
+                <div class="code-box"># Using HuggingFace Transformers pipeline in Python
+from transformers import pipeline
+
+generator = pipeline('text-generation', model='mistralai/Mistral-7B-Instruct-v0.2')
+output = generator("def fibonacci(n):", max_length=50)
+print(output[0]['generated_text'])</div>
+                <div class="task-box"><span class="field-label">Task:</span> Visit huggingface.co/models, search for "Llama-3-8B-Instruct", and test its interactive demo space.</div>
+            </div>
+
+            <!-- Topic 6 -->
+            <div class="topic-box">
+                <div class="topic-title">6. Prompt Writing Basics</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Crafting clear, structured instructions (prompts) to guide an AI model toward generating accurate, relevant answers.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> The practice of designing input text queries containing clear directives, constraints, formatting requirements, and output examples.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Minimizes model hallucinations (wrong answers) and ensures the output matches required technical specifications.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Asking "Write CSS for a card with 20px padding and a shadow" instead of vaguely asking "Make a box look good".</div>
+                <div class="code-box"># Bad Prompt: "Make me a login page"
+# Good Prompt:
+"Write a responsive HTML5 and CSS3 login card. 
+Include email and password inputs, a submit button, and modern rounded styling. 
+Return ONLY clean valid HTML code without markdown explanation."</div>
+                <div class="task-box"><span class="field-label">Task:</span> Rewrite a vague prompt ("write javascript") into a detailed prompt with clear role, task, and formatting constraints.</div>
+            </div>
+
+            <!-- Topic 7 -->
+            <div class="topic-box">
+                <div class="topic-title">7. AI for Coding & Website Development</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Using AI tools to write, refactor, explain, test, and generate complete software components dynamically.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Integrating AI-powered developer tools into daily workflows to automate boilerplate code, generate unit tests, and translate legacy code.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Drastically increases developer productivity, reduces repetitive typing, and accelerates learning new languages/frameworks.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Asking AI to convert a complex SQL query into a Django ORM Python statement automatically.</div>
+                <div class="code-box"># Developer Prompt for Unit Testing:
+"Write Jest unit tests for the following JavaScript function: 
+const calculateDiscount = (price, rate) => price - (price * rate);
+Cover edge cases including 0% discount, invalid inputs, and negative values."</div>
+                <div class="task-box"><span class="field-label">Task:</span> Provide a 10-line Python script to an AI model and prompt it to generate 3 comprehensive unit test cases.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 2: AI DEVELOPER TOOLS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 2: AI DEVELOPER TOOLS & PLATFORMS</div>
+
+            <!-- Topic 8 -->
+            <div class="topic-box">
+                <div class="topic-title">8. V0.dev (by Vercel)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> An AI-powered generative UI tool built by Vercel that converts natural language prompts into production-ready React / Tailwind CSS components.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A web platform that generates clean, accessible React components using Shadcn UI and Tailwind CSS from simple text descriptions or image uploads.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Accelerates front-end UI prototyping by generating complete responsive web components instantly.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Typing "Build a modern dark-mode pricing table with 3 tiers" and receiving copy-pasteable React code within seconds.</div>
+                <div class="code-box"># V0.dev Prompt Example:
+"A responsive navbar with logo, search bar, dark mode toggle, and mobile menu drawer using Tailwind CSS and Lucide React icons."</div>
+                <div class="task-box"><span class="field-label">Task:</span> Visit v0.dev, generate a modern user dashboard card using a text prompt, and copy the React component output.</div>
+            </div>
+
+            <!-- Topic 9 -->
+            <div class="topic-box">
+                <div class="topic-title">9. TeleportHQ</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> An AI-enhanced visual website builder and code generator that transforms wireframes and prompts into clean web code.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A visual front-end platform using AI to convert hand-drawn sketches or Figma designs into HTML, CSS, React, Vue, or Angular code.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Bridges the gap between UI design tools and production code export.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Uploading a photo of a whiteboard wireframe sketch and exporting a working React component structure.</div>
+                <div class="code-box"># Workflow: Image/Wireframe -> TeleportHQ Vision AI -> React/HTML Component Export</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a free account at teleporthq.io and test exporting a visual design container to HTML/CSS.</div>
+            </div>
+
+            <!-- Topic 10 -->
+            <div class="topic-box">
+                <div class="topic-title">10. Codeium</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A fast, free, AI-powered code completion and chat extension for popular IDEs (VS Code, JetBrains).</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> An enterprise-grade AI coding assistant offering real-time inline code autocompletion, chat context explanations, and multi-file editing.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Offers an open, free alternative to GitHub Copilot directly inside your primary code editor.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Typing a comment `// Function to validate email regex` and pressing Tab to accept the generated code.</div>
+                <div class="code-box">// Codeium inline suggestion trigger:
+// Function to check if a number is prime
+function isPrime(num) {
+    if (num <= 1) return false;
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+        if (num % i === 0) return false;
+    }
+    return true;
+} // Auto-completed by pressing TAB</div>
+                <div class="task-box"><span class="field-label">Task:</span> Install the Codeium extension in VS Code and test accepting an inline code suggestion via the Tab key.</div>
+            </div>
+
+            <!-- Topic 11 -->
+            <div class="topic-box">
+                <div class="topic-title">11. Cursor AI</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A modern AI-first code editor built as a fork of VS Code with deeply integrated AI editing capabilities.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> An IDE that understands your entire codebase context, enabling multi-file edits (`Cmd+K`), codebase chat (`Cmd+L`), and automated bug fixing.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Allows developers to build features, refactor code, and fix bugs across multiple project files simultaneously using natural language commands.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Pressing `Cmd+K` in Cursor and typing "Add a search filter input to this product table component".</div>
+                <div class="code-box"># Cursor AI Keyboard Shortcuts:
+Cmd/Ctrl + K  --> Edit or generate code inline
+Cmd/Ctrl + L  --> Chat with codebase context
+@Codebase     --> Index and search entire project for context</div>
+                <div class="task-box"><span class="field-label">Task:</span> Download Cursor Editor (cursor.com), open a web project folder, and use `Cmd+K` to refactor a component.</div>
+            </div>
+
+            <!-- Topic 12 -->
+            <div class="topic-box">
+                <div class="topic-title">12. Replit AI</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> An integrated AI coding assistant inside the Replit cloud development environment that generates, explains, and deploys apps.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A cloud IDE assistant featuring inline completion, natural language app generation (Replit Agent), and instant cloud deployment.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Allows building and deploying full-stack web applications directly from a web browser without local setup.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Telling Replit AI "Build a Flask REST API with SQLite database" and watching it set up the environment and files live.</div>
+                <div class="code-box"># Replit Agent Command:
+"Create a Node.js Express server with a /quote route returning random inspirational quotes."</div>
+                <div class="task-box"><span class="field-label">Task:</span> Open replit.com, launch a Repl workspace, and use Replit AI to generate a starter Node.js server.</div>
+            </div>
+
+            <!-- Topic 13 -->
+            <div class="topic-box">
+                <div class="topic-title">13. HuggingFace Inference API</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A cloud hosted API service that allows running open-source HuggingFace AI models directly via HTTP requests without managing GPU servers.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A RESTful API endpoint connecting developer applications to open-source models (LLMs, vision, audio) using API token authentication.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Integrates powerful open-source AI models into web applications using simple `fetch()` or `requests.post()` calls.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Sending a text prompt to a hosted Mistral model via Python `requests` and receiving JSON generated text back.</div>
+                <div class="code-box">import requests
+
+API_URL = "https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2"
+headers = {"Authorization": "Bearer YOUR_HF_TOKEN"}
+
+def query(payload):
+    response = requests.post(API_URL, headers=headers, json=payload)
+    return response.json()
+
+output = query({"inputs": "Write a JS array map example."})
+print(output)</div>
+                <div class="task-box"><span class="field-label">Task:</span> Generate a free access token on HuggingFace and call the Inference API using Python or JavaScript `fetch()`.</div>
+            </div>
+
+            <!-- Topic 14 -->
+            <div class="topic-box">
+                <div class="topic-title">14. Leonardo AI</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A specialized generative AI platform focused on high-quality visual art, game assets, textures, and UI image generation.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A web platform built on fine-tuned Stable Diffusion models providing precise control over style, pose, prompt guidance, and image generation.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Generates custom web icons, hero section background art, logo concepts, and UI visual assets.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Prompting "3D glowing glass website icon for cloud database, dark background" to get production-ready art.</div>
+                <div class="code-box"># Leonardo AI Prompt:
+"Isometric 3D render of a futuristic web development workstation, dark neon blue aesthetic, highly detailed, 8k"</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a free account on leonardo.ai and generate a 3D tech icon asset for a website header.</div>
+            </div>
+
+            <!-- Topic 15 -->
+            <div class="topic-box">
+                <div class="topic-title">15. Flowise AI</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> An open-source drag-and-drop visual node builder for creating LangChain AI applications and agent workflows.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A visual UI wrapper around LangChain (JS/TS) that lets developers link LLMs, Memory, Vector Databases, and Tools visually without code.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Rapidly prototypes complex AI agent pipelines and exports them as API endpoints or embeddable widgets.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Dragging an OpenAI LLM node, connecting it to a Buffer Memory node, and connecting both to a Chatbot UI widget.</div>
+                <div class="code-box"># Run Flowise locally using npx:
+npx flowise start
+# Open browser at: http://localhost:3000</div>
+                <div class="task-box"><span class="field-label">Task:</span> Launch Flowise locally using `npx flowise start` and inspect the drag-and-drop node workspace interface.</div>
+            </div>
+
+            <!-- Topic 16 -->
+            <div class="topic-box">
+                <div class="topic-title">16. Botpress</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> An enterprise-grade building platform for creating AI-powered conversational chatbots and automated customer agents.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A low-code platform combining natural language understanding (NLU), LLM power, custom workflow triggers, and web widget deployment.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Builds customer support bots that answer questions from documentation, handle bookings, and integrate with CRM tools.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Embedding a chat widget on an e-commerce site that checks order statuses from a database via API calls.</div>
+                <div class="code-box">&lt;!-- Embed Botpress Chatbot Web Widget in HTML --&gt;
+&lt;script src="https://cdn.botpress.cloud/webchat/v1/inject.js"&gt;&lt;/script&gt;
+&lt;script src="https://mediafiles.botpress.cloud/YOUR_BOT_ID/webchat/config.js" defer&gt;&lt;/script&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a free Botpress cloud account (botpress.com) and set up a basic welcome greeting flow.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 3: WORKING WITH LLMS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 3: WORKING WITH LARGE LANGUAGE MODELS</div>
+
+            <!-- Topic 17 -->
+            <div class="topic-box">
+                <div class="topic-title">17. How LLMs Work (Simplified)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> LLMs predict the single most likely next word (token) in a sequence based on statistical probabilities learned during training.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> The model converts input text into numerical vectors (embeddings), processes relationships via Transformer attention layers, and calculates probability distribution for the next token.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Understanding probability-based prediction helps explain why models hallucinate, why temperature affects output, and how to structure prompts properly.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Given "The sun rises in the ___", the model calculates "east" has a 98% probability and outputs "east".</div>
+                <div class="code-box">Input: "Full Stack Developer"
+Model Calculation: "is" (45%), "uses" (30%), "skills" (15%)
+Output: "Full Stack Developer is..."</div>
+                <div class="task-box"><span class="field-label">Task:</span> Explain in simple terms why an LLM doesn't actually "think" like a human, but performs mathematical next-token prediction.</div>
+            </div>
+
+            <!-- Topic 18 -->
+            <div class="topic-box">
+                <div class="topic-title">18. Tokenization</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The process of breaking down raw text strings into smaller numerical chunks called "tokens" that AI models can process.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A token can be a single character, sub-word, or full word. On average, 1 token equals roughly 4 characters or 0.75 words in English.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Determines API pricing costs (billed per 1K tokens) and controls memory limits inside the context window.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> The word "programming" might be broken into 2 tokens: "program" and "ming".</div>
+                <div class="code-box"># Using OpenAI tiktoken library in Python to count tokens
+import tiktoken
+
+encoding = tiktoken.encoding_for_model("gpt-4o")
+tokens = encoding.encode("Hello, Full Stack Developer!")
+
+print("Token IDs:", tokens)
+print("Token Count:", len(tokens)) # Outputs token count</div>
+                <div class="task-box"><span class="field-label">Task:</span> Visit platform.openai.com/tokenizer, paste a paragraph of text, and observe how words are split into colored tokens.</div>
+            </div>
+
+            <!-- Topic 19 -->
+            <div class="topic-box">
+                <div class="topic-title">19. Prompts & Context Window</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The Context Window is the total maximum limit of tokens (input prompt + output response combined) an LLM can remember at one time.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Memory capacity measured in tokens (e.g., 8K, 32K, 128K, 1M tokens). If text exceeds the context window, early messages are forgotten (truncated).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Governs how much code, documentation, or conversation history can be sent to a model in a single request.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A desk workspace—once the desk is covered in papers (context window full), old papers must be removed to fit new ones.</div>
+                <div class="code-box"># Context Window Management Concept:
+System Prompt (500 tokens) + Chat History (5,000 tokens) + New Prompt (500 tokens) = 6,000 Tokens used out of 128,000 Window Limit</div>
+                <div class="task-box"><span class="field-label">Task:</span> Calculate roughly how many words can fit inside a 128K token context window (Hint: 1 token ≈ 0.75 words).</div>
+            </div>
+
+            <!-- Topic 20 -->
+            <div class="topic-box">
+                <div class="topic-title">20. Text Generation, Summarization & Translation</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The three core text manipulation tasks that LLMs perform exceptionally well.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> <span class="highlight">Generation</span> creates new text/code; <span class="highlight">Summarization</span> condenses long documents into key points; <span class="highlight">Translation</span> converts content across programming or natural languages.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Automates email composition, summarizes long meeting transcripts, and translates code between languages (e.g. Python to JavaScript).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Converting a 50-page legal document into 5 bullet points (summarization) or converting Python code to Java (translation).</div>
+                <div class="code-box"># Code Translation Prompt Example:
+"Translate the following Python function into a TypeScript function with strict type annotations:
+def add_user(name: str, age: int) -> dict:
+    return {'name': name, 'age': age}"</div>
+                <div class="task-box"><span class="field-label">Task:</span> Use an LLM to summarize a 300-word news article into exactly 3 key bullet points.</div>
+            </div>
+
+            <!-- Topic 21 -->
+            <div class="topic-box">
+                <div class="topic-title">21. Structure of Prompts (Role, Task, Instructions, Context)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A professional structural framework for writing high-performing prompts divided into 4 key architectural blocks.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> <span class="highlight">Role</span> (Who the AI acts as), <span class="highlight">Task</span> (What to do), <span class="highlight">Instructions</span> (Specific rules & formatting), and <span class="highlight">Context</span> (Background data/examples).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Ensures predictable, high-quality, production-ready outputs from AI models every single time.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Job description given to a new employee—defines their title (Role), project (Task), guidelines (Instructions), and company background (Context).</div>
+                <div class="code-box"># Structured Prompt Blueprint:
+[ROLE] You are an expert Cyber Security Auditor.
+[TASK] Review the provided Node.js code for security vulnerabilities.
+[CONTEXT] This endpoint handles user password resets in production.
+[INSTRUCTIONS]
+1. List all security risks (SQLi, XSS, insecure headers).
+2. Provide corrected code snippets using bcrypt and validation.
+3. Output format must be markdown.</div>
+                <div class="task-box"><span class="field-label">Task:</span> Draft a complete structured prompt using Role, Task, Context, and Instructions for creating a React Form component.</div>
+            </div>
+
+            <!-- Topic 22 -->
+            <div class="topic-box">
+                <div class="topic-title">22. Prompt Engineering Fundamentals</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Advanced techniques used to optimize prompts, including Zero-Shot, Few-Shot, and Chain-of-Thought reasoning.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> <span class="highlight">Zero-Shot</span> (direct task without examples); <span class="highlight">Few-Shot</span> (providing 2-3 input/output examples); <span class="highlight">Chain-of-Thought</span> (forcing step-by-step logical reasoning).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Drastically improves model accuracy for complex math, coding logic, and structured JSON generation.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Showing a student 2 solved math examples (Few-Shot) before asking them to solve a new problem.</div>
+                <div class="code-box"># Few-Shot + Chain-of-Thought Prompt:
+"Convert product titles into slug URLs:
+Input: 'Wireless Mouse 2026' -> Output: 'wireless-mouse-2026'
+Input: 'Gaming Keyboard & Mouse' -> Output: 'gaming-keyboard-mouse'
+
+Input: 'Ultra HD 4K Monitor!' -> Let's think step by step:"</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a Few-Shot prompt with 2 input/output examples that converts sentiment sentences into JSON (`{ sentiment: "positive" }`).</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 4: LANGCHAIN & AI APPS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 4: BUILDING AI APPS USING LANGCHAIN</div>
+
+            <!-- Topic 23 -->
+            <div class="topic-box">
+                <div class="topic-title">23. Introduction to LangChain Concepts</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> LangChain is a popular open-source framework designed to simplify building applications powered by Large Language Models.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A developer framework available in Python and JavaScript/TypeScript that chains together LLMs, prompt templates, vector databases, memory, and external tools.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Allows developers to build complex AI applications like RAG (Retrieval-Augmented Generation) search systems, custom document Q&A bots, and autonomous agents.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Building a house using pre-fabricated modular walls (LangChain components) instead of making bricks manually from clay.</div>
+                <div class="code-box"># Installation in Python:
+pip install langchain langchain-openai
+
+# Installation in JavaScript:
+npm install langchain @langchain/openai</div>
+                <div class="task-box"><span class="field-label">Task:</span> Install `langchain` in your Python or Node.js environment and list its core module components.</div>
+            </div>
+
+            <!-- Topic 24 -->
+            <div class="topic-box">
+                <div class="topic-title">24. LangChain Chains</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A Chain is the fundamental building block in LangChain that links multiple components (Prompt + LLM + Output Parser) into a single execution pipeline.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Combines elements sequentially using LangChain Expression Language (LCEL) syntax: <span class="highlight">chain = prompt | model | output_parser</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Automates multi-step workflows where the output of one AI step becomes the input to the next.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> An assembly line: Step 1 formats text → Step 2 LLM generates summary → Step 3 Parser formats output into JSON.</div>
+                <div class="code-box">from langchain_openai import ChatOpenAI
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
+
+# 1. Define Prompt, Model & Parser
+prompt = ChatPromptTemplate.from_template("Tell me a short joke about {topic}")
+model = ChatOpenAI(model="gpt-4o")
+parser = StrOutputParser()
+
+# 2. Link into LCEL Chain using pipe (|) operator
+chain = prompt | model | parser
+
+# 3. Invoke Chain
+result = chain.invoke({"topic": "JavaScript"})
+print(result)</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a LangChain LCEL chain in Python that accepts a language parameter and returns a translated greeting.</div>
+            </div>
+
+            <!-- Topic 25 -->
+            <div class="topic-box">
+                <div class="topic-title">25. LangChain Tools & Agents</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Agents use LLMs as reasoning engines to dynamically decide which external Tools (web search, calculator, database query) to run to fulfill a task.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> <span class="highlight">Tools</span> are functions the AI can execute (e.g., Google Search); <span class="highlight">Agents</span> use ReAct (Reasoning + Acting) loops to call tools dynamically until the goal is met.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Gives static LLMs real-time access to the internet, live database queries, system terminal execution, and math calculation tools.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> An AI assistant that doesn't know today's weather using a Weather API Tool to fetch live temperature and report it back to you.</div>
+                <div class="code-box">from langchain_community.agent_toolkits import load_tools
+from langchain.agents import initialize_agent, AgentType
+from langchain_openai import OpenAI
+
+llm = OpenAI(temperature=0)
+# Give AI access to search and calculator tools
+tools = load_tools(["serpapi", "llm-math"], llm=llm)
+
+agent = initialize_agent(tools, llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION)
+agent.run("What is the current temperature in NYC multiplied by 2?")</div>
+                <div class="task-box"><span class="field-label">Task:</span> Explain the difference between a static LangChain Chain versus a dynamic LangChain Agent.</div>
+            </div>
+
+            <!-- Topic 26 -->
+            <div class="topic-box">
+                <div class="topic-title">26. LangChain Prompt Templates</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Reusable, parameterized classes designed to construct dynamic input prompts cleanly without manual string formatting.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Classes like <span class="highlight">PromptTemplate</span> and <span class="highlight">ChatPromptTemplate</span> that substitute placeholder variables (`{variable}`) with runtime data.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Standardizes prompt construction across your codebase and prevents string concatenation errors.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Creating a master customer email template where customer name and order number are filled in dynamically.</div>
+                <div class="code-box">from langchain_core.prompts import ChatPromptTemplate
+
+# Create reusable Chat Prompt Template
+chat_template = ChatPromptTemplate.from_messages([
+    ("system", "You are an expert full stack mentor named {bot_name}."),
+    ("user", "Explain {concept} simply to a beginner.")
+])
+
+# Format prompt with variables
+formatted_prompt = chat_template.format_messages(
+    bot_name="DevBot", 
+    concept="REST APIs"
+)</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a `ChatPromptTemplate` with system role "Tech Translator" and user variables `{source_lang}` and `{target_lang}`.</div>
+            </div>
+
+            <!-- Topic 27 -->
+            <div class="topic-box">
+                <div class="topic-title">27. LangChain LLM Wrappers</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Standardized interface classes in LangChain that allow swapping underlying AI providers (OpenAI, Anthropic, Gemini, HuggingFace) with zero code changes.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Unified classes like <span class="highlight">ChatOpenAI</span>, <span class="highlight">ChatAnthropic</span>, and <span class="highlight">HuggingFaceHub</span> providing identical `.invoke()` and `.stream()` methods.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Prevents vendor lock-in by allowing developers to switch between commercial or open-source LLMs simply by changing one line of code.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Universal power adapter—plug your charger into sockets in the US, Europe, or Asia without changing your laptop cable.</div>
+                <div class="code-box"># Swap model providers seamlessly:
+# Option 1: OpenAI
+from langchain_openai import ChatOpenAI
+llm = ChatOpenAI(model="gpt-4o")
+
+# Option 2: Anthropic Claude (Same interface!)
+# from langchain_anthropic import ChatAnthropic
+# llm = ChatAnthropic(model="claude-3-5-sonnet-20240620")
+
+response = llm.invoke("Write a Python list comprehension example.")
+print(response.content)</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a script that uses LangChain's unified `ChatOpenAI` interface to invoke a query response.</div>
+            </div>
+
+            <!-- Topic 28 -->
+            <div class="topic-box">
+                <div class="topic-title">28. Memory in LLM Apps</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Memory components store past user interactions so the LLM remembers previous context in a multi-turn conversation.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> LangChain classes like <span class="highlight">ConversationBufferMemory</span> (stores full transcript) or <span class="highlight">ConversationSummaryMemory</span> (summarizes past context) appended to model inputs.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Turns stateless single-request API calls into stateful conversational experiences (like ChatGPT).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A doctor keeping a patient's medical history chart so they don't ask for your medical history again during every visit.</div>
+                <div class="code-box">from langchain.memory import ConversationBufferMemory
+from langchain.chains import ConversationChain
+from langchain_openai import ChatOpenAI
+
+# Attach Memory to Conversation Chain
+memory = ConversationBufferMemory()
+conversation = ConversationChain(
+    llm=ChatOpenAI(model="gpt-4o"),
+    memory=memory
+)
+
+# User turn 1
+conversation.predict(input="Hi, my name is Alex.")
+# User turn 2 (AI remembers name!)
+response = conversation.predict(input="What is my name?")
+print(response) # "Your name is Alex."</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a Python script using `ConversationBufferMemory` where the bot remembers the user's favorite programming language.</div>
+            </div>
+
+            <!-- Topic 29 -->
+            <div class="topic-box">
+                <div class="topic-title">29. Project: Building a Chatbot using LangChain</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Building a complete, production-ready interactive chatbot application combining Prompt Templates, Memory, LLM Wrappers, and a Web UI.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Integrating LangChain Python backend logic with a web framework (Streamlit or FastAPI/React) to deliver real-time interactive AI responses.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Consolidates all Generative AI and LangChain concepts into a working web application.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Building an AI customer support widget embedded on a web development company homepage.</div>
+                <div class="code-box"># Full Interactive Chatbot with Streamlit + LangChain
+import streamlit as st
+from langchain_openai import ChatOpenAI
+from langchain.schema import HumanMessage, AIMessage
+
+st.title("🤖 DevBot - Full Stack AI Assistant")
+
+if "messages" not in st.session_state:
+    st.session_state.messages = []
+
+# Display chat history
+for msg in st.session_state.messages:
+    st.chat_message("user" if isinstance(msg, HumanMessage) else "assistant").write(msg.content)
+
+# Process User Input
+if prompt := st.chat_input("Ask a web dev question..."):
+    st.chat_message("user").write(prompt)
+    st.session_state.messages.append(HumanMessage(content=prompt))
+    
+    llm = ChatOpenAI(model="gpt-4o")
+    response = llm.invoke(st.session_state.messages)
+    
+    st.chat_message("assistant").write(response.content)
+    st.session_state.messages.append(AIMessage(content=response.content))</div>
+                <div class="task-box"><span class="field-label">Task:</span> Run the Streamlit Chatbot code using `streamlit run chatbot.py` and test multi-turn conversations in your browser.</div>
+            </div>
+
+            <div style="text-align:center; margin-top:40px; font-size:24px; color:#005f73;">
+                🎉 End of Generative AI Notes 🎉
+            </div>
+            <div style="text-align:center; font-size:18px; color:#777; margin-top:10px;">
+                Next Subject: <a href="deployment.html" class="menu-link">Deployment Notes</a>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function generatePDF() {
+            const element = document.getElementById("notes-content");
+            const options = {
+                margin: [0.2, 0.2, 0.2, 0.2],
+                filename: "GenAI_Handwritten_Notes.pdf",
+                image: { type: "jpeg", quality: 0.98 },
+                html2canvas: { scale: 2, logging: false, useCORS: true },
+                jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
+            };
+            const bar = document.querySelector(".no-print-bar");
+            bar.style.display = "none";
+            html2pdf().set(options).from(element).save().then(() => {
+                bar.style.display = "flex";
+            });
+        }
+    </script>
+
+</body>
+</html>

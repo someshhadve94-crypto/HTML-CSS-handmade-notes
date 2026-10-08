@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Handwritten Notes</title>
+    <link rel="stylesheet" href="shared-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- TOP NAVIGATION BUTTONS -->
+    <div class="no-print-bar">
+        <button class="btn-nav btn-download" onclick="generatePDF()">📥 Download PDF</button>
+        <a href="index.html" class="btn-nav">🏠 Home</a>
+        <a href="html5.html" class="btn-nav">📘 HTML5</a>
+        <a href="css3.html" class="btn-nav">🎨 CSS3</a>
+        <a href="advanced-js.html" class="btn-nav">🚀 Adv JS</a>
+        <a href="bootstrap.html" class="btn-nav">💠 Bootstrap</a>
+        <a href="reactjs.html" class="btn-nav">⚛️ React</a>
+        <a href="nextjs.html" class="btn-nav">▲ NextJS</a>
+        <a href="angular.html" class="btn-nav">🅰️ Angular</a>
+        <a href="python.html" class="btn-nav">🐍 Python</a>
+        <a href="nodejs.html" class="btn-nav">🟢 NodeJS</a>
+        <a href="mysql.html" class="btn-nav">🗄️ MySQL</a>
+        <a href="mongodb.html" class="btn-nav">🍃 MongoDB</a>
+        <a href="django.html" class="btn-nav">🎸 Django</a>
+        <a href="expressjs.html" class="btn-nav">🚂 Express</a>
+        <a href="genai.html" class="btn-nav">🤖 Gen AI</a>
+        <a href="deployment.html" class="btn-nav">☁️ Deploy</a>
+    </div>
+
+    <main class="notebook-container" id="notes-content">
+
+        <!-- =========================
+             PAGE 1: INTRODUCTION
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="notebook-header">
+                <h1 class="notebook-title">⚡ JavaScript Master Notes</h1>
+                <p style="font-size:20px; color:#555;">Logic, Interactivity & Dynamic Behavior</p>
+            </div>
+
+            <div class="module-tag">PART 1: INTRODUCTION TO JS</div>
+
+            <div class="topic-box">
+                <div class="topic-title">1. History of JavaScript</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> JavaScript is a programming language created to make web pages interactive.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Created by Brendan Eich at Netscape in 1995, originally named Mocha, then LiveScript, finally renamed JavaScript.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Was built to add behavior (clicks, forms, animations) to static HTML pages inside browsers.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Think of HTML as a car body, CSS as the paint, and JavaScript as the engine that makes it run.</div>
+                <div class="code-box">// First JavaScript ever ran in Netscape Navigator (1995)
+console.log("Hello, I am JavaScript!");</div>
+                <div class="task-box"><span class="field-label">Task:</span> Research online when ECMAScript 6 (ES6) was released and list 3 features it introduced.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">2. Features of JavaScript</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> JavaScript has special qualities that make it powerful and widely used.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Features include being lightweight, interpreted, dynamic, cross-platform, object-based, and event-driven.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> These features allow JavaScript to run on browsers, servers (Node.js), mobile apps, and games.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Like a Swiss Army knife — one tool that works in many different situations.</div>
+                <div class="code-box">// JavaScript runs on browser AND server
+console.log("Running JS");
+
+// Dynamic typing (no need to declare types)
+let x = 10;
+x = "Now I am a string";</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a list of 5 JavaScript features and explain each in your own words.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">3. How to Include JavaScript</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> JavaScript can be added to a webpage in three different ways.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Inline (inside HTML attributes), Internal (inside &lt;script&gt; tags), and External (linked .js files).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Allows developers to choose between quick inline code or clean reusable external files.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Inline = writing on a sticky note, Internal = inside the book, External = separate instruction manual.</div>
+                <div class="code-box">&lt;!-- Inline --&gt;
+&lt;button onclick="alert('Hi!')"&gt;Click&lt;/button&gt;
+
+&lt;!-- Internal --&gt;
+&lt;script&gt; console.log("Internal JS"); &lt;/script&gt;
+
+&lt;!-- External --&gt;
+&lt;script src="app.js"&gt;&lt;/script&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create one HTML file that uses all 3 methods of including JavaScript.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 2: DATA TYPES
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 2: DATA TYPES</div>
+
+            <div class="topic-box">
+                <div class="topic-title">4. String Data Type</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A string stores text data such as names, messages, or paragraphs.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A sequence of characters wrapped in single quotes ' ', double quotes " ", or backticks ` `.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Stores and manages all text-based information in a program.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Like writing a word on a piece of paper and labeling it.</div>
+                <div class="code-box">let name = "Alex";
+let greeting = 'Hello World';
+let message = `Hi, ${name}!`; // template literal</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create 3 string variables using single, double, and backtick quotes.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">5. Number Data Type</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A number stores numeric values like age, price, or scores.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> JavaScript has only one number type that handles both integers and decimals (floats).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Used for calculations, counting, pricing, and mathematical operations.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Like writing down an exam score or price tag.</div>
+                <div class="code-box">let age = 25;
+let price = 199.99;
+let negative = -50;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create 3 number variables for your age, height, and bank balance.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">6. Boolean Data Type</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A boolean stores only one of two values: true or false.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A binary data type representing yes/no, on/off, or 1/0 states.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Used for logic decisions, conditions, flags, and comparisons.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Light switch — ON (true) or OFF (false).</div>
+                <div class="code-box">let isLoggedIn = true;
+let isAdmin = false;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create boolean variables for isStudent, isMarried, and hasLicense.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">7. Undefined Data Type</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Undefined means a variable was declared but no value was assigned.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> The default value given automatically by JavaScript when a variable has no assigned value.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Shows that a variable exists but is still empty.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Like an empty cup — the cup exists, but nothing is inside.</div>
+                <div class="code-box">let user;
+console.log(user); // undefined</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a variable without assigning it and print its value.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">8. Null Data Type</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Null represents an intentional "empty" or "no value" state.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A special value that developers assign deliberately to show something is empty.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Used to intentionally clear or reset a variable.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A clean whiteboard — intentionally wiped empty.</div>
+                <div class="code-box">let selectedUser = null;
+console.log(selectedUser); // null</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a variable, assign null to it, and print the result.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">9. Object Data Type</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> An object stores multiple related values together as key-value pairs.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A collection of properties enclosed in curly braces { } with key:value structure.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Groups related data (like a student's name, age, and grade) in a single container.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Like a person's ID card holding name, DOB, and address together.</div>
+                <div class="code-box">let student = {
+    name: "Alex",
+    age: 20,
+    grade: "A"
+};</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create an object called "car" with brand, model, and year properties.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">10. Array Data Type</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> An array stores a list of values in a single variable.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> An ordered collection of items enclosed in square brackets [ ], accessed by index starting at 0.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Stores multiple items like a list of fruits, prices, or names.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A grocery shopping list written on paper.</div>
+                <div class="code-box">let fruits = ["Apple", "Banana", "Mango"];
+console.log(fruits[0]); // Apple</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create an array of 5 favorite movies and print the second one.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 3: VARIABLES & SCOPES
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 3: VARIABLES & SCOPES</div>
+
+            <div class="topic-box">
+                <div class="topic-title">11. var Keyword</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The oldest way to declare variables in JavaScript.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A function-scoped variable declaration that can be re-declared and updated.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Was the standard before 2015 for creating variables throughout a function.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Like a public message board — anyone in the function can read or change it.</div>
+                <div class="code-box">var name = "Alex";
+var name = "Bob"; // allowed
+console.log(name); // Bob</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a var variable, re-declare it, and print both values.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">12. let Keyword</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A modern way to declare variables whose values can change.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A block-scoped variable declaration (works only inside { } where defined) introduced in ES6.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Used for variables that need to be updated later but kept within a specific scope.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Like a classroom note — only valid inside that classroom (block).</div>
+                <div class="code-box">let count = 0;
+count = 10; // allowed
+// let count = 5; // ERROR: cannot re-declare</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a let variable "score", change its value 3 times, and print each change.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">13. const Keyword</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Used to declare variables whose values must never change.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A block-scoped variable declaration that cannot be reassigned after initialization.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Used for constants, configuration values, and fixed data.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Like a birth date — once set, it never changes.</div>
+                <div class="code-box">const PI = 3.14159;
+// PI = 3.14; // ERROR: cannot reassign const</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a const variable "COUNTRY" and try to change it to see the error.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">14. Global Scope</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Variables accessible everywhere in the code.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Variables declared outside any function or block, available in the entire program.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Shares data across multiple functions and files.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A public announcement heard by everyone in a building.</div>
+                <div class="code-box">let appName = "MyApp"; // global
+
+function show() {
+    console.log(appName); // accessible
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a global variable and access it inside 2 different functions.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">15. Local / Block Scope</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Variables accessible only inside a specific function or block.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Variables declared inside { } or a function, invisible outside that scope.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Keeps variables private and prevents accidental changes from outside.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A whisper between two people — nobody else can hear it.</div>
+                <div class="code-box">function greet() {
+    let msg = "Hello";
+    console.log(msg); // works
+}
+// console.log(msg); // ERROR</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a function with a local variable and try accessing it outside the function.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 4: OPERATORS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 4: OPERATORS</div>
+
+            <div class="topic-box">
+                <div class="topic-title">16. Arithmetic Operators</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Operators that perform math calculations on numbers.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Include + (add), - (subtract), * (multiply), / (divide), % (remainder), ** (power).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Used for all math operations like totals, discounts, and averages.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A calculator doing basic arithmetic.</div>
+                <div class="code-box">let a = 10, b = 3;
+console.log(a + b);  // 13
+console.log(a % b);  // 1 (remainder)
+console.log(a ** 2); // 100 (power)</div>
+                <div class="task-box"><span class="field-label">Task:</span> Calculate 25 + 4, 25 - 4, 25 * 4, 25 / 4, and 25 % 4.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">17. Assignment Operators</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Operators used to assign or update values in a variable.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Include = (assign), +=, -=, *=, /=, %= (compound assignment operators).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Writes less code when updating variable values.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Adding money to a bank account instead of calculating total each time.</div>
+                <div class="code-box">let x = 10;
+x += 5;  // x = x + 5 = 15
+x -= 2;  // x = 13
+x *= 2;  // x = 26</div>
+                <div class="task-box"><span class="field-label">Task:</span> Start with a variable at 100 and use += 20, -= 10, *= 3 to update it.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">18. Comparison Operators</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Operators that compare two values and return true or false.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Include == (equal), === (strict equal), != , !==, >, &lt;, >=, &lt;=.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Used in conditions, loops, and validation checks.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A judge comparing two scores to decide a winner.</div>
+                <div class="code-box">console.log(10 == "10");   // true (loose)
+console.log(10 === "10");  // false (strict)
+console.log(5 > 3);        // true</div>
+                <div class="task-box"><span class="field-label">Task:</span> Compare 5 == "5" and 5 === "5" and explain the difference.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">19. Logical Operators</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Operators that combine multiple boolean conditions.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Include && (AND), || (OR), ! (NOT).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Used in complex decision-making like login validation.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> "You can enter only IF you have a ticket AND an ID."</div>
+                <div class="code-box">let age = 20, hasID = true;
+console.log(age >= 18 && hasID); // true
+console.log(age < 18 || hasID);  // true
+console.log(!hasID);              // false</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a logic check: user can log in if (age >= 18 AND hasPassword).</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 5: CONDITIONAL STATEMENTS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 5: CONDITIONAL STATEMENTS</div>
+
+            <div class="topic-box">
+                <div class="topic-title">20. if Statement</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Executes a block of code only if a condition is true.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> The simplest conditional statement using the keyword "if" followed by a condition in parentheses.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Allows programs to make yes/no decisions.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> "If it's raining, take an umbrella."</div>
+                <div class="code-box">let age = 20;
+if (age >= 18) {
+    console.log("Adult");
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write an if statement checking if a number is positive.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">21. if-else Statement</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Executes one block if the condition is true, another block if false.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> An extension of the if statement with an "else" clause for alternative action.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Handles two different outcomes based on a condition.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> "If pass, celebrate; else, study harder."</div>
+                <div class="code-box">let score = 45;
+if (score >= 50) {
+    console.log("Pass");
+} else {
+    console.log("Fail");
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write an if-else that checks if a number is even or odd.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">22. else if Statement</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Checks multiple conditions one after another.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A chain of conditions evaluated in order until one is true.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Handles more than two possible outcomes.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Giving grades: A, B, C, D, or F based on marks.</div>
+                <div class="code-box">let marks = 75;
+if (marks >= 90) console.log("A");
+else if (marks >= 75) console.log("B");
+else if (marks >= 60) console.log("C");
+else console.log("F");</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a program that gives grades (A/B/C/D/F) based on marks.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">23. switch Statement</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A cleaner way to check multiple exact values of one variable.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A conditional that uses "case" blocks to match exact values and a "default" fallback.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Used when checking one variable against many fixed values.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A vending machine giving different items based on button pressed.</div>
+                <div class="code-box">let day = "Monday";
+switch (day) {
+    case "Monday": console.log("Start week"); break;
+    case "Friday": console.log("Almost weekend"); break;
+    default: console.log("Normal day");
+}</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a switch for days of the week that prints a mood message for each.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 6: FUNCTIONS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 6: FUNCTIONS</div>
+
+            <div class="topic-box">
+                <div class="topic-title">24. Built-in Functions</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Pre-defined functions that come built into JavaScript.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Functions provided by the language such as alert(), prompt(), parseInt(), isNaN(), Math.max().</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Perform common tasks without writing code from scratch.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Pre-installed apps on your phone — ready to use immediately.</div>
+                <div class="code-box">alert("Hello!");
+let num = parseInt("25");
+let max = Math.max(10, 20, 5);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Use 3 built-in functions: alert(), parseInt(), and Math.random().</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">25. Regular (User-defined) Functions</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Functions created by the programmer for custom tasks.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Declared using the "function" keyword followed by name, parameters, and a code block.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Allows reusing the same code multiple times.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A recipe you wrote yourself and can use anytime you cook.</div>
+                <div class="code-box">function greet() {
+    console.log("Hello!");
+}
+greet();</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a function called "sayHi" that prints "Hi there!" and call it 3 times.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">26. Function Parameters</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Variables passed into a function to use its logic with different inputs.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Values listed inside parentheses when defining a function, acting as placeholders for arguments.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Makes functions flexible and reusable with different data.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A coffee machine where you choose the type and size as input.</div>
+                <div class="code-box">function greet(name) {
+    console.log("Hello, " + name);
+}
+greet("Alex");
+greet("Maya");</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a function "add(a, b)" that prints the sum of two numbers.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">27. Return Values</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A function can send back a result using the "return" keyword.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> The "return" statement sends a value from a function back to the code that called it.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Allows functions to produce usable output for further operations.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A vending machine giving you a drink after you insert money.</div>
+                <div class="code-box">function add(a, b) {
+    return a + b;
+}
+let total = add(5, 10); // 15</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a function "multiply(a, b)" that returns the product.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 7: ARRAYS & STRINGS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 7: ARRAYS & STRINGS</div>
+
+            <div class="topic-box">
+                <div class="topic-title">28. Creating Arrays</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Arrays are lists that hold multiple values in order.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Collections created with [ ] or the Array() constructor, where each item has an index starting at 0.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Stores grouped data like a list of users, prices, or items.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A train with multiple numbered coaches.</div>
+                <div class="code-box">let colors = ["red", "green", "blue"];
+console.log(colors[0]); // red
+console.log(colors.length); // 3</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create an array of 5 country names and print the 3rd one.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">29. push() Method</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Adds a new item to the end of an array.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> An array method that modifies the original array by appending items.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Grows an array dynamically with new data.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Adding a new book to the end of a bookshelf.</div>
+                <div class="code-box">let fruits = ["Apple", "Banana"];
+fruits.push("Mango");
+// ["Apple", "Banana", "Mango"]</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create an array of 3 items, push 2 new items, and print it.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">30. pop() Method</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Removes the last item from an array.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> An array method that removes and returns the final element.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Shrinks an array by removing the latest entry.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Removing the last book you placed on a shelf.</div>
+                <div class="code-box">let fruits = ["Apple", "Banana", "Mango"];
+fruits.pop(); // removes "Mango"</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create an array of 5 items and remove the last one using pop().</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">31. String length Property</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Returns the total number of characters in a string.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A built-in property of strings that counts all characters including spaces.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Used to validate inputs, truncate text, or check text size.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Counting letters in a word to check if a password is long enough.</div>
+                <div class="code-box">let name = "JavaScript";
+console.log(name.length); // 10</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a string "Hello World" and print its length.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">32. toUpperCase() and toLowerCase()</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Methods that change string case to all capital or all lowercase letters.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Built-in string methods that return a new string with converted case.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Used for standardizing user input and formatting text display.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Shouting a word (uppercase) vs whispering it (lowercase).</div>
+                <div class="code-box">let name = "javascript";
+console.log(name.toUpperCase()); // JAVASCRIPT
+console.log(name.toLowerCase()); // javascript</div>
+                <div class="task-box"><span class="field-label">Task:</span> Take a user name and print it both in uppercase and lowercase.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">33. slice() Method</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Extracts a portion of a string or array without changing the original.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A method using (start, end) indexes to copy a specific portion into a new string or array.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Used to get substrings, previews, usernames, or specific list items.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Cutting a specific slice of pizza without touching the rest.</div>
+                <div class="code-box">let text = "JavaScript";
+console.log(text.slice(0, 4)); // Java</div>
+                <div class="task-box"><span class="field-label">Task:</span> Take the string "Programming" and extract the first 4 letters.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 8: MATH & WINDOW OBJECTS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 8: MATH & WINDOW OBJECTS</div>
+
+            <div class="topic-box">
+                <div class="topic-title">34. Math Object</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A built-in object providing math functions and constants.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A global object with methods like Math.round(), Math.random(), Math.sqrt(), Math.PI.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Simplifies math operations in programs.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A built-in scientific calculator inside JavaScript.</div>
+                <div class="code-box">console.log(Math.round(4.6));   // 5
+console.log(Math.sqrt(25));     // 5
+console.log(Math.random());     // 0 to 1
+console.log(Math.PI);           // 3.14159</div>
+                <div class="task-box"><span class="field-label">Task:</span> Generate a random number between 1 and 100 using Math.random().</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">35. Console Object</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A tool for printing messages and debugging code.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A browser object with methods like log(), error(), warn(), info(), table().</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Shows output in the DevTools console to help developers debug.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A doctor's notepad for jotting down patient info to review later.</div>
+                <div class="code-box">console.log("Normal message");
+console.error("Error message");
+console.warn("Warning!");
+console.table([{name: "Alex"}, {name: "Bob"}]);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Try all 4 console methods: log, error, warn, and table.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">36. Screen Object</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Provides information about the user's screen size and resolution.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A browser object with properties like screen.width, screen.height, screen.availWidth.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Helps make designs responsive to different screens.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Checking the size of a wall before buying a painting.</div>
+                <div class="code-box">console.log(screen.width);  // e.g. 1920
+console.log(screen.height); // e.g. 1080</div>
+                <div class="task-box"><span class="field-label">Task:</span> Print your screen's width and height using the screen object.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">37. alert() Function</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Shows a popup message to the user.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A built-in Window object method that displays an alert dialog box.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Quickly notifies users of important messages or warnings.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A notification pop-up telling you "Battery Low."</div>
+                <div class="code-box">alert("Welcome to my site!");</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a button that shows an alert "Button clicked!" when pressed.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">38. prompt() Function</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Shows an input dialog box asking the user for text input.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A built-in Window method that returns the user's input as a string.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Collects simple information from users without an HTML form.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> An ATM asking you to enter your PIN.</div>
+                <div class="code-box">let name = prompt("What is your name?");
+alert("Hello, " + name);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Use prompt to ask the user's name and show it in alert.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">39. confirm() Function</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Shows a Yes/No popup for user confirmation.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A built-in method that returns true (OK) or false (Cancel).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Confirms important actions like deletions or purchases.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> "Are you sure you want to delete this file?"</div>
+                <div class="code-box">let answer = confirm("Delete this item?");
+if (answer) alert("Deleted!");
+else alert("Cancelled");</div>
+                <div class="task-box"><span class="field-label">Task:</span> Ask the user "Do you want to continue?" and show the result.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 9: DOM
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 9: DOCUMENT OBJECT MODEL (DOM)</div>
+
+            <div class="topic-box">
+                <div class="topic-title">40. DOM Structure</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The DOM represents an HTML page as a tree of objects that JavaScript can modify.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Document Object Model is a programming interface that treats every HTML tag as a node in a tree structure.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Allows JavaScript to read, change, add, and delete page elements dynamically.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Like a family tree where parent and child elements have clear relationships.</div>
+                <div class="code-box">// HTML page becomes a tree:
+// document
+//   └── html
+//       ├── head
+//       └── body
+//           └── h1, p, div, etc.</div>
+                <div class="task-box"><span class="field-label">Task:</span> Draw a DOM tree diagram of a simple HTML page with 1 head and 1 body.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">41. DOM Hierarchy</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The parent-child relationships between HTML elements.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Each HTML element is a node with parentNode, childNodes, firstChild, lastChild, and siblings.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Helps navigate and traverse the DOM programmatically.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A div (parent) containing paragraphs (children).</div>
+                <div class="code-box">let box = document.getElementById("box");
+console.log(box.parentNode);
+console.log(box.children);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a div with 3 paragraphs and print its children in the console.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">42. getElementById()</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Selects one HTML element using its unique ID.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A DOM method that returns the element with the matching id attribute.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Targets a specific element to read or change its content/style.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Calling a specific person by their unique ID number.</div>
+                <div class="code-box">let title = document.getElementById("main-title");
+title.innerText = "New Title!";</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create an h1 with id="title" and change its text using getElementById.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">43. getElementsByClassName()</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Selects all HTML elements that share the same class name.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A DOM method that returns a live HTMLCollection of matching elements.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Modifies multiple similar elements at once.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Grouping all students wearing the same uniform.</div>
+                <div class="code-box">let cards = document.getElementsByClassName("card");
+console.log(cards.length);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create 3 divs with class="box" and count them using this method.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">44. querySelector()</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Selects the first HTML element matching any CSS selector.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A modern DOM method using CSS selector syntax (#id, .class, tag).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Provides flexible and powerful element selection.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Picking the first red apple from a basket.</div>
+                <div class="code-box">let btn = document.querySelector(".btn");
+let header = document.querySelector("#header");
+let firstP = document.querySelector("p");</div>
+                <div class="task-box"><span class="field-label">Task:</span> Use querySelector to select the first h2 and change its color.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">45. DOM Manipulation</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Changing HTML content, structure, or style using JavaScript.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses properties/methods like innerText, innerHTML, style, setAttribute, appendChild, removeChild.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Creates dynamic, interactive user interfaces.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Live editing text on a webpage without reloading.</div>
+                <div class="code-box">let box = document.getElementById("box");
+box.innerText = "New Content";
+box.style.color = "red";
+box.setAttribute("class", "new-class");</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a button that changes a paragraph's text and color when clicked.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 10: EVENT HANDLING
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 10: EVENT HANDLING</div>
+
+            <div class="topic-box">
+                <div class="topic-title">46. Click Event</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> An action that happens when a user clicks an element.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A DOM event triggered on mouse click, handled using addEventListener("click", function).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Allows users to interact with buttons, links, cards, and images.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Pressing a doorbell to make it ring.</div>
+                <div class="code-box">let btn = document.getElementById("myBtn");
+btn.addEventListener("click", function() {
+    alert("Button Clicked!");
+});</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a button that shows "Hello!" alert on click.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">47. Submit Event</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> An event triggered when a form is submitted.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A DOM event fired on form submission, used with addEventListener("submit", callback).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Validates form data before sending it to the server.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A security guard checking IDs before letting people enter.</div>
+                <div class="code-box">let form = document.getElementById("myForm");
+form.addEventListener("submit", function(e) {
+    e.preventDefault(); // stop page reload
+    alert("Form submitted!");
+});</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a form with name input, prevent reload, and alert the name.</div>
+            </div>
+
+            <div class="topic-box">
+                <div class="topic-title">48. Keypress Event</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> An event triggered when a user presses a keyboard key.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A DOM event using addEventListener("keydown", "keyup", or "keypress") with event.key info.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Builds search bars, shortcuts, and real-time typing effects.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A typewriter printing a letter each time a key is pressed.</div>
+                <div class="code-box">let input = document.getElementById("search");
+input.addEventListener("keydown", function(e) {
+    console.log("You pressed: " + e.key);
+});</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create an input field and print each key pressed in the console.</div>
+            </div>
+
+            <div style="text-align:center; margin-top:40px; font-size:24px; color:#005f73;">
+                🎉 End of JavaScript Notes 🎉
+            </div>
+            <div style="text-align:center; font-size:18px; color:#777; margin-top:10px;">
+                Next Subject: <a href="advanced-js.html" class="menu-link">Advanced JavaScript Notes</a>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function generatePDF() {
+            const element = document.getElementById("notes-content");
+            const options = {
+                margin: [0.2, 0.2, 0.2, 0.2],
+                filename: "JavaScript_Handwritten_Notes.pdf",
+                image: { type: "jpeg", quality: 0.98 },
+                html2canvas: { scale: 2, logging: false, useCORS: true },
+                jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
+            };
+            const bar = document.querySelector(".no-print-bar");
+            bar.style.display = "none";
+            html2pdf().set(options).from(element).save().then(() => {
+                bar.style.display = "flex";
+            });
+        }
+    </script>
+
+</body>
+</html>

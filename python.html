@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python - Handwritten Notes</title>
+    <link rel="stylesheet" href="shared-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- TOP NAVIGATION BUTTONS -->
+    <div class="no-print-bar">
+        <button class="btn-nav btn-download" onclick="generatePDF()">📥 Download PDF</button>
+        <a href="index.html" class="btn-nav">🏠 Home</a>
+        <a href="html5.html" class="btn-nav">📘 HTML5</a>
+        <a href="css3.html" class="btn-nav">🎨 CSS3</a>
+        <a href="javascript.html" class="btn-nav">⚡ JavaScript</a>
+        <a href="advanced-js.html" class="btn-nav">🚀 Adv JS</a>
+        <a href="bootstrap.html" class="btn-nav">💠 Bootstrap</a>
+        <a href="reactjs.html" class="btn-nav">⚛️ React</a>
+        <a href="nextjs.html" class="btn-nav">▲ NextJS</a>
+        <a href="angular.html" class="btn-nav">🅰️ Angular</a>
+        <a href="nodejs.html" class="btn-nav">🟢 NodeJS</a>
+        <a href="mysql.html" class="btn-nav">🗄️ MySQL</a>
+        <a href="mongodb.html" class="btn-nav">🍃 MongoDB</a>
+        <a href="django.html" class="btn-nav">🎸 Django</a>
+        <a href="expressjs.html" class="btn-nav">🚂 Express</a>
+        <a href="genai.html" class="btn-nav">🤖 Gen AI</a>
+        <a href="deployment.html" class="btn-nav">☁️ Deploy</a>
+    </div>
+
+    <main class="notebook-container" id="notes-content">
+
+        <!-- =========================
+             PAGE 1: INTRODUCTION & BASICS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="notebook-header">
+                <h1 class="notebook-title">🐍 Python Master Notes</h1>
+                <p style="font-size:20px; color:#555;">High-Level Server-Side Programming Language</p>
+            </div>
+
+            <div class="module-tag">PART 1: PYTHON BASICS</div>
+
+            <!-- Topic 1 -->
+            <div class="topic-box">
+                <div class="topic-title">1. Introduction to Python</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Python is a clean, readable, high-level programming language used for web development, automation, and data science.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> An interpreted, object-oriented, dynamically typed programming language created by Guido van Rossum in 1991.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Allows developers to build server-side web applications, automate tasks, write scripts, and process data with simple syntax.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Writing plain English commands compared to complex machine instructions.</div>
+                <div class="code-box"># Printing text in Python
+print("Hello, Python World!")</div>
+                <div class="task-box"><span class="field-label">Task:</span> Open a terminal and check your installed Python version using `python --version`.</div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="topic-box">
+                <div class="topic-title">2. Installation & Downloads</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Setting up the Python interpreter environment on your operating system (Windows, Mac, Linux).</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Downloading official setup binaries from python.org and adding Python to the system environment PATH variable.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Equips your computer to compile and execute Python script files (.py).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Installing an engine inside a vehicle frame so it can run.</div>
+                <div class="code-box"># Run Python interactive shell in terminal
+python
+
+>>> print(10 + 20)
+30
+>>> exit()</div>
+                <div class="task-box"><span class="field-label">Task:</span> Download Python 3.x from python.org and verify PATH environment checkbox during setup.</div>
+            </div>
+
+            <!-- Topic 3 -->
+            <div class="topic-box">
+                <div class="topic-title">3. Basic Syntax & Editors</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The foundational rule system of writing Python code using text editors or IDEs.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Python syntax uses clean commands executed line-by-line using editors like VS Code, PyCharm, or IDLE.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Keeps code clean, readable, and consistent across software projects.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Writing clean lined notebook entries instead of cluttered random notes.</div>
+                <div class="code-box"># Basic Python file execution
+x = 5
+y = 10
+print(x + y)</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a script in VS Code named `app.py` and run it via terminal using `python app.py`.</div>
+            </div>
+
+            <!-- Topic 4 -->
+            <div class="topic-box">
+                <div class="topic-title">4. Comments in Python</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Developer notes inside Python code ignored completely by the interpreter.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Single-line comments start with <span class="highlight">#</span>; multi-line docstrings use triple quotes <span class="highlight">""" """</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Explains complex logic, documents functions, and temporarily disables code lines during debugging.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Sticky notes placed on code pages for team members.</div>
+                <div class="code-box"># This is a single-line comment
+
+"""
+This is a multi-line 
+comment string in Python
+"""
+print("Comments are ignored!")</div>
+                <div class="task-box"><span class="field-label">Task:</span> Add single-line and multi-line comments explaining your script variables.</div>
+            </div>
+
+            <!-- Topic 5 -->
+            <div class="topic-box">
+                <div class="topic-title">5. Indentation in Python</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Using whitespace margins at the beginning of code lines to define code blocks.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Python replaces curly braces { } with consistent indentation (usually 4 spaces) to mark function/loop/if scope.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Enforces structured, clean visual code readability automatically.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Writing indented bullet lists under chapter headings in an outline.</div>
+                <div class="code-box">if True:
+    print("Indented block (4 spaces)") # Correct
+    # print("Unindented block") -> Causes IndentationError</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write an `if` block with proper 4-space indentation and run it without syntax errors.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 2: VARIABLES & CASTING
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 2: VARIABLES, TYPES & CASTING</div>
+
+            <!-- Topic 6 -->
+            <div class="topic-box">
+                <div class="topic-title">6. Python Variables</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Reserved memory locations used to store data values inside a program.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Created the moment a value is assigned using the assignment operator <span class="highlight">=</span> (no keyword needed).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Holds dynamic data for processing, calculation, and manipulation.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Labeling a storage box with a name tag "User_Age" to hold a number.</div>
+                <div class="code-box">age = 25          # Integer variable
+name = "Alex"     # String variable
+price = 99.99     # Float variable
+print(name, age)</div>
+                <div class="task-box"><span class="field-label">Task:</span> Declare variables for your name, age, height, and student status.</div>
+            </div>
+
+            <!-- Topic 7 -->
+            <div class="topic-box">
+                <div class="topic-title">7. Data Types in Python</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Categorization of data values determining what operations can be performed on them.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Built-in types: <span class="highlight">str</span>, <span class="highlight">int</span>, <span class="highlight">float</span>, <span class="highlight">bool</span>, <span class="highlight">list</span>, <span class="highlight">tuple</span>, <span class="highlight">dict</span>, <span class="highlight">set</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Instructs Python how to store and handle data structures in memory.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Sorting items into text files, numeric receipts, and true/false checklists.</div>
+                <div class="code-box">a = "Hello"   # str
+b = 10        # int
+c = 10.5      # float
+d = True      # bool
+print(type(a), type(b))</div>
+                <div class="task-box"><span class="field-label">Task:</span> Use `type()` function to print data types of 4 different variables.</div>
+            </div>
+
+            <!-- Topic 8 -->
+            <div class="topic-box">
+                <div class="topic-title">8. Variable Scope (Local vs Global)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The accessibility region of a variable inside Python code.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Global variables exist outside functions; local variables exist inside functions. Use <span class="highlight">global</span> keyword to modify global variables locally.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Protects variables from unexpected modifications across different function scopes.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Public town noticeboard (Global) vs private personal diary (Local).</div>
+                <div class="code-box">x = "Global" # Global Variable
+
+function_demo():
+    y = "Local" # Local Variable
+    print(y)
+
+print(x)</div>
+                <div class="task-box"><span class="field-label">Task:</span> Declare a global variable and modify it inside a function using the `global` keyword.</div>
+            </div>
+
+            <!-- Topic 9 -->
+            <div class="topic-box">
+                <div class="topic-title">9. Type Casting (to String, Integer, Float)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Converting a variable from one data type to another explicitly.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses constructor functions <span class="highlight">str()</span>, <span class="highlight">int()</span>, and <span class="highlight">float()</span> to convert data types.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Converts string user inputs into numbers for mathematical calculations.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Converting text "50" on a paper form into a numeric math calculation value.</div>
+                <div class="code-box">num_str = "100"
+num_int = int(num_str)    # Converts to int: 100
+num_float = float(num_str)# Converts to float: 100.0
+text = str(num_int)       # Converts back to str: "100"</div>
+                <div class="task-box"><span class="field-label">Task:</span> Take a string input "25.5", cast it to float, and multiply it by 2.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 3: OPERATORS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 3: PYTHON OPERATORS</div>
+
+            <!-- Topic 10 -->
+            <div class="topic-box">
+                <div class="topic-title">10. Arithmetic Operators</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Operators used to execute standard mathematical operations on numbers.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Includes <span class="highlight">+</span>, <span class="highlight">-</span>, <span class="highlight">*</span>, <span class="highlight">/</span>, <span class="highlight">%</span> (Modulus), <span class="highlight">**</span> (Exponentiation), <span class="highlight">//</span> (Floor Division).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Executes math calculations, exponent powers, and integer division.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Pocket calculator performing addition, division, and percentage calculations.</div>
+                <div class="code-box">a = 15
+b = 4
+print(a + b)  # 19
+print(a // b) # 3 (Floor division - drops decimal)
+print(a ** b) # 50625 (15 to power 4)</div>
+                <div class="task-box"><span class="field-label">Task:</span> Calculate floor division `17 // 3` and modulus `17 % 3` to compare results.</div>
+            </div>
+
+            <!-- Topic 11 -->
+            <div class="topic-box">
+                <div class="topic-title">11. Assignment Operators</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Operators used to assign or update values stored in variables.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Includes <span class="highlight">=</span>, <span class="highlight">+=</span>, <span class="highlight">-=</span>, <span class="highlight">*=</span>, <span class="highlight">/=</span>, <span class="highlight">%=</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Shortens code when updating existing variable values in place.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Updating score balances on a digital arcade machine.</div>
+                <div class="code-box">score = 10
+score += 5  # score = score + 5 (15)
+score *= 2  # score = score * 2 (30)
+print(score)</div>
+                <div class="task-box"><span class="field-label">Task:</span> Start with `x = 50` and use compound assignment operators to subtract 10 and multiply by 3.</div>
+            </div>
+
+            <!-- Topic 12 -->
+            <div class="topic-box">
+                <div class="topic-title">12. Logical & Comparison Operators</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Comparison operators evaluate relationships; Logical operators combine multiple condition checks.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Comparisons: <span class="highlight">==</span>, <span class="highlight">!=</span>, <span class="highlight">&gt;</span>, <span class="highlight">&lt;</span>, <span class="highlight">&gt;=</span>, <span class="highlight">&lt;=</span>. Logical: <span class="highlight">and</span>, <span class="highlight">or</span>, <span class="highlight">not</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Evaluates conditions to drive control flow decisions in programs.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> "Allow entry if age &gt;= 18 AND ticket is True."</div>
+                <div class="code-box">age = 20
+has_id = True
+
+print(age &gt;= 18 and has_id) # True
+print(age &lt; 18 or has_id)   # True
+print(not has_id)           # False</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a logic check using `and` / `or` to check if a number is between 10 and 50.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 4: CONTROL FLOW
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 4: CONDITIONAL STATEMENTS & LOOPS</div>
+
+            <!-- Topic 13 -->
+            <div class="topic-box">
+                <div class="topic-title">13. IF, Elif, Else Conditions</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Decision-making structures that execute specific code blocks based on condition evaluation.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses keywords <span class="highlight">if</span>, <span class="highlight">elif</span> (else if), and <span class="highlight">else</span> with indented code blocks.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Directs execution path based on variable values and conditions.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Traffic signal logic: If Red = Stop, Elif Yellow = Slow, Else = Go.</div>
+                <div class="code-box">marks = 85
+
+if marks &gt;= 90:
+    print("Grade A")
+elif marks &gt;= 75:
+    print("Grade B")
+else:
+    print("Grade C")</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write an IF-Elif-Else script that checks if a number is positive, negative, or zero.</div>
+            </div>
+
+            <!-- Topic 14 -->
+            <div class="topic-box">
+                <div class="topic-title">14. Nested IF Statements</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> An IF condition placed inside another IF condition block.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Inner indented IF blocks evaluated only after outer IF condition passes True.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Handles multi-tiered conditional checks (e.g. login security steps).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Checking if user has account first, then checking if password is correct.</div>
+                <div class="code-box">age = 20
+nationality = "Indian"
+
+if age &gt;= 18:
+    if nationality == "Indian":
+        print("Eligible to Vote in India")
+    else:
+        print("Not an Indian Citizen")</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a nested IF checking if a number is even, and if so, whether it is greater than 100.</div>
+            </div>
+
+            <!-- Topic 15 -->
+            <div class="topic-box">
+                <div class="topic-title">15. While Loop</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A loop that repeats a code block continuously as long as a condition stays True.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses <span class="highlight">while condition:</span> and requires manual variable incrementing inside to prevent infinite loops.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Used when total iteration count is unknown beforehand.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Running a water pump continuously until the storage tank is full.</div>
+                <div class="code-box">count = 1
+while count &lt;= 5:
+    print("Count:", count)
+    count += 1  # Increment to stop loop</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a while loop printing numbers 10 down to 1 (countdown timer).</div>
+            </div>
+
+            <!-- Topic 16 -->
+            <div class="topic-box">
+                <div class="topic-title">16. For Loop & range() Function</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A loop that iterates over a sequence (list, tuple, string) or a numeric range.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses <span class="highlight">for item in sequence:</span> combined with <span class="highlight">range(start, stop, step)</span> function.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Iterates through data collections or repeats code a fixed number of times.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Reading every book page sequentially from page 1 to 100.</div>
+                <div class="code-box"># Iterating range 1 to 5
+for i in range(1, 6):
+    print("Step:", i)
+
+# Iterating a list
+fruits = ["Apple", "Banana", "Mango"]
+for fruit in fruits:
+    print(fruit)</div>
+                <div class="task-box"><span class="field-label">Task:</span> Use a for loop with `range()` to print multiplication table of 5.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 5: FUNCTIONS & INPUTS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 5: FUNCTIONS & USER INPUTS</div>
+
+            <!-- Topic 17 -->
+            <div class="topic-box">
+                <div class="topic-title">17. Python Functions</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Reusable block of organized code designed to perform a single specific task.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Declared using <span class="highlight">def function_name(parameters):</span> and called using parentheses <span class="highlight">function_name()</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Eliminates repetitive code blocks and organizes program logic into modular blocks.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A coffee machine button that executes brewing actions whenever pressed.</div>
+                <div class="code-box">def greet(name):
+    return f"Hello, {name}!"
+
+message = greet("Alex")
+print(message)</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a function `add_numbers(a, b)` that returns the sum of two numbers.</div>
+            </div>
+
+            <!-- Topic 18 -->
+            <div class="topic-box">
+                <div class="topic-title">18. User Inputs in Python</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Capturing text inputs entered by users from the terminal prompt.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> The built-in <span class="highlight">input("prompt")</span> function captures user entry as a string data type.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Makes terminal applications interactive by processing user inputs dynamically.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> An ATM terminal asking "Enter your PIN:" before processing transactions.</div>
+                <div class="code-box">user_name = input("Enter your name: ")
+user_age = int(input("Enter your age: ")) # Convert string input to int
+
+print(f"User {user_name} is {user_age} years old.")</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a simple calculator that asks for 2 numbers via `input()` and prints their sum.</div>
+            </div>
+
+            <!-- Topic 19 -->
+            <div class="topic-box">
+                <div class="topic-title">19. Modules & Import System</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Separate Python files (.py) containing functions, classes, and variables imported into other scripts.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Created by saving a `.py` file and loading it using the <span class="highlight">import module_name</span> statement.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Promotes clean file organization and code reuse across multi-file projects.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Importing specialized tools from an external toolbox when needed.</div>
+                <div class="code-box"># File: mymodule.py
+# def say_hi(): print("Hi from module")
+
+# Main Script:
+import mymodule
+mymodule.say_hi()</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a helper Python file, define a custom function inside it, and import it into a main script file.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 6: PRE-DEFINED MODULES & PIP
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 6: PRE-DEFINED MODULES & PIP</div>
+
+            <!-- Topic 20 -->
+            <div class="topic-box">
+                <div class="topic-title">20. Pre-Defined Modules: datetime</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Built-in module used to work with dates, timestamps, and time calculations.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Imported via <span class="highlight">import datetime</span>, providing functions like <span class="highlight">datetime.datetime.now()</span> and <span class="highlight">strftime()</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Handles creation timestamps, date formatting, and logging operations.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Stamping the current date and time on a digital store invoice.</div>
+                <div class="code-box">import datetime
+
+now = datetime.datetime.now()
+print("Current Time:", now)
+print("Formatted Date:", now.strftime("%Y-%m-%d %H:%M:%S"))</div>
+                <div class="task-box"><span class="field-label">Task:</span> Print current year, month, and day separately using the `datetime` module.</div>
+            </div>
+
+            <!-- Topic 21 -->
+            <div class="topic-box">
+                <div class="topic-title">21. Pre-Defined Modules: math</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Built-in module providing advanced mathematical functions and constants.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Imported via <span class="highlight">import math</span>, providing functions like <span class="highlight">math.sqrt()</span>, <span class="highlight">math.ceil()</span>, <span class="highlight">math.floor()</span>, <span class="highlight">math.pi</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Executes complex scientific calculations beyond basic arithmetic operators.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Using scientific calculator functions for geometric formulas.</div>
+                <div class="code-box">import math
+
+print("Square Root 16:", math.sqrt(16)) # 4.0
+print("Ceil 4.2:", math.ceil(4.2))     # 5
+print("Value of PI:", math.pi)         # 3.14159...</div>
+                <div class="task-box"><span class="field-label">Task:</span> Calculate area of a circle with radius 5 using `math.pi`.</div>
+            </div>
+
+            <!-- Topic 22 -->
+            <div class="topic-box">
+                <div class="topic-title">22. PIP Package Manager</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The official package manager used to install third-party libraries from Python Package Index (PyPI).</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Command-line tool executed as <span class="highlight">pip install package_name</span> to download third-party Python modules.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Expands Python capabilities with thousands of community libraries (requests, pandas, flask).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> App Store for downloading external apps onto your smartphone.</div>
+                <div class="code-box"># Terminal commands to manage packages
+pip install requests
+pip list
+pip uninstall requests</div>
+                <div class="task-box"><span class="field-label">Task:</span> Install the `requests` library using PIP and check installed modules list with `pip list`.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 7: PYTHON OOPS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 7: OBJECT-ORIENTED PROGRAMMING (OOPS)</div>
+
+            <!-- Topic 23 -->
+            <div class="topic-box">
+                <div class="topic-title">23. Classes & Objects in Python</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Object-Oriented Programming model where Classes act as blueprints and Objects act as real instances.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Defined using <span class="highlight">class ClassName:</span> and initialized with constructor method <span class="highlight">__init__(self)</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Models real-world entities combining attributes (data) and methods (behavior) together.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Architect house blueprint (Class) vs actual physical house built on a lot (Object).</div>
+                <div class="code-box">class Car:
+    def __init__(self, brand, color):
+        self.brand = brand  # Property
+        self.color = color
+
+    def drive(self):         # Method
+        print(f"{self.color} {self.brand} is driving!")
+
+# Creating Object Instance
+my_car = Car("Toyota", "Red")
+my_car.drive()</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a `Student` class with name and marks attributes, and a method to print student info.</div>
+            </div>
+
+            <!-- Topic 24 -->
+            <div class="topic-box">
+                <div class="topic-title">24. Inheritance in Python</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Mechanism where a child class inherits attributes and methods from a parent class.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Class syntax written as <span class="highlight">class ChildClass(ParentClass):</span>, using <span class="highlight">super()</span> to access parent methods.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Promotes code reuse and creates hierarchical class relationships.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Child inheriting eye color, height, and last name from parents.</div>
+                <div class="code-box">class Animal:
+    def speak(self):
+        print("Animal makes sound")
+
+class Dog(Animal): # Dog inherits from Animal
+    def bark(self):
+        print("Dog barks!")
+
+d = Dog()
+d.speak() # Inherited method
+d.bark()</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a `Vehicle` parent class and a `Bike` child class inheriting from it.</div>
+            </div>
+
+            <!-- Topic 25 -->
+            <div class="topic-box">
+                <div class="topic-title">25. Python Iterators</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> An object that contains a countable number of values and can be iterated through one by one.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Implements methods <span class="highlight">__iter__()</span> and <span class="highlight">__next__()</span> to step through elements sequentially.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Memory-efficient iteration over data collections without loading all items into memory at once.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Turning pages in a physical book one single page at a time.</div>
+                <div class="code-box">fruits = ("Apple", "Banana", "Mango")
+my_iter = iter(fruits) # Create iterator
+
+print(next(my_iter)) # Apple
+print(next(my_iter)) # Banana</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a custom iterator class that returns numbers starting from 1 up to 5.</div>
+            </div>
+
+            <!-- Topic 26 -->
+            <div class="topic-box">
+                <div class="topic-title">26. Polymorphism in Python</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The ability of different classes to execute methods sharing the same name in unique ways.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Methods in different classes with identical function signatures returning custom behaviors per class instance.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Provides unified function interfaces for different underlying class object types.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Pressing "Play" button — plays music on audio player, plays video on movie player.</div>
+                <div class="code-box">class Dog:
+    def sound(self): return "Woof!"
+
+class Cat:
+    def sound(self): return "Meow!"
+
+# Polymorphic Execution
+for pet in [Dog(), Cat()]:
+    print(pet.sound())</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create `Rectangle` and `Circle` classes that both define a custom `area()` method.</div>
+            </div>
+
+            <div style="text-align:center; margin-top:40px; font-size:24px; color:#005f73;">
+                🎉 End of Python Notes 🎉
+            </div>
+            <div style="text-align:center; font-size:18px; color:#777; margin-top:10px;">
+                Next Subject: <a href="nodejs.html" class="menu-link">NodeJS Notes</a>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function generatePDF() {
+            const element = document.getElementById("notes-content");
+            const options = {
+                margin: [0.2, 0.2, 0.2, 0.2],
+                filename: "Python_Handwritten_Notes.pdf",
+                image: { type: "jpeg", quality: 0.98 },
+                html2canvas: { scale: 2, logging: false, useCORS: true },
+                jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
+            };
+            const bar = document.querySelector(".no-print-bar");
+            bar.style.display = "none";
+            html2pdf().set(options).from(element).save().then(() => {
+                bar.style.display = "flex";
+            });
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySQL - Handwritten Notes</title>
+    <link rel="stylesheet" href="shared-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- TOP NAVIGATION BUTTONS -->
+    <div class="no-print-bar">
+        <button class="btn-nav btn-download" onclick="generatePDF()">📥 Download PDF</button>
+        <a href="index.html" class="btn-nav">🏠 Home</a>
+        <a href="html5.html" class="btn-nav">📘 HTML5</a>
+        <a href="css3.html" class="btn-nav">🎨 CSS3</a>
+        <a href="javascript.html" class="btn-nav">⚡ JavaScript</a>
+        <a href="advanced-js.html" class="btn-nav">🚀 Adv JS</a>
+        <a href="bootstrap.html" class="btn-nav">💠 Bootstrap</a>
+        <a href="reactjs.html" class="btn-nav">⚛️ React</a>
+        <a href="nextjs.html" class="btn-nav">▲ NextJS</a>
+        <a href="angular.html" class="btn-nav">🅰️ Angular</a>
+        <a href="python.html" class="btn-nav">🐍 Python</a>
+        <a href="nodejs.html" class="btn-nav">🟢 NodeJS</a>
+        <a href="mongodb.html" class="btn-nav">🍃 MongoDB</a>
+        <a href="django.html" class="btn-nav">🎸 Django</a>
+        <a href="expressjs.html" class="btn-nav">🚂 Express</a>
+        <a href="genai.html" class="btn-nav">🤖 Gen AI</a>
+        <a href="deployment.html" class="btn-nav">☁️ Deploy</a>
+    </div>
+
+    <main class="notebook-container" id="notes-content">
+
+        <!-- =========================
+             PAGE 1: INTRODUCTION & CREATION
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="notebook-header">
+                <h1 class="notebook-title">🗄️ MySQL Master Notes</h1>
+                <p style="font-size:20px; color:#555;">Relational Database Management System (RDBMS)</p>
+            </div>
+
+            <div class="module-tag">PART 1: DATABASE FOUNDATIONS & CREATION</div>
+
+            <!-- Topic 1 -->
+            <div class="topic-box">
+                <div class="topic-title">1. Introduction to MySQL & Relational Databases</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> MySQL is an open-source Relational Database Management System (RDBMS) that stores data in structured tables composed of rows and columns.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A server-based database system that uses Structured Query Language (SQL) to create, query, update, and manage relational data with ACID (Atomicity, Consistency, Isolation, Durability) guarantees.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Organizes business data safely, enforces relationships between entities, and allows instant querying of millions of records with high security and reliability.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A bank ledger keeping separate tables for "Customers", "Accounts", and "Transactions" linked together securely via unique ID numbers.</div>
+                <div class="code-box">-- Connect to MySQL via terminal command
+mysql -u root -p
+
+-- View all existing databases on the server
+SHOW DATABASES;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Install MySQL Server / XAMPP on your computer, open MySQL Workbench or command line, and list all databases using `SHOW DATABASES;`.</div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="topic-box">
+                <div class="topic-title">2. Creating & Selecting Databases</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A database is a master container that holds all related tables, views, stored procedures, and permissions for a specific application.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Created using the <span class="highlight">CREATE DATABASE</span> statement and selected for query operations using the <span class="highlight">USE</span> command.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Separates data for different projects or environments (e.g. `ecommerce_dev`, `ecommerce_prod`) on the same server.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Buying a new physical filing cabinet (`CREATE DATABASE`) and opening its door (`USE`) before filing documents inside.</div>
+                <div class="code-box">-- Create a new database safely if it doesn't exist
+CREATE DATABASE IF NOT EXISTS school_db;
+
+-- Select database for active use
+USE school_db;
+
+-- Check currently selected database
+SELECT DATABASE();</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write SQL commands to create a database named `company_db` and select it using the `USE` command.</div>
+            </div>
+
+            <!-- Topic 3 -->
+            <div class="topic-box">
+                <div class="topic-title">3. Creating Tables & Data Types</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Tables are two-dimensional grids inside a database that store structured records in columns (fields) and rows (tuples).</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Defined using the <span class="highlight">CREATE TABLE</span> statement, specifying column names and SQL data types (`INT`, `VARCHAR`, `TEXT`, `DECIMAL`, `DATE`, `BOOLEAN`).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Enforces structured schema rules so every record entered follows strict column formatting and type constraints.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Drawing a printed registration table with strict columns for "Name", "Roll No", and "Birth Date".</div>
+                <div class="code-box">CREATE TABLE students (
+    student_id INT,
+    first_name VARCHAR(50),
+    last_name VARCHAR(50),
+    email VARCHAR(100),
+    age INT,
+    gpa DECIMAL(3, 2),
+    enrollment_date DATE
+);
+
+-- View table structure setup
+DESCRIBE students;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create an `employees` table with columns for `emp_id` (INT), `name` (VARCHAR), `salary` (DECIMAL), and `join_date` (DATE).</div>
+            </div>
+
+            <!-- Topic 4 -->
+            <div class="topic-box">
+                <div class="topic-title">4. Primary Key & Auto Increment Constraints</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A Primary Key is a column (or set of columns) that uniquely identifies each individual row in a table. It cannot contain NULL or duplicate values.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Specified using <span class="highlight">PRIMARY KEY</span> alongside <span class="highlight">AUTO_INCREMENT</span>, which automatically generates a sequential unique ID (1, 2, 3...) for every new row added.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Guarantees fast row retrieval, prevents duplicate entries, and establishes relationships with other tables.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Passport numbers or Social Security Numbers—no two citizens can ever hold the exact same ID number.</div>
+                <div class="code-box">CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    email VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a `products` table with `product_id` as an `AUTO_INCREMENT PRIMARY KEY` and test adding rows without specifying the ID manually.</div>
+            </div>
+
+            <!-- Topic 5 -->
+            <div class="topic-box">
+                <div class="topic-title">5. Foreign Key Constraints</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A Foreign Key is a column in one table that references the Primary Key of another table, establishing a relationship between them.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Enforced using <span class="highlight">FOREIGN KEY (col) REFERENCES parent_table(primary_col)</span>, maintaining Referential Integrity across tables.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Prevents orphan records (e.g. creating an order for a customer ID that doesn't exist in the customers table).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A library book checkout ticket referencing a valid registered student ID card number.</div>
+                <div class="code-box">CREATE TABLE orders (
+    order_id INT AUTO_INCREMENT PRIMARY KEY,
+    order_date DATE,
+    customer_id INT,
+    amount DECIMAL(10, 2),
+    -- Link customer_id to user_id in users table
+    FOREIGN KEY (customer_id) REFERENCES users(user_id) 
+        ON DELETE CASCADE
+);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create an `orders` table linked to an `employees` table using a Foreign Key with `ON DELETE CASCADE`.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 2: CRUD OPERATIONS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 2: CRUD OPERATIONS</div>
+
+            <!-- Topic 6 -->
+            <div class="topic-box">
+                <div class="topic-title">6. CRUD - Create (INSERT INTO)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Adding new records (rows) into an existing database table.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Executed using <span class="highlight">INSERT INTO table_name (cols) VALUES (vals)</span>, supporting single or multi-row batch inserts.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Saves new entity data like user signups, new order creations, or blog post publishing.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Filling out a new row on a physical guest sign-in registry page.</div>
+                <div class="code-box">-- Single Row Insert
+INSERT INTO users (username, email) 
+VALUES ('coder_alex', 'alex@mail.com');
+
+-- Multi-Row Batch Insert
+INSERT INTO users (username, email) VALUES 
+('maya_dev', 'maya@mail.com'),
+('john_doe', 'john@mail.com'),
+('sarah_connor', 'sarah@mail.com');</div>
+                <div class="task-box"><span class="field-label">Task:</span> Insert 4 new employee records into your `employees` table using a single multi-row `INSERT INTO` statement.</div>
+            </div>
+
+            <!-- Topic 7 -->
+            <div class="topic-box">
+                <div class="topic-title">7. CRUD - Read (SELECT Statements)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Retrieving stored data records from database tables based on specified requirements.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Executed using <span class="highlight">SELECT columns FROM table_name</span>. Using <span class="highlight">SELECT *</span> fetches all available columns.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Queries and projects data onto application user interfaces, dashboards, or reports.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Opening a cabinet drawer and pulling out specific student file folders to read.</div>
+                <div class="code-box">-- Retrieve ALL columns and ALL rows
+SELECT * FROM users;
+
+-- Retrieve SPECIFIC columns only (Better performance)
+SELECT username, email FROM users;
+
+-- Aliasing column names for cleaner output
+SELECT username AS Name, email AS 'Contact Email' FROM users;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a query that fetches only the `name` and `salary` columns from your `employees` table with custom column aliases.</div>
+            </div>
+
+            <!-- Topic 8 -->
+            <div class="topic-box">
+                <div class="topic-title">8. CRUD - Update (UPDATE ... SET)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Modifying existing record values inside a database table.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Executed using <span class="highlight">UPDATE table_name SET col = val WHERE condition</span>. <span class="highlight">CRITICAL:</span> Always use a `WHERE` clause, or ALL rows will be overwritten!</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Updates changing data like password resets, profile edits, price changes, or status flags.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Erasing an old home address on a record card and writing down a new one.</div>
+                <div class="code-box">-- Update specific user email using ID
+UPDATE users 
+SET email = 'alex_new@mail.com' 
+WHERE user_id = 1;
+
+-- Update multiple columns simultaneously
+UPDATE users 
+SET username = 'alex_pro', email = 'alex_pro@mail.com' 
+WHERE user_id = 1;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write an `UPDATE` statement that increases the salary of an employee with `emp_id = 2` by 10%.</div>
+            </div>
+
+            <!-- Topic 9 -->
+            <div class="topic-box">
+                <div class="topic-title">9. CRUD - Delete (DELETE FROM)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Removing specific records permanently from a database table based on condition criteria.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Executed using <span class="highlight">DELETE FROM table_name WHERE condition</span>. Without a `WHERE` clause, every single row in the table is deleted!</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Removes invalid, test, cancelled, or requested user-deleted records.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Removing an expired membership record card from a filing drawer.</div>
+                <div class="code-box">-- Delete specific record
+DELETE FROM users 
+WHERE user_id = 3;
+
+-- Delete records matching condition
+DELETE FROM users 
+WHERE created_at < '2020-01-01';</div>
+                <div class="task-box"><span class="field-label">Task:</span> Delete an employee record from `employees` table where `emp_id = 4`. Verify deletion with a `SELECT` query.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 3: CONDITIONS & SORTING
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 3: FILTERING, SORTING & LIMITING</div>
+
+            <!-- Topic 10 -->
+            <div class="topic-box">
+                <div class="topic-title">10. WHERE Clause & Operators</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Filters query results so that only rows meeting specific criteria are returned or modified.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses filtering comparison operators (<span class="highlight">=</span>, <span class="highlight">!=</span>, <span class="highlight">&gt;</span>, <span class="highlight">&lt;</span>, <span class="highlight">&gt;=</span>, <span class="highlight">&lt;=</span>), range operators (<span class="highlight">BETWEEN</span>, <span class="highlight">IN</span>), and wildcard pattern matching (<span class="highlight">LIKE '%val%'</span>).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Restricts queries to precise target records instead of scanning entire huge tables.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Asking a librarian to show you only books published after the year 2020.</div>
+                <div class="code-box">-- Filter by numeric condition and logic
+SELECT * FROM students WHERE age >= 18 AND gpa >= 3.5;
+
+-- Filter using IN list and BETWEEN range
+SELECT * FROM students WHERE age BETWEEN 18 AND 22;
+SELECT * FROM students WHERE first_name IN ('Alex', 'Maya', 'John');
+
+-- Wildcard search (LIKE % = any chars, _ = single char)
+SELECT * FROM students WHERE email LIKE '%@gmail.com';</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a query selecting all employees whose salary is between 50000 and 80000 and whose name starts with 'A'.</div>
+            </div>
+
+            <!-- Topic 11 -->
+            <div class="topic-box">
+                <div class="topic-title">11. ORDER BY Clause (Sorting)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Sorts the query result set in ascending or descending order based on one or more columns.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Appended to SELECT statements as <span class="highlight">ORDER BY col ASC</span> (ascending - default) or <span class="highlight">ORDER BY col DESC</span> (descending).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Presents data logically, such as sorting products by price (low to high), users alphabetically, or posts by latest date.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Arranging test score papers from highest score down to lowest score.</div>
+                <div class="code-box">-- Sort by GPA descending (highest first)
+SELECT * FROM students 
+ORDER BY gpa DESC;
+
+-- Multi-column sort: Sort by age ascending, then GPA descending
+SELECT * FROM students 
+ORDER BY age ASC, gpa DESC;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Select all employees and order them by `salary` descending, then by `name` ascending.</div>
+            </div>
+
+            <!-- Topic 12 -->
+            <div class="topic-box">
+                <div class="topic-title">12. LIMIT & OFFSET Clauses (Pagination)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Restricts the maximum number of rows returned by a query, with optional offset skipping.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> <span class="highlight">LIMIT count</span> restricts total rows; <span class="highlight">LIMIT count OFFSET skip</span> skips specified rows before returning records.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Essential for implementing database pagination (Page 1, Page 2...) and top-N ranking queries (e.g. Top 5 highest paid employees).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Reading only 10 search result cards per page before clicking "Next Page".</div>
+                <div class="code-box">-- Fetch Top 3 highest GPA students
+SELECT * FROM students 
+ORDER BY gpa DESC 
+LIMIT 3;
+
+-- Pagination: Skip 10 rows, fetch next 10 rows (Page 2)
+SELECT * FROM students 
+ORDER BY student_id ASC 
+LIMIT 10 OFFSET 10; -- Shorthand syntax: LIMIT 10, 10</div>
+                <div class="task-box"><span class="field-label">Task:</span> Fetch the single highest-paid employee from your `employees` table using `ORDER BY` and `LIMIT 1`.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 4: TABLE REMOVAL
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 4: TABLE REMOVAL & CLEANUP</div>
+
+            <!-- Topic 13 -->
+            <div class="topic-box">
+                <div class="topic-title">13. Removing Data: DELETE vs TRUNCATE vs DROP</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Three distinct ways to remove data or structure from a database, each operating at different system levels.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> <span class="highlight">DELETE</span> removes specific rows (DML - logged, rollback possible); <span class="highlight">TRUNCATE</span> wipes ALL rows instantly and resets Auto Increment (DDL - fast); <span class="highlight">DROP</span> destroys entire table schema and data permanently.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Choose `DELETE` for conditional removal, `TRUNCATE` for resetting table data, and `DROP` for complete schema cleanup.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> DELETE = Erasing lines with an eraser; TRUNCATE = Wiping the entire whiteboard clean; DROP = Tearing the whiteboard off the wall and throwing it away.</div>
+                <div class="code-box">-- 1. DELETE: Slow, row-by-row, conditional
+DELETE FROM logs WHERE log_date < '2023-01-01';
+
+-- 2. TRUNCATE: Fast, wipes all data, resets AUTO_INCREMENT to 1
+TRUNCATE TABLE test_logs;
+
+-- 3. DROP: Destroys complete table structure + data permanently
+DROP TABLE IF EXISTS old_backup_table;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a temporary table `temp_data`, insert 2 rows, run `TRUNCATE TABLE temp_data`, verify structure remains, then run `DROP TABLE temp_data`.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 5: SQL JOINS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 5: SQL JOINS (RELATIONAL QUERIES)</div>
+
+            <!-- Topic 14 -->
+            <div class="topic-box">
+                <div class="topic-title">14. INNER JOIN</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Combines records from two tables only where there is a matching key relationship in both tables.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Executed as <span class="highlight">SELECT cols FROM TableA INNER JOIN TableB ON TableA.fk = TableB.pk</span>. Unmatched rows in either table are excluded.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Queries combined data across related tables (e.g. Orders WITH matched Customer details).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Venn Diagram intersection area—returns only elements present in BOTH sets simultaneously.</div>
+                <div class="code-box">SELECT 
+    orders.order_id,
+    orders.amount,
+    users.username,
+    users.email
+FROM orders
+INNER JOIN users ON orders.customer_id = users.user_id;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write an `INNER JOIN` query connecting an `orders` table with a `products` table on `product_id`.</div>
+            </div>
+
+            <!-- Topic 15 -->
+            <div class="topic-box">
+                <div class="topic-title">15. LEFT JOIN (LEFT OUTER JOIN)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Returns ALL records from the Left table, along with matching records from the Right table. If no match exists, NULLs are returned for Right table columns.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Executed as <span class="highlight">SELECT cols FROM TableA LEFT JOIN TableB ON TableA.fk = TableB.pk</span>. Guarantees no Left table row is omitted.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Used when you want all primary entities regardless of whether they have linked child records (e.g. All Users, including users who placed 0 orders).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Calling attendance for all registered students—students who haven't turned in homework still get listed with a blank (NULL) grade.</div>
+                <div class="code-box">SELECT 
+    users.username,
+    orders.order_id,
+    orders.amount
+FROM users
+LEFT JOIN orders ON users.user_id = orders.customer_id;
+-- Users with 0 orders display order_id and amount as NULL</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a `LEFT JOIN` query finding all users who have placed 0 orders by checking `WHERE orders.order_id IS NULL`.</div>
+            </div>
+
+            <!-- Topic 16 -->
+            <div class="topic-box">
+                <div class="topic-title">16. RIGHT JOIN (RIGHT OUTER JOIN)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Returns ALL records from the Right table, along with matching records from the Left table. Unmatched Left values return NULL.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Executed as <span class="highlight">SELECT cols FROM TableA RIGHT JOIN TableB ON TableA.fk = TableB.pk</span>. Mirror opposite of LEFT JOIN.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Guarantees that every record in the target right-hand table is preserved in the query output.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Listing all store products, even products that haven't been bought by any customer yet.</div>
+                <div class="code-box">SELECT 
+    orders.order_id,
+    users.username
+FROM orders
+RIGHT JOIN users ON orders.customer_id = users.user_id;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Rewrite a `RIGHT JOIN` query as an equivalent `LEFT JOIN` by swapping table positions in the FROM clause.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 6: AGGREGATES & GROUPING
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 6: AGGREGATE FUNCTIONS & GROUPING</div>
+
+            <!-- Topic 17 -->
+            <div class="topic-box">
+                <div class="topic-title">17. Aggregate Functions: COUNT & SUM</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Built-in SQL functions that perform calculations across multiple row values and return a single summary value.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> <span class="highlight">COUNT(col)</span> counts non-NULL rows; <span class="highlight">SUM(col)</span> calculates the total cumulative mathematical sum of numeric values.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Calculates key performance indicators (KPIs) like total registered users, total revenue, or order volumes.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Tallying up total cash register receipts at the end of a business day.</div>
+                <div class="code-box">-- Count total number of users
+SELECT COUNT(*) AS total_users FROM users;
+
+-- Count distinct active cities
+SELECT COUNT(DISTINCT city) AS unique_cities FROM users;
+
+-- Calculate total sales revenue sum
+SELECT SUM(amount) AS total_revenue FROM orders;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Calculate total number of employees and the total combined payroll sum from your `employees` table.</div>
+            </div>
+
+            <!-- Topic 18 -->
+            <div class="topic-box">
+                <div class="topic-title">18. Aggregate Functions: AVG, MIN, MAX</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Summary functions that calculate mathematical average, minimum lowest value, and maximum highest value.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> <span class="highlight">AVG(col)</span> calculates numeric average; <span class="highlight">MIN(col)</span> returns lowest value; <span class="highlight">MAX(col)</span> returns highest value.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Generates statistical metrics like average user GPA, lowest product price, or maximum order value.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Finding the highest test score, lowest score, and class average score on an exam.</div>
+                <div class="code-box">SELECT 
+    AVG(gpa) AS average_gpa,
+    MIN(gpa) AS lowest_gpa,
+    MAX(gpa) AS highest_gpa
+FROM students;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Find the average, minimum, and maximum salary values from your `employees` table.</div>
+            </div>
+
+            <!-- Topic 19 -->
+            <div class="topic-box">
+                <div class="topic-title">19. GROUP BY & HAVING Clauses</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> <span class="highlight">GROUP BY</span> groups rows sharing identical data into summary rows; <span class="highlight">HAVING</span> filters grouped aggregate results (since `WHERE` cannot filter aggregates).</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> <span class="highlight">GROUP BY column</span> collapses records per category; <span class="highlight">HAVING aggregate_condition</span> filters categories after grouping.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Calculates metrics per category (e.g. Total sales per country, Average salary per department).</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Grouping coins by denomination (1s, 5s, 10s) and then counting the total value in each pile.</div>
+                <div class="code-box">-- Calculate total sales revenue PER customer
+SELECT 
+    customer_id, 
+    COUNT(order_id) AS total_orders,
+    SUM(amount) AS total_spent
+FROM orders
+GROUP BY customer_id
+-- Filter groups: Only customers who spent over $500 total
+HAVING SUM(amount) > 500;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Group employees by `department_id`, calculate average salary per department, and filter for departments with an average salary &gt; 60000 using `HAVING`.</div>
+            </div>
+
+            <div style="text-align:center; margin-top:40px; font-size:24px; color:#005f73;">
+                🎉 End of MySQL Notes 🎉
+            </div>
+            <div style="text-align:center; font-size:18px; color:#777; margin-top:10px;">
+                Next Subject: <a href="mongodb.html" class="menu-link">MongoDB Notes</a>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function generatePDF() {
+            const element = document.getElementById("notes-content");
+            const options = {
+                margin: [0.2, 0.2, 0.2, 0.2],
+                filename: "MySQL_Handwritten_Notes.pdf",
+                image: { type: "jpeg", quality: 0.98 },
+                html2canvas: { scale: 2, logging: false, useCORS: true },
+                jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
+            };
+            const bar = document.querySelector(".no-print-bar");
+            bar.style.display = "none";
+            html2pdf().set(options).from(element).save().then(() => {
+                bar.style.display = "flex";
+            });
+        }
+    </script>
+
+</body>
+</html>

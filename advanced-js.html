@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced JavaScript - Handwritten Notes</title>
+    <link rel="stylesheet" href="shared-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- TOP NAVIGATION BUTTONS -->
+    <div class="no-print-bar">
+        <button class="btn-nav btn-download" onclick="generatePDF()">📥 Download PDF</button>
+        <a href="index.html" class="btn-nav">🏠 Home</a>
+        <a href="html5.html" class="btn-nav">📘 HTML5</a>
+        <a href="css3.html" class="btn-nav">🎨 CSS3</a>
+        <a href="javascript.html" class="btn-nav">⚡ JavaScript</a>
+        <a href="bootstrap.html" class="btn-nav">💠 Bootstrap</a>
+        <a href="reactjs.html" class="btn-nav">⚛️ React</a>
+        <a href="nextjs.html" class="btn-nav">▲ NextJS</a>
+        <a href="angular.html" class="btn-nav">🅰️ Angular</a>
+        <a href="python.html" class="btn-nav">🐍 Python</a>
+        <a href="nodejs.html" class="btn-nav">🟢 NodeJS</a>
+        <a href="mysql.html" class="btn-nav">🗄️ MySQL</a>
+        <a href="mongodb.html" class="btn-nav">🍃 MongoDB</a>
+        <a href="django.html" class="btn-nav">🎸 Django</a>
+        <a href="expressjs.html" class="btn-nav">🚂 Express</a>
+        <a href="genai.html" class="btn-nav">🤖 Gen AI</a>
+        <a href="deployment.html" class="btn-nav">☁️ Deploy</a>
+    </div>
+
+    <main class="notebook-container" id="notes-content">
+
+        <!-- =========================
+             PAGE 1: ADVANCED FUNCTIONS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="notebook-header">
+                <h1 class="notebook-title">🚀 Advanced JavaScript Notes</h1>
+                <p style="font-size:20px; color:#555;">ES6+, Modern Syntax, Async JS & APIs</p>
+            </div>
+
+            <div class="module-tag">PART 1: MODERN FUNCTIONS</div>
+
+            <!-- Topic 1 -->
+            <div class="topic-box">
+                <div class="topic-title">1. Arrow Functions</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A shorter and modern way to write functions in JavaScript using the <span class="highlight">=&gt;</span> syntax.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A compact function expression introduced in ES6 that does not bind its own 'this' context and allows implicit returns for single expressions.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Reduces boilerplate code and preserves lexical scope for clean callback functions.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Writing a quick shorthand note instead of a full formal letter.</div>
+                <div class="code-box">// Traditional function
+function add(a, b) { return a + b; }
+
+// Arrow Function shorthand
+const add = (a, b) => a + b;
+console.log(add(5, 10)); // 15</div>
+                <div class="task-box"><span class="field-label">Task:</span> Convert a traditional function that calculates square of a number into an arrow function.</div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="topic-box">
+                <div class="topic-title">2. Anonymous Functions</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A function created without an assigned identifier name.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A function expression that lacks a declared name, often used as an inline argument or immediate callback.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Used for one-time execution tasks like event handling, timeouts, or array iteration without polluting global namespace.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Hiring a temporary helper for a 5-minute task without asking for their full name card.</div>
+                <div class="code-box">setTimeout(function() {
+    console.log("Ran after 2 seconds!");
+}, 2000);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Pass an anonymous function inside document.addEventListener('click', ...) that logs a message.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 2: OBJECTS & DYNAMIC SYNTAX
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 2: ADVANCED OBJECTS</div>
+
+            <!-- Topic 3 -->
+            <div class="topic-box">
+                <div class="topic-title">3. Objects Overview in JS</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Primary data structure in JS used to store keyed collections of data and complex entities.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> An unordered collection of key-value pairs where keys are strings/symbols and values can be any data type including functions.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Models real-world entities like users, products, settings, and state inside applications.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A student profile folder containing name, roll number, marks, and medical record.</div>
+                <div class="code-box">const user = {
+    id: 101,
+    username: "coder_alex",
+    isOnline: true
+};</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a smartphone object containing brand, price, and specs array.</div>
+            </div>
+
+            <!-- Topic 4 -->
+            <div class="topic-box">
+                <div class="topic-title">4. Object Properties</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Key-value associations inside an object representing its attributes or state.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Data values attached to an object accessible via dot notation (<span class="highlight">obj.prop</span>) or bracket notation (<span class="highlight">obj['prop']</span>).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Holds specific data fields belonging to an object instance.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A car's color, fuel type, and engine capacity ratings.</div>
+                <div class="code-box">const car = { brand: "Tesla", model: "Model 3" };
+console.log(car.brand);      // Dot notation
+console.log(car['model']);  // Bracket notation</div>
+                <div class="task-box"><span class="field-label">Task:</span> Access a nested property inside an object using both dot and bracket notation.</div>
+            </div>
+
+            <!-- Topic 5 -->
+            <div class="topic-box">
+                <div class="topic-title">5. Object Methods</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Functions stored as object properties that represent actions the object can perform.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A property of an object whose value is a function, allowing execution of behavior using internal object state via <span class="highlight">this</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Encapsulates data and related actions together inside one unified object structure.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A dog object that has data (breed) and methods (bark(), eat()).</div>
+                <div class="code-box">const calculator = {
+    owner: "John",
+    add: function(a, b) { return a + b; },
+    greet() { return `Belongs to ${this.owner}`; } // Shorthand syntax
+};
+console.log(calculator.add(10, 20));</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a bank account object with balance property and deposit/withdraw methods.</div>
+            </div>
+
+            <!-- Topic 6 -->
+            <div class="topic-box">
+                <div class="topic-title">6. Dynamic Property Syntax</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Using variables or expressions to compute object property names dynamically at runtime.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> ES6 Computed Property Names feature written as <span class="highlight">[expression]</span> inside object literal definitions.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Constructs object keys dynamically from dynamic form inputs or calculated logic.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Labeling storage boxes based on what user types on a label sticker.</div>
+                <div class="code-box">const keyName = "role";
+const dynamicObj = {
+    name: "Maya",
+    [keyName]: "Administrator" // Dynamic key evaluated as 'role'
+};
+console.log(dynamicObj.role); // "Administrator"</div>
+                <div class="task-box"><span class="field-label">Task:</span> Use a prompt string input to dynamically create a key inside a user preferences object.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 3: TEMPLATE LITERALS & DESTRUCTURING
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 3: TEMPLATE LITERALS & DESTRUCTURING</div>
+
+            <!-- Topic 7 -->
+            <div class="topic-box">
+                <div class="topic-title">7. Template Literals</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Enhanced string syntax using backticks <span class="highlight">` `</span> that supports string interpolation and multi-line strings.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> ES6 string literals allowing embedded expressions evaluated using <span class="highlight">${expression}</span> placeholder syntax.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Replaces messy string concatenation (+) with clean readable dynamic text formatting.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Filling in pre-printed blank spaces inside an invitation letter template.</div>
+                <div class="code-box">const item = "Laptop", price = 1200;
+// Dynamic interpolated multi-line string
+const receipt = `Product: ${item}
+Total Cost: $${price * 1.1} (tax included)`;
+console.log(receipt);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Construct a multi-line HTML card string using template literals and dynamic variables.</div>
+            </div>
+
+            <!-- Topic 8 -->
+            <div class="topic-box">
+                <div class="topic-title">8. Array Destructuring</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A clean syntax to extract values from arrays directly into distinct individual variables.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> ES6 syntax unpacks array values by positional order using square brackets <span class="highlight">[a, b] = array</span> assignment.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Simplifies retrieving array items and swapping variables without temporary variables.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Opening a box of tools and handing key tools directly to assigned workers in order.</div>
+                <div class="code-box">const rgb = [255, 128, 0];
+const [red, green, blue] = rgb;
+console.log(red); // 255
+
+// Variable swapping shorthand
+let x = 1, y = 2;
+[x, y] = [y, x];</div>
+                <div class="task-box"><span class="field-label">Task:</span> Destructure the first and third items of a coordinates array [10, 20, 30], skipping the second.</div>
+            </div>
+
+            <!-- Topic 9 -->
+            <div class="topic-box">
+                <div class="topic-title">9. Object Destructuring</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Extracting properties from objects and binding them to variables with matching key names.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> ES6 syntax unpacks object keys using curly braces <span class="highlight">{ key1, key2 } = object</span>, supporting renaming and default values.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Eliminates repetitive obj.prop access, improving code readability when handling API responses or React props.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Taking specific tools directly out of a named toolbox tray.</div>
+                <div class="code-box">const student = { name: "Alex", score: 95, city: "NYC" };
+// Unpacking matching keys directly
+const { name, score, country = "USA" } = student;
+console.log(`${name} scored ${score} in ${country}`);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Destructure 'title' and 'author' from a book object, assigning a default value for 'year'.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 4: REST & SPREAD OPERATORS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 4: REST & SPREAD OPERATORS</div>
+
+            <!-- Topic 10 -->
+            <div class="topic-box">
+                <div class="topic-title">10. Rest Operator</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Collects multiple remaining elements or arguments into a single unified array structure.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Represented by three dots <span class="highlight">...args</span> used in function parameter definitions or destructuring assignments.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Enables functions to accept unlimited dynamic arguments cleanly without using old arguments objects.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Gathering all remaining unassigned luggage bags into one catch-all storage bin.</div>
+                <div class="code-box">function sumAll(...numbers) {
+    return numbers.reduce((total, num) => total + num, 0);
+}
+console.log(sumAll(10, 20, 30, 40)); // 100</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a function that accepts 'primaryLeader' as first arg and gathers all other members using rest operator.</div>
+            </div>
+
+            <!-- Topic 11 -->
+            <div class="topic-box">
+                <div class="topic-title">11. Spread Operator</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Unpacks or expands an array/object into individual elements or properties.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Represented by three dots <span class="highlight">...iterable</span> used inside array literals, object literals, or function calls.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Clones arrays/objects, merges collections, and passes array values as distinct function arguments.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Dumping a bag of marble beads onto a table so they spread out individually.</div>
+                <div class="code-box">const arr1 = [1, 2], arr2 = [3, 4];
+const combined = [...arr1, ...arr2, 5]; // [1, 2, 3, 4, 5]
+
+const user = { name: "John" };
+const updatedUser = { ...user, role: "Admin" };</div>
+                <div class="task-box"><span class="field-label">Task:</span> Merge two student lists into a master array using spread operator without altering originals.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 5: ASYNCHRONOUS JAVASCRIPT
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 5: ASYNCHRONOUS JS & PROMISES</div>
+
+            <!-- Topic 12 -->
+            <div class="topic-box">
+                <div class="topic-title">12. Callback Functions</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A function passed as an argument into another function to be executed later upon task completion.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A higher-order function pattern where execution control is deferred until an asynchronous or event trigger completes.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Handles non-blocking actions like user clicks, timer completion, and data processing notifications.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Leaving your phone number at a bakery so they can call you back when your cake is ready.</div>
+                <div class="code-box">function processUser(name, callback) {
+    console.log("Processing " + name);
+    callback();
+}
+processUser("Alex", () => console.log("Done!"));</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a function 'fetchData' that accepts a callback function and executes it after processing.</div>
+            </div>
+
+            <!-- Topic 13 -->
+            <div class="topic-box">
+                <div class="topic-title">13. Asynchronous JavaScript</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Programming model allowing long tasks to run in background without freezing browser UI thread.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Non-blocking execution model relying on Event Loop, Web APIs, and Task Queue to defer heavy tasks.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Keeps websites responsive during network requests, file reading, timers, and heavy computations.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A waiter taking your order and serving other tables while kitchen staff cooks your dish.</div>
+                <div class="code-box">console.log("1. Order Placed");
+setTimeout(() => console.log("2. Food Ready (Async)"), 2000);
+console.log("3. Drinking Water"); // Executes immediately!</div>
+                <div class="task-box"><span class="field-label">Task:</span> Demonstrate asynchronous non-blocking order using console logs and setTimeout().</div>
+            </div>
+
+            <!-- Topic 14 -->
+            <div class="topic-box">
+                <div class="topic-title">14. JavaScript Promises</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> An object representing the ultimate completion (success) or failure of an asynchronous operation.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A stateful placeholder object that exists in one of three states: <span class="highlight">Pending</span>, <span class="highlight">Fulfilled</span> (.then), or <span class="highlight">Rejected</span> (.catch).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Solves Callback Hell (nested callback pyramid) by providing clean chainable async handling.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Ordering an item online—you receive a tracking number (promise) that later gives you the product or refund.</div>
+                <div class="code-box">const myPromise = new Promise((resolve, reject) => {
+    let success = true;
+    if (success) resolve("Data Loaded!");
+    else reject("Server Error");
+});
+
+myPromise
+    .then(result => console.log(result))
+    .catch(err => console.error(err));</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a promise that resolves after 3 seconds if a number is greater than 10, else rejects.</div>
+            </div>
+
+            <!-- Topic 15 -->
+            <div class="topic-box">
+                <div class="topic-title">15. Async / Await</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Modern syntactic sugar built on top of Promises that makes asynchronous code look synchronous.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> <span class="highlight">async</span> marks a function as promise-returning; <span class="highlight">await</span> pauses execution inside it until promise settles.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Eliminates chainable .then() syntax, allowing clean try/catch error handling for async flows.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Waiting in line at a counter until your turn arrives before stepping forward to order.</div>
+                <div class="code-box">async function loadData() {
+    try {
+        let response = await myPromise; // Pauses here until resolved
+        console.log(response);
+    } catch (error) {
+        console.error("Error:", error);
+    }
+}
+loadData();</div>
+                <div class="task-box"><span class="field-label">Task:</span> Rewrite a promise chain using async/await with try...catch error handling.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 6: FETCH API & PROJECT
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 6: FETCH API & REAL-WORLD PROJECT</div>
+
+            <!-- Topic 16 -->
+            <div class="topic-box">
+                <div class="topic-title">16. Fetch API</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Built-in modern browser interface for making HTTP network requests to fetch external data.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A promise-based Web API function <span class="highlight">fetch(url)</span> used to perform GET, POST, PUT, DELETE operations against servers.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Retrieves JSON data, sends form payloads, and updates UI dynamically without reloading the entire page.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Sending a courier driver to fetch a parcel from a warehouse and return it to you.</div>
+                <div class="code-box">async function getUsers() {
+    const res = await fetch("https://jsonplaceholder.typicode.com/users");
+    const data = await res.json(); // Parse JSON payload
+    console.log(data[0].name);
+}
+getUsers();</div>
+                <div class="task-box"><span class="field-label">Task:</span> Use fetch API to retrieve a random joke or user profile from a public REST API endpoint.</div>
+            </div>
+
+            <!-- Topic 17 -->
+            <div class="topic-box">
+                <div class="topic-title">17. Project: Building a Currency Converter Application</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A practical hands-on application that converts live currency rates using dynamic APIs and DOM inputs.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A real-world project combining DOM manipulation, event listeners, async/await, and Fetch API calls against live Exchange Rate APIs.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Consolidates all Advanced JavaScript concepts into a production-ready interactive tool.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> An exchange booth at an international airport automatically calculating conversion rates for travelers.</div>
+                <div class="code-box">// Currency Converter Application Logic
+async function convertCurrency(amount, from, to) {
+    const apiURL = `https://api.exchangerate-api.com/v4/latest/${from}`;
+    try {
+        const response = await fetch(apiURL);
+        const data = await response.json();
+        const rate = data.rates[to];
+        const converted = (amount * rate).toFixed(2);
+        console.log(`${amount} ${from} = ${converted} ${to}`);
+        return converted;
+    } catch (err) {
+        console.error("Conversion failed:", err);
+    }
+}
+convertCurrency(100, "USD", "EUR");</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create an HTML interface with amount input, two currency select dropdowns, convert button, and display result element using this logic.</div>
+            </div>
+
+            <div style="text-align:center; margin-top:40px; font-size:24px; color:#005f73;">
+                🎉 End of Advanced JavaScript Notes 🎉
+            </div>
+            <div style="text-align:center; font-size:18px; color:#777; margin-top:10px;">
+                Next Subject: <a href="bootstrap.html" class="menu-link">Bootstrap Notes</a>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function generatePDF() {
+            const element = document.getElementById("notes-content");
+            const options = {
+                margin: [0.2, 0.2, 0.2, 0.2],
+                filename: "Advanced_JavaScript_Handwritten_Notes.pdf",
+                image: { type: "jpeg", quality: 0.98 },
+                html2canvas: { scale: 2, logging: false, useCORS: true },
+                jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
+            };
+            const bar = document.querySelector(".no-print-bar");
+            bar.style.display = "none";
+            html2pdf().set(options).from(element).save().then(() => {
+                bar.style.display = "flex";
+            });
+        }
+    </script>
+
+</body>
+</html>

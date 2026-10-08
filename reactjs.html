@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React JS - Handwritten Notes</title>
+    <link rel="stylesheet" href="shared-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- TOP NAVIGATION BUTTONS -->
+    <div class="no-print-bar">
+        <button class="btn-nav btn-download" onclick="generatePDF()">📥 Download PDF</button>
+        <a href="index.html" class="btn-nav">🏠 Home</a>
+        <a href="html5.html" class="btn-nav">📘 HTML5</a>
+        <a href="css3.html" class="btn-nav">🎨 CSS3</a>
+        <a href="javascript.html" class="btn-nav">⚡ JavaScript</a>
+        <a href="advanced-js.html" class="btn-nav">🚀 Adv JS</a>
+        <a href="bootstrap.html" class="btn-nav">💠 Bootstrap</a>
+        <a href="nextjs.html" class="btn-nav">▲ NextJS</a>
+        <a href="angular.html" class="btn-nav">🅰️ Angular</a>
+        <a href="python.html" class="btn-nav">🐍 Python</a>
+        <a href="nodejs.html" class="btn-nav">🟢 NodeJS</a>
+        <a href="mysql.html" class="btn-nav">🗄️ MySQL</a>
+        <a href="mongodb.html" class="btn-nav">🍃 MongoDB</a>
+        <a href="django.html" class="btn-nav">🎸 Django</a>
+        <a href="expressjs.html" class="btn-nav">🚂 Express</a>
+        <a href="genai.html" class="btn-nav">🤖 Gen AI</a>
+        <a href="deployment.html" class="btn-nav">☁️ Deploy</a>
+    </div>
+
+    <main class="notebook-container" id="notes-content">
+
+        <!-- =========================
+             PAGE 1: INTRODUCTION & CORE CONCEPTS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="notebook-header">
+                <h1 class="notebook-title">⚛️ React JS Master Notes</h1>
+                <p style="font-size:20px; color:#555;">Component-Based Front-End Library</p>
+            </div>
+
+            <div class="module-tag">PART 1: REACT FOUNDATIONS & SETUP</div>
+
+            <!-- Topic 1 -->
+            <div class="topic-box">
+                <div class="topic-title">1. Introduction & Environment Installation</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> React is a popular JavaScript library created by Meta (Facebook) for building fast user interfaces.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> An open-source, component-based front-end JS library used to construct Single Page Applications (SPAs).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Simplifies complex UI development by splitting web pages into small, reusable building blocks.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Assembling a toy house using individual interlocking LEGO bricks rather than molding one whole piece.</div>
+                <div class="code-box"># Terminal commands to initialize React app with Vite
+npm create vite@latest my-react-app -- --template react
+cd my-react-app
+npm install
+npm run dev</div>
+                <div class="task-box"><span class="field-label">Task:</span> Install Node.js on your computer and generate a fresh React project using Vite.</div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="topic-box">
+                <div class="topic-title">2. Key React Features</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Core capabilities that make React fast, modular, and easy to maintain.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Key features include Virtual DOM, Declarative UI, One-Way Data Flow, and Component Architecture.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Maximizes rendering performance and keeps application code structured as state updates over time.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A smart blueprint that only updates the wall being repainted instead of rebuilding the entire house.</div>
+                <div class="code-box">// Declarative UI: You describe WHAT the UI should look like based on state
+const App = () => {
+    const isLoggedIn = true;
+    return &lt;h1&gt;{isLoggedIn ? "Welcome Back!" : "Please Log In"}&lt;/h1&gt;;
+};</div>
+                <div class="task-box"><span class="field-label">Task:</span> Explain how React's Virtual DOM improves browser performance compared to direct DOM updates.</div>
+            </div>
+
+            <!-- Topic 3 -->
+            <div class="topic-box">
+                <div class="topic-title">3. Functional Components</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Modern and preferred way to write React components using simple JavaScript functions.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Plain JavaScript functions that receive props as inputs and return JSX elements to render on screen.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Lightweight, easier to read/test, and fully empowered with State/Lifecycle features via React Hooks.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A recipe card function that takes ingredient inputs and returns a formatted dish layout.</div>
+                <div class="code-box">function Header() {
+    return (
+        &lt;header&gt;
+            &lt;h1&gt;My Application Header&lt;/h1&gt;
+        &lt;/header&gt;
+    );
+}
+export default Header;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a functional component named 'Footer' that returns a copyright paragraph.</div>
+            </div>
+
+            <!-- Topic 4 -->
+            <div class="topic-box">
+                <div class="topic-title">4. Class Components</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The older ES6 class syntax used to write React components before Hooks were introduced in 2019.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> ES6 classes extending <span class="highlight">React.Component</span> that use a render() method to return JSX.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Maintains legacy codebase compatibility, though modern React development uses Functional Components.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> An older mechanical typewriter — works reliably, but modern laptops (Functional components) are faster.</div>
+                <div class="code-box">import React, { Component } from 'react';
+
+class Welcome extends Component {
+    render() {
+        return &lt;h1&gt;Hello, {this.props.name}!&lt;/h1&gt;;
+    }
+}
+export default Welcome;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a Class component that accepts a 'title' prop and renders it inside an h2 tag.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 2: JSX & PROPS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 2: JSX SYNTAX & PROPS</div>
+
+            <!-- Topic 5 -->
+            <div class="topic-box">
+                <div class="topic-title">5. JSX: Syntax & Embedding Variables</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A syntax extension for JavaScript that lets you write HTML-like markup directly inside JS files.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Stands for JavaScript XML. JS expressions are embedded inside JSX markup using curly braces <span class="highlight">{ expression }</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Makes UI layout structure visual and allows dynamic data calculation inline.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Filling in named blank variables inside a letter template directly where they appear.</div>
+                <div class="code-box">const UserCard = () => {
+    const username = "Alex";
+    const age = 22;
+    return (
+        &lt;div class="card"&gt;
+            &lt;h3&gt;User: {username}&lt;/h3&gt;
+            &lt;p&gt;Next Year Age: {age + 1}&lt;/p&gt;
+        &lt;/div&gt;
+    );
+};</div>
+                <div class="task-box"><span class="field-label">Task:</span> Embed a math calculation, string variable, and ternary condition inside a JSX component.</div>
+            </div>
+
+            <!-- Topic 6 -->
+            <div class="topic-box">
+                <div class="topic-title">6. Preprocessors & Babel in React</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Compiler tools that convert JSX and modern ES6+ code into plain JavaScript browsers can execute.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Babel is a JS transpiler that turns <span class="highlight">&lt;div&gt;Hello&lt;/div&gt;</span> into <span class="highlight">React.createElement('div', null, 'Hello')</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Guarantees cross-browser compatibility so developers can write modern JSX without browser rendering errors.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A language translator converting slang directly into formal language for international readers.</div>
+                <div class="code-box">// What you write in JSX:
+const element = &lt;h1 className="title"&gt;Hello&lt;/h1&gt;;
+
+// What Babel converts it to behind the scenes:
+const element = React.createElement('h1', { className: 'title' }, 'Hello');</div>
+                <div class="task-box"><span class="field-label">Task:</span> Look at the online Babel REPL compiler to see how JSX code translates to React.createElement.</div>
+            </div>
+
+            <!-- Topic 7 -->
+            <div class="topic-box">
+                <div class="topic-title">7. Component Props (Properties)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Inputs passed from parent components down to child components to configure them.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Read-only (immutable) parameters passed into a component using HTML-like attribute syntax.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Makes components reusable with custom values and content across different parts of the application.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Customizing custom order forms by supplying different names, dates, and amounts.</div>
+                <div class="code-box">// Parent Component
+&lt;Button label="Save Changes" color="green" /&gt;
+&lt;Button label="Delete Item" color="red" /&gt;
+
+// Child Component
+const Button = ({ label, color }) => {
+    return &lt;button style={{ backgroundColor: color }}&gt;{label}&lt;/button&gt;;
+};</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a Product component that receives 'name', 'price', and 'inStock' boolean via props.</div>
+            </div>
+
+            <!-- Topic 8 -->
+            <div class="topic-box">
+                <div class="topic-title">8. Pure vs Impure Functions in React</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Pure functions always return the same output for the same input without altering outside data.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> React expects UI components to act like Pure Functions regarding their props (never modify their inputs).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Prevents unpredictable UI bugs, side-effect mutations, and rendering inconsistencies.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A math function add(2, 3) that always equals 5 without altering global room temperature.</div>
+                <div class="code-box">// Pure Component (Safe):
+const Recipe = ({ cups }) => &lt;p&gt;Use {cups * 2} cups of water.&lt;/p&gt;;
+
+// Impure Component (Unsafe - modifies external variable):
+let guestCount = 0;
+const BadComponent = () => {
+    guestCount = guestCount + 1; // Mutating external variable!
+    return &lt;p&gt;Guest #{guestCount}&lt;/p&gt;;
+};</div>
+                <div class="task-box"><span class="field-label">Task:</span> Refactor an impure function component so it calculates values locally without mutating outer variables.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 3: STATE & HOOKS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 3: STATE MANAGEMENT & REACT HOOKS</div>
+
+            <!-- Topic 9 -->
+            <div class="topic-box">
+                <div class="topic-title">9. Component State & useState Hook</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Internal data memory managed inside a component that triggers a UI re-render when changed.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> <span class="highlight">useState(initialValue)</span> returns a state variable and a setter function: <span class="highlight">[state, setState]</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Handles dynamic data that changes based on user interactions like form typing, toggles, or counters.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A digital scoreboard that automatically updates its displayed numbers when a button is pressed.</div>
+                <div class="code-box">import { useState } from 'react';
+
+const Counter = () => {
+    const [count, setCount] = useState(0);
+    return (
+        &lt;div&gt;
+            &lt;p&gt;Clicks: {count}&lt;/p&gt;
+            &lt;button onClick={() => setCount(count + 1)}&gt;Increment&lt;/button&gt;
+        &lt;/div&gt;
+    );
+};</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a toggle button component that switches text between "ON" and "OFF" using useState.</div>
+            </div>
+
+            <!-- Topic 10 -->
+            <div class="topic-box">
+                <div class="topic-title">10. Side-Effects & useEffect Hook</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Handles operations that interact with the outside world beyond component rendering.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> <span class="highlight">useEffect(callback, dependencyArray)</span> runs side-effects like API data fetching, timers, or DOM subscriptions.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Manages component lifecycle operations (mount, update, unmount) in functional components.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Turning on a room's security alarm automatically whenever someone opens the main door.</div>
+                <div class="code-box">import { useState, useEffect } from 'react';
+
+const UserFetcher = () => {
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        // Runs on component mount
+        fetch('https://api.github.com/users/octocat')
+            .then(res => res.json())
+            .then(data => setUser(data.name));
+    }, []); // Empty array = run ONCE on mount
+
+    return &lt;p&gt;Loaded User: {user}&lt;/p&gt;;
+};</div>
+                <div class="task-box"><span class="field-label">Task:</span> Use useEffect to update the browser tab document.title every time a counter state updates.</div>
+            </div>
+
+            <!-- Topic 11 -->
+            <div class="topic-box">
+                <div class="topic-title">11. Cleanup Functions in useEffect</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A function returned inside useEffect that cleans up resources before the component unmounts.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Prevents memory leaks by clearing intervals, cancelling network requests, or removing event listeners.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Cleans up background tasks when components disappear from screen to maintain app speed.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Turning off the TV and unplugging the cable box before leaving a hotel room.</div>
+                <div class="code-box">useEffect(() => {
+    const timer = setInterval(() => console.log('Tick'), 1000);
+    
+    // Cleanup function executed on unmount
+    return () => {
+        clearInterval(timer);
+        console.log('Timer Cleaned Up');
+    };
+}, []);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a clock component that starts a timer on mount and clears the interval on unmount.</div>
+            </div>
+
+            <!-- Topic 12 -->
+            <div class="topic-box">
+                <div class="topic-title">12. Context API & Global State</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A built-in mechanism to share state across many component levels without prop drilling.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses <span class="highlight">createContext()</span>, <span class="highlight">&lt;Context.Provider&gt;</span>, and <span class="highlight">useContext()</span> to broadcast data globally.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Manages global data like user authentication, language preferences, or UI color themes.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A radio broadcast tower sending news to all household radios tuned into the same frequency.</div>
+                <div class="code-box">import { createContext, useContext } from 'react';
+
+const ThemeContext = createContext('light');
+
+const Display = () => {
+    const theme = useContext(ThemeContext); // Read global context
+    return &lt;div className={`box ${theme}`}&gt;Theme: {theme}&lt;/div&gt;;
+};
+
+const App = () => (
+    &lt;ThemeContext.Provider value="dark"&gt;
+        &lt;Display /&gt;
+    &lt;/ThemeContext.Provider&gt;
+);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a UserContext that passes logged-in username to a nested NavProfile component without prop drilling.</div>
+            </div>
+
+            <!-- Topic 13 -->
+            <div class="topic-box">
+                <div class="topic-title">13. Component API & Reducers (useReducer)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> An alternative state management hook suited for complex state logic with multiple sub-actions.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> <span class="highlight">const [state, dispatch] = useReducer(reducer, initialState)</span> uses action objects to manage state transitions.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Consolidates multiple state update rules into a single predictable reducer function.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A bank teller executing specific transaction slips ("DEPOSIT", "WITHDRAW") against an account.</div>
+                <div class="code-box">import { useReducer } from 'react';
+
+function reducer(state, action) {
+    switch (action.type) {
+        case 'INCREMENT': return { count: state.count + 1 };
+        case 'DECREMENT': return { count: state.count - 1 };
+        default: return state;
+    }
+}
+
+const Counter = () => {
+    const [state, dispatch] = useReducer(reducer, { count: 0 });
+    return (
+        &lt;button onClick={() => dispatch({ type: 'INCREMENT' })}&gt;
+            Count: {state.count}
+        &lt;/button&gt;
+    );
+};</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a reducer handling 'ADD_TODO' and 'DELETE_TODO' actions for a todo list array.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 4: EVENTS, STYLING & LISTS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 4: EVENTS, STYLING & LIST RENDERING</div>
+
+            <!-- Topic 14 -->
+            <div class="topic-box">
+                <div class="topic-title">14. Event Handling in React</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Capturing and responding to user actions like button clicks, form submissions, and typing.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses camelCase syntax (<span class="highlight">onClick</span>, <span class="highlight">onChange</span>, <span class="highlight">onSubmit</span>) passing function references instead of strings.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Triggers logic or updates component state in response to user inputs.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Pressing a camera shutter button to trigger a photo capture event.</div>
+                <div class="code-box">const Form = () => {
+    const handleChange = (e) => {
+        console.log("Typing:", e.target.value);
+    };
+    return &lt;input type="text" onChange={handleChange} placeholder="Type name..." /&gt;;
+};</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create an input field that prints the entered text live inside a paragraph tag below it.</div>
+            </div>
+
+            <!-- Topic 15 -->
+            <div class="topic-box">
+                <div class="topic-title">15. Styling in React (CSS, Modules & Bootstrap)</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Applying visual styles to components using inline objects, CSS modules, or CSS frameworks.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Inline styles use JS objects <span class="highlight">style={{ color: 'red' }}</span>; class attributes are written as <span class="highlight">className=""</span>.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Customizes component appearance while preventing global CSS class name collisions.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Dressing individual actors in custom costumes tailored for their specific role.</div>
+                <div class="code-box">// Inline Object Style
+const boxStyle = { backgroundColor: '#282c34', color: 'white', padding: '15px' };
+
+const StyledCard = () => (
+    &lt;div style={boxStyle} className="shadow-lg btn-group"&gt;
+        &lt;p className="text-primary"&gt;Bootstrap & Inline Styled Card&lt;/p&gt;
+    &lt;/div&gt;
+);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Style a card component using a dynamic inline JS style object based on an 'isActive' boolean prop.</div>
+            </div>
+
+            <!-- Topic 16 -->
+            <div class="topic-box">
+                <div class="topic-title">16. Rendering Lists & Table Structures</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Mapping over array datasets to dynamically generate repeating JSX components or table rows.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses the JavaScript <span class="highlight">map()</span> method and requires a unique <span class="highlight">key</span> prop on every mapped root item.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Displays dynamic list collections and tabular data efficiently without duplicating markup.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Printing a row for each item on a digital invoice statement.</div>
+                <div class="code-box">const UserTable = ({ users }) => (
+    &lt;table border="1"&gt;
+        &lt;tbody&gt;
+            {users.map((user) => (
+                &lt;tr key={user.id}&gt;
+                    &lt;td&gt;{user.id}&lt;/td&gt;
+                    &lt;td&gt;{user.name}&lt;/td&gt;
+                &lt;/tr&gt;
+            ))}
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Map over an array of 4 fruit items and render them as list items (&lt;li&gt;) with unique keys.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 5: ROUTER, REDUX & PROJECT
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 5: ROUTER, REDUX & E-COMMERCE PROJECT</div>
+
+            <!-- Topic 17 -->
+            <div class="topic-box">
+                <div class="topic-title">17. React Router v6: Navigation & Routes</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Enables client-side page routing without refreshing the browser in Single Page Applications.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Library providing <span class="highlight">&lt;BrowserRouter&gt;</span>, <span class="highlight">&lt;Routes&gt;</span>, <span class="highlight">&lt;Route&gt;</span>, and <span class="highlight">&lt;Link&gt;</span> components.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Switches view components based on the URL path seamlessly without page reloads.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Switching tabs inside a desk binder — the binder frame stays still while pages swap.</div>
+                <div class="code-box">import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+
+const App = () => (
+    &lt;BrowserRouter&gt;
+        &lt;nav&gt;
+            &lt;Link to="/"&gt;Home&lt;/Link&gt; | &lt;Link to="/about"&gt;About&lt;/Link&gt;
+        &lt;/nav&gt;
+        &lt;Routes&gt;
+            &lt;Route path="/" element={&lt;Home /&gt;} /&gt;
+            &lt;Route path="/about" element={&lt;About /&gt;} /&gt;
+        &lt;/Routes&gt;
+    &lt;/BrowserRouter&gt;
+);</div>
+                <div class="task-box"><span class="field-label">Task:</span> Set up React Router with 3 route paths: Home ("/"), Products ("/products"), and Contact ("/contact").</div>
+            </div>
+
+            <!-- Topic 18 -->
+            <div class="topic-box">
+                <div class="topic-title">18. Query Params & URL Params in Router</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Extracting dynamic data parameters directly out of browser URL strings.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses hooks: <span class="highlight">useParams()</span> for path variables (/product/:id) and <span class="highlight">useSearchParams()</span> for query strings (?category=shoes).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Loads specific detail pages (e.g. view item #42) or filters catalog lists based on shareable URL links.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Reading a house number printed on a postal envelope to find the exact destination.</div>
+                <div class="code-box">import { useParams, useSearchParams } from 'react-router-dom';
+
+// URL: /product/101?discount=true
+const ProductDetail = () => {
+    const { id } = useParams(); // Extracts 101
+    const [searchParams] = useSearchParams(); // Extracts query params
+    
+    return &lt;div&gt;Product ID: {id} (Discount: {searchParams.get('discount')})&lt;/div&gt;;
+};</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a Route path "/user/:username" and display the extracted username on screen using useParams.</div>
+            </div>
+
+            <!-- Topic 19 -->
+            <div class="topic-box">
+                <div class="topic-title">19. React Redux & Redux Toolkit</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A centralized global state management library for complex, enterprise-level React apps.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses a single global Store, Redux Slices (<span class="highlight">createSlice</span>), <span class="highlight">useSelector</span> to read state, and <span class="highlight">useDispatch</span> to send actions.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Provides a single source of truth for global data shared by dozens of independent components.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A central bank ledger tracking everyone's balance — anyone can check or deposit through proper channels.</div>
+                <div class="code-box">import { createSlice, configureStore } from '@reduxjs.toolkit';
+import { useSelector, useDispatch } from 'react-redux';
+
+// 1. Slice
+const cartSlice = createSlice({
+    name: 'cart',
+    initialState: { items: [] },
+    reducers: {
+        addToCart: (state, action) => { state.items.push(action.payload); }
+    }
+});
+
+// 2. Component dispatching action
+const AddBtn = () => {
+    const dispatch = useDispatch();
+    return &lt;button onClick={() => dispatch(cartSlice.actions.addToCart('Laptop'))}&gt;Add&lt;/button&gt;;
+};</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a simple Redux slice for a shopping cart counter with increment and decrement actions.</div>
+            </div>
+
+            <!-- Topic 20 -->
+            <div class="topic-box">
+                <div class="topic-title">20. Project: E-Commerce Application Development</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A full capstone project integrating components, state, context/Redux, router, and product lists.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A real-world application featuring a product grid, search/filter inputs, dynamic shopping cart, routing, and checkout form.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Combines all React fundamentals into a functional, production-style web application.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Building an online store like Amazon or eBay.</div>
+                <div class="code-box">// E-Commerce App Core Structure Skeleton
+const ECommerceApp = () => {
+    const [cart, setCart] = useState([]);
+    const [products] = useState([
+        { id: 1, name: "Phone", price: 600 },
+        { id: 2, name: "Headphones", price: 150 }
+    ]);
+
+    const addToCart = (product) => setCart([...cart, product]);
+
+    return (
+        &lt;div className="container"&gt;
+            &lt;h1&gt;Store (Cart Items: {cart.length})&lt;/h1&gt;
+            &lt;div className="row"&gt;
+                {products.map(p => (
+                    &lt;div key={p.id} className="col-6 card p-3"&gt;
+                        &lt;h3&gt;{p.name} - ${p.price}&lt;/h3&gt;
+                        &lt;button onClick={() => addToCart(p)}&gt;Add to Cart&lt;/button&gt;
+                    &lt;/div&gt;
+                ))}
+            &lt;/div&gt;
+        &lt;/div&gt;
+    );
+};</div>
+                <div class="task-box"><span class="field-label">Task:</span> Build a functional product list with an "Add to Cart" button that updates a top cart counter badge live.</div>
+            </div>
+
+            <div style="text-align:center; margin-top:40px; font-size:24px; color:#005f73;">
+                🎉 End of React JS Notes 🎉
+            </div>
+            <div style="text-align:center; font-size:18px; color:#777; margin-top:10px;">
+                Next Subject: <a href="nextjs.html" class="menu-link">Next.js Notes</a>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function generatePDF() {
+            const element = document.getElementById("notes-content");
+            const options = {
+                margin: [0.2, 0.2, 0.2, 0.2],
+                filename: "ReactJS_Handwritten_Notes.pdf",
+                image: { type: "jpeg", quality: 0.98 },
+                html2canvas: { scale: 2, logging: false, useCORS: true },
+                jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
+            };
+            const bar = document.querySelector(".no-print-bar");
+            bar.style.display = "none";
+            html2pdf().set(options).from(element).save().then(() => {
+                bar.style.display = "flex";
+            });
+        }
+    </script>
+
+</body>
+</html>

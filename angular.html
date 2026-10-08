@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Angular - Handwritten Notes</title>
+    <link rel="stylesheet" href="shared-style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+    <!-- TOP NAVIGATION BUTTONS -->
+    <div class="no-print-bar">
+        <button class="btn-nav btn-download" onclick="generatePDF()">📥 Download PDF</button>
+        <a href="index.html" class="btn-nav">🏠 Home</a>
+        <a href="html5.html" class="btn-nav">📘 HTML5</a>
+        <a href="css3.html" class="btn-nav">🎨 CSS3</a>
+        <a href="javascript.html" class="btn-nav">⚡ JavaScript</a>
+        <a href="advanced-js.html" class="btn-nav">🚀 Adv JS</a>
+        <a href="bootstrap.html" class="btn-nav">💠 Bootstrap</a>
+        <a href="reactjs.html" class="btn-nav">⚛️ React</a>
+        <a href="nextjs.html" class="btn-nav">▲ NextJS</a>
+        <a href="python.html" class="btn-nav">🐍 Python</a>
+        <a href="nodejs.html" class="btn-nav">🟢 NodeJS</a>
+        <a href="mysql.html" class="btn-nav">🗄️ MySQL</a>
+        <a href="mongodb.html" class="btn-nav">🍃 MongoDB</a>
+        <a href="django.html" class="btn-nav">🎸 Django</a>
+        <a href="expressjs.html" class="btn-nav">🚂 Express</a>
+        <a href="genai.html" class="btn-nav">🤖 Gen AI</a>
+        <a href="deployment.html" class="btn-nav">☁️ Deploy</a>
+    </div>
+
+    <main class="notebook-container" id="notes-content">
+
+        <!-- =========================
+             PAGE 1: INTRODUCTION & CONCEPTS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="notebook-header">
+                <h1 class="notebook-title">🅰️ Angular Master Notes</h1>
+                <p style="font-size:20px; color:#555;">Structured Front-End Web Framework</p>
+            </div>
+
+            <div class="module-tag">PART 1: ANGULAR FOUNDATIONS</div>
+
+            <!-- Topic 1 -->
+            <div class="topic-box">
+                <div class="topic-title">1. Introduction to Angular</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Angular is a complete development platform built by Google for creating structured single-page web applications.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A open-source client-side framework that extends HTML syntax with dynamic attributes to build interactive web applications.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Helps developers create structured web interfaces without writing complex manual DOM manipulation code.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A smart form template that automatically calculates totals as soon as a user types a quantity.</div>
+                <div class="code-box">&lt;!-- Including AngularJS via CDN library --&gt;
+&lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"&gt;&lt;/script&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Research the key difference between original AngularJS (v1.x) and modern Angular (v2+ TypeScript).</div>
+            </div>
+
+            <!-- Topic 2 -->
+            <div class="topic-box">
+                <div class="topic-title">2. Advantages of Angular</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The powerful benefits that make Angular ideal for building large, structured web applications.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Features two-way data binding, modular architecture, reusable directives, dependency injection, and integrated testing.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Speeds up development time and keeps large team codebases organized, consistent, and easy to maintain.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Using an automated assembly line where parts sync together automatically instead of manual fitting.</div>
+                <div class="code-box">&lt;!-- Two-way data binding: Input instantly updates the paragraph --&gt;
+&lt;div ng-app=""&gt;
+  &lt;input type="text" ng-model="username" placeholder="Type name..."&gt;
+  &lt;h2&gt;Hello {{username}}!&lt;/h2&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a simple text input using Angular two-way binding that displays the entered text live in a heading tag.</div>
+            </div>
+
+            <!-- Topic 3 -->
+            <div class="topic-box">
+                <div class="topic-title">3. Disadvantages of Angular</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The limitations and challenges developers face when choosing Angular for a web project.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Includes a steep learning curve, heavier framework size, potential performance lag with massive DOM binding arrays, and SEO setup effort.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Evaluates whether Angular is the right tool for a project compared to lighter libraries like React or Vue.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Driving a heavy delivery truck for a quick errand when a small bicycle would be faster and easier.</div>
+                <div class="code-box">// Heavy watcher counts in large apps can slow down dirty-checking
+// Avoid binding thousands of dynamic elements simultaneously in single views</div>
+                <div class="task-box"><span class="field-label">Task:</span> Write a short comparison list of when to choose Angular vs when to choose React.</div>
+            </div>
+
+            <!-- Topic 4 -->
+            <div class="topic-box">
+                <div class="topic-title">4. Environment Setup & Installation</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Setting up your project workspace with the required Angular libraries or command-line tools.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Done by linking the Angular script via CDN for simple setups or installing Angular CLI via Node Package Manager (NPM).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Prepares the project workspace with tools needed to run, build, and execute Angular applications.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Setting up an artist easel, paints, and brushes before beginning to paint a canvas.</div>
+                <div class="code-box"># Installing modern Angular CLI globally via terminal
+npm install -g @angular/cli
+
+# Checking installed version
+ng version</div>
+                <div class="task-box"><span class="field-label">Task:</span> Link the AngularJS script file into a blank HTML document using a public CDN link.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 2: MVC ARCHITECTURE
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 2: MVC ARCHITECTURE</div>
+
+            <!-- Topic 5 -->
+            <div class="topic-box">
+                <div class="topic-title">5. MVC Architecture Overview</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A software design pattern that divides an application into three interconnected parts to separate concerns.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Stands for <span class="highlight">Model-View-Controller</span>, separating application data (Model), screen layout (View), and logic (Controller).</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Makes code modular so developers can work on logic, design, and data independently without breaking other parts.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Restaurant pattern: Kitchen holds food data (Model), Dining table is where you eat (View), Waiter carries orders (Controller).</div>
+                <div class="code-box">// MVC Flow Concept:
+// USER interactions -> VIEW -> CONTROLLER updates -> MODEL -> updates -> VIEW</div>
+                <div class="task-box"><span class="field-label">Task:</span> Draw a block diagram showing how data flows between Model, View, and Controller in an application.</div>
+            </div>
+
+            <!-- Topic 6 -->
+            <div class="topic-box">
+                <div class="topic-title">6. Model in MVC</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The data layer of the application responsible for holding raw information, business logic, and rules.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Represents application state objects and data arrays managed inside JavaScript variables or scope services.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Stores and manages application data independently of how it looks on screen.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A bank account database holding your balance numbers, account ID, and transaction history.</div>
+                <div class="code-box">// Model data inside Angular scope
+$scope.student = {
+    name: "Alex",
+    grade: "A+",
+    age: 20
+};</div>
+                <div class="task-box"><span class="field-label">Task:</span> Define a Model object representing a product with name, price, and inStock attributes.</div>
+            </div>
+
+            <!-- Topic 7 -->
+            <div class="topic-box">
+                <div class="topic-title">7. View in MVC</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The visual user interface (HTML/CSS) that displays Model data on screen to the user.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> The HTML template containing Angular directives and expressions (<span class="highlight">{{ data }}</span>) rendered in the browser.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Presents information visually and accepts user inputs through buttons, forms, and input fields.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A mobile phone screen displaying your contacts list visually.</div>
+                <div class="code-box">&lt;!-- The VIEW template displaying Model properties --&gt;
+&lt;div class="profile-card"&gt;
+  &lt;h3&gt;Student Name: {{ student.name }}&lt;/h3&gt;
+  &lt;p&gt;Grade: {{ student.grade }}&lt;/p&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Construct an HTML View section that displays product details using double curly brace expressions.</div>
+            </div>
+
+            <!-- Topic 8 -->
+            <div class="topic-box">
+                <div class="topic-title">8. Controller in MVC</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The bridge component containing JavaScript logic that coordinates between the Model data and the View screen.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A JavaScript function controlling scope data, responding to user actions, and managing business operations.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Listens to View user inputs, processes logic, updates Model state, and refreshes the display.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A remote control translating button presses into signal actions sent to the TV screen.</div>
+                <div class="code-box">app.controller('myCtrl', function($scope) {
+    // Controller initializes Model and logic functions
+    $scope.count = 0;
+    $scope.increment = function() {
+        $scope.count++;
+    };
+});</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a controller function that holds a user array and defines a method to add a new user.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 3: CREATING & EXECUTING APPS
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 3: APPLICATION CREATION & EXECUTION</div>
+
+            <!-- Topic 9 -->
+            <div class="topic-box">
+                <div class="topic-title">9. Creating an Angular Application</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Defining an application module that initializes Angular and binds together components, controllers, and views.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Uses <span class="highlight">angular.module('appName', [])</span> to create the root application container module.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Acts as the central container that registers controllers, services, filters, and custom directives.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Setting up a main company folder before creating individual project sub-files inside it.</div>
+                <div class="code-box">&lt;!-- HTML --&gt;
+&lt;div ng-app="myApp" ng-controller="mainCtrl"&gt;
+  &lt;h1&gt;{{ message }}&lt;/h1&gt;
+&lt;/div&gt;
+
+&lt;!-- JS --&gt;
+&lt;script&gt;
+  var app = angular.module('myApp', []); // Define module
+  app.controller('mainCtrl', function($scope) {
+      $scope.message = "Hello Angular World!";
+  });
+&lt;/script&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Register a new Angular module called "storeApp" and attach a controller to it.</div>
+            </div>
+
+            <!-- Topic 10 -->
+            <div class="topic-box">
+                <div class="topic-title">10. Executing & Running an Angular Application</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> How the browser parses, bootstraps, and executes Angular code inside a web page.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Angular waits for DOM load, scans for <span class="highlight">ng-app</span>, compiles templates, creates root scope, and starts data binding loops.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Bootstraps static HTML markup into an active, interactive dynamic application.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Turning on a car engine — the dashboard indicators light up and systems become active.</div>
+                <div class="code-box">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;!-- ng-app automatically bootstraps Angular on load --&gt;
+&lt;body ng-app=""&gt;
+  &lt;p&gt;Result: {{ 10 + 20 }}&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create an HTML page where Angular automatically evaluates a math expression {{ 5 * 5 }} on page load.</div>
+            </div>
+        </section>
+
+        <!-- =========================
+             PAGE 4: DIRECTIVES
+        ========================== -->
+        <section class="paper-sheet">
+            <div class="module-tag">PART 4: ANGULAR DIRECTIVES</div>
+
+            <!-- Topic 11 -->
+            <div class="topic-box">
+                <div class="topic-title">11. Introduction to Directives</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Special attributes added to HTML tags that extend HTML capabilities with dynamic features.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Markers on DOM elements (such as <span class="highlight">ng-app</span>, <span class="highlight">ng-model</span>, <span class="highlight">ng-repeat</span>) telling Angular to attach custom behavior.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Extends standard HTML into a dynamic template language for web applications.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Adding turbo booster buttons to a standard bicycle to give it motorized capabilities.</div>
+                <div class="code-box">&lt;!-- Custom attributes starting with ng- are Angular directives --&gt;
+&lt;div ng-app="" ng-init="price=10"&gt;
+    &lt;p&gt;Price: {{ price }}&lt;/p&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Explain in your own words what an Angular directive does when placed inside an HTML tag.</div>
+            </div>
+
+            <!-- Topic 12 -->
+            <div class="topic-box">
+                <div class="topic-title">12. ng-app Directive</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> The root directive that defines and initializes an Angular application inside an HTML element.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> A marker tag attribute that marks the root element of an Angular application, triggering auto-bootstrap.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Tells Angular which part of the HTML page it owns and manages.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Fencing off a specific plot of land to designate where building construction will take place.</div>
+                <div class="code-box">&lt;!-- Tells Angular to manage everything inside this body tag --&gt;
+&lt;body ng-app="myApp"&gt;
+    &lt;div ng-controller="myCtrl"&gt;
+        &lt;h1&gt;{{ title }}&lt;/h1&gt;
+    &lt;/div&gt;
+&lt;/body&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Place `ng-app` on a wrapper div element and verify Angular directives run only inside that div.</div>
+            </div>
+
+            <!-- Topic 13 -->
+            <div class="topic-box">
+                <div class="topic-title">13. ng-init Directive</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A directive used to evaluate expressions and initialize data variables directly inside HTML markup.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> An attribute that sets initial variable values on scope before template rendering completes.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Quick inline variable initialization useful for small demos, testing, or setting static defaults.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Setting default starter chips on a board game table before players begin playing.</div>
+                <div class="code-box">&lt;div ng-app="" ng-init="quantity=3; cost=15"&gt;
+    &lt;p&gt;Total Price: {{ quantity * cost }}&lt;/p&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Use `ng-init` to set a user's name and age, then display them in a paragraph.</div>
+            </div>
+
+            <!-- Topic 14 -->
+            <div class="topic-box">
+                <div class="topic-title">14. ng-model Directive</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> Binds the value of HTML form controls (input, select, textarea) directly to application model variables.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Provides <span class="highlight">Two-Way Data Binding</span>: changing input updates the model; changing model updates the input.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Syncs user form entries with scope state instantly without writing event listener functions.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> Two mirrors facing each other — any movement in one instantly reflects in the other.</div>
+                <div class="code-box">&lt;div ng-app=""&gt;
+    &lt;label&gt;Enter City:&lt;/label&gt;
+    &lt;input type="text" ng-model="city"&gt;
+    
+    &lt;p&gt;Selected Destination: {{ city }}&lt;/p&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Create a form input with `ng-model` that lets users choose a background color dynamically.</div>
+            </div>
+
+            <!-- Topic 15 -->
+            <div class="topic-box">
+                <div class="topic-title">15. ng-repeat Directive</div>
+                <div class="topic-field"><span class="field-label">Meaning:</span> A directive that loops over a collection array and repeats the HTML element for every item.</div>
+                <div class="topic-field"><span class="field-label">Definition:</span> Repeats a DOM element per item in an array using <span class="highlight">item in collection</span> loop syntax.</div>
+                <div class="topic-field"><span class="field-label">Purpose:</span> Renders dynamic lists, dropdown menus, table rows, and card grids from array datasets easily.</div>
+                <div class="topic-field"><span class="field-label">Example:</span> A printing press stamping a page layout copy for every record in a database list.</div>
+                <div class="code-box">&lt;div ng-app="" ng-init="fruits=['Apple', 'Banana', 'Mango', 'Orange']"&gt;
+    &lt;h3&gt;Fruit Catalog:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li ng-repeat="x in fruits"&gt;{{ x }}&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;</div>
+                <div class="task-box"><span class="field-label">Task:</span> Initialize an array of 3 student objects with `ng-init` and render them in a table using `ng-repeat`.</div>
+            </div>
+
+            <div style="text-align:center; margin-top:40px; font-size:24px; color:#005f73;">
+                🎉 End of Angular Notes 🎉
+            </div>
+            <div style="text-align:center; font-size:18px; color:#777; margin-top:10px;">
+                Next Subject: <a href="python.html" class="menu-link">Python Notes</a>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        function generatePDF() {
+            const element = document.getElementById("notes-content");
+            const options = {
+                margin: [0.2, 0.2, 0.2, 0.2],
+                filename: "Angular_Handwritten_Notes.pdf",
+                image: { type: "jpeg", quality: 0.98 },
+                html2canvas: { scale: 2, logging: false, useCORS: true },
+                jsPDF: { unit: "in", format: "letter", orientation: "portrait" }
+            };
+            const bar = document.querySelector(".no-print-bar");
+            bar.style.display = "none";
+            html2pdf().set(options).from(element).save().then(() => {
+                bar.style.display = "flex";
+            });
+        }
+    </script>
+
+</body>
+</html>

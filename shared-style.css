@@ -1,0 +1,203 @@
+/* ==========================================
+   HANDMADE NOTEBOOK - SHARED STYLESHEET
+   ========================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Kalam:wght@300;400;700&family=Fira+Code:wght@400;500&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #525659;
+    font-family: 'Kalam', cursive;
+    color: #1a2b4c; /* Blue Ballpoint Pen Color */
+    padding: 20px;
+    padding-top: 90px; /* Space for floating buttons */
+}
+
+/* Floating Navigation Bar at Top */
+.no-print-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: rgba(30, 32, 34, 0.95);
+    padding: 10px 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.4);
+    backdrop-filter: blur(5px);
+}
+
+.btn-nav {
+    background-color: #2c3e50;
+    color: #ffffff;
+    font-family: 'Caveat', cursive;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 6px 14px;
+    border: 1px solid #4a5f7a;
+    border-radius: 20px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn-nav:hover {
+    background-color: #e63946;
+    transform: scale(1.05);
+    border-color: #ffffff;
+}
+
+.btn-download {
+    background-color: #e63946 !important;
+    font-size: 18px !important;
+    padding: 8px 18px !important;
+}
+
+.btn-download:hover {
+    background-color: #c1121f !important;
+}
+
+/* Paper Sheet Layout */
+.notebook-container {
+    width: 850px;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.paper-sheet {
+    background-color: #fdfbf7;
+    background-image: linear-gradient(#e5e0d8 1px, transparent 1px);
+    background-size: 100% 30px;
+    position: relative;
+    padding: 45px 55px 45px 90px;
+    margin-bottom: 30px;
+    border-radius: 2px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    border-left: 2px solid #ff8080;
+    line-height: 30px;
+}
+
+.paper-sheet::before {
+    content: '';
+    position: absolute;
+    left: 30px;
+    top: 50px;
+    bottom: 50px;
+    width: 18px;
+    background: radial-gradient(circle, #333 35%, #525659 40%, transparent 45%);
+    background-size: 18px 90px;
+    opacity: 0.7;
+}
+
+/* Headers */
+.notebook-header {
+    text-align: center;
+    border-bottom: 3px double #1a2b4c;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+.notebook-title {
+    font-family: 'Caveat', cursive;
+    font-size: 42px;
+    color: #0d1b2a;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.module-tag {
+    font-size: 32px;
+    color: #b7094c;
+    border-bottom: 2px dashed #b7094c;
+    display: inline-block;
+    margin: 20px 0 15px 0;
+    font-family: 'Caveat', cursive;
+    font-weight: 700;
+}
+
+/* Topic Boxes */
+.topic-box {
+    margin-bottom: 35px;
+    page-break-inside: avoid;
+}
+
+.topic-title {
+    font-family: 'Caveat', cursive;
+    font-size: 28px;
+    color: #005f73;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.topic-field {
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.field-label {
+    font-weight: 700;
+    color: #b7094c;
+    margin-right: 5px;
+}
+
+.highlight {
+    background-color: rgba(255, 234, 0, 0.4);
+    padding: 0 4px;
+    border-radius: 3px;
+}
+
+/* Menu Links */
+.menu-link {
+    color: #005f73;
+    text-decoration: none;
+    font-weight: 700;
+    border-bottom: 2px dotted #005f73;
+    transition: all 0.2s ease;
+}
+
+.menu-link:hover {
+    color: #e63946;
+    border-bottom-color: #e63946;
+}
+
+/* Code Boxes */
+.code-box {
+    font-family: 'Fira Code', monospace;
+    font-size: 13px;
+    line-height: 20px;
+    background-color: #f4f1ea;
+    color: #2b2d42;
+    padding: 12px 16px;
+    margin: 10px 0;
+    border: 2px solid #4a5568;
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+    white-space: pre-wrap;
+    word-break: break-all;
+    position: relative;
+}
+
+.task-box {
+    background-color: rgba(144, 224, 239, 0.25);
+    border-left: 4px solid #00b4d8;
+    padding: 6px 12px;
+    margin-top: 8px;
+    font-size: 17px;
+}
+
+/* Print Media */
+@media print {
+    body { background: none; padding: 0; }
+    .no-print-bar { display: none; }
+    .notebook-container { width: 100%; }
+    .paper-sheet { box-shadow: none; margin-bottom: 0; page-break-after: always; }
+}
